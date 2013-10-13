@@ -3,6 +3,8 @@ package view.mainwindow.functionalPanels.mainPanels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import resources.GUIResources;
+
 import view.mainwindow.functionalPanels.AlgorithmChoicePanel;
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
@@ -26,10 +28,10 @@ public class SetAlgorithmPanel extends FunctionalPanel {
 		choicePanel = new AlgorithmChoicePanel();
 		
 		addAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\Add.png", "Add new algorithm");
-		addAlgorithmPanel = new FunctionalButtonBackgroundPanel(addAlgorithmButton);
+		addAlgorithmPanel = new FunctionalButtonBackgroundPanel(addAlgorithmButton, GUIResources.functionalAddNewAlgorithmComponents);
 		
 		createAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\CreateAlgo.png", "Create new algorithm");
-		createAlgorithmPanel = new FunctionalButtonBackgroundPanel(createAlgorithmButton);
+		createAlgorithmPanel = new FunctionalButtonBackgroundPanel(createAlgorithmButton, GUIResources.functionalCreateNewAlgorithmComponents);
 		
 		add(choicePanel);
 		add(addAlgorithmPanel);

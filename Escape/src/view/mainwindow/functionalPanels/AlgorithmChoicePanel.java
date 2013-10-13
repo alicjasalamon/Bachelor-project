@@ -17,7 +17,7 @@ import javax.swing.JRadioButton;
 
 import resources.ColorSet;
 import resources.FontSet;
-import resources.Resources;
+import resources.SimulationResources;
 
 public class AlgorithmChoicePanel extends JPanel {
 
@@ -53,8 +53,8 @@ public class AlgorithmChoicePanel extends JPanel {
 		labelPanel.add(label);
 		add(labelPanel);
 		
-		for (int i = 0; i < Resources.agentsNames.size(); i++) {
-			JRadioButton j = new JRadioButton(Resources.agentsNames.get(i));
+		for (int i = 0; i < SimulationResources.agentsNames.size(); i++) {
+			JRadioButton j = new JRadioButton(SimulationResources.agentsNames.get(i));
 			agentRadioButtons.add(j);
 			buttonGroup.add(j);
 			j.setFont(FontSet.MENU_FONT);

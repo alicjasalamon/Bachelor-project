@@ -22,6 +22,7 @@ public class SetFunctionalPanelListener implements MouseListener {
 		simu = new SimulationThread(building, jPanel);
 	}
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		// TODO Auto-generated method stub

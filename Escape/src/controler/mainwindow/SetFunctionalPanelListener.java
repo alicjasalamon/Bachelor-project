@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
 
-import resources.Resources;
+import resources.GUIResources;
 
 
 public class SetFunctionalPanelListener implements ActionListener{
@@ -19,11 +19,11 @@ public class SetFunctionalPanelListener implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		
-		Resources.functionalMenuPanel.removeAll();
-		Resources.functionalMenuPanel.add(functionalPanel);
-		Resources.functionalMenuPanel.repaint();
-		Resources.mainFrame.repaint();
-		Resources.mainFrame.setVisible(true);
+		GUIResources.functionalMenuPanel.removeAll();
+		GUIResources.functionalMenuPanel.add(functionalPanel);
+		GUIResources.functionalMenuPanel.repaint();
+		GUIResources.mainFrame.repaint();
+		GUIResources.mainFrame.setVisible(true);
 	}
 
 }

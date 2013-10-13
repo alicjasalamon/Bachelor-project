@@ -1,5 +1,6 @@
 package view.mainwindow.menubuttons;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -7,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import resources.ColorSet;
+import resources.GUIResources;
+import test.ElementCollectionListener;
 import view.mainwindow.functionalPanels.mainPanels.AddAgentsPanel;
 import view.mainwindow.functionalPanels.mainPanels.EditMapPanel;
 import view.mainwindow.functionalPanels.mainPanels.SetAlgorithmPanel;
@@ -37,28 +40,22 @@ public class MenuButtonsPanel extends JPanel {
 		
 		setPreferredSize(new Dimension(250,10));
 		setBackground(ColorSet.WHITE);
-		setLayout(new FlowLayout(FlowLayout.LEFT, 5,10));
+		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		
 		editMapButton = new MenuButton("buttonIcons\\Maps.png", "Edit map");
-		editMapPanel = new MenuButtonBackgroundPanel(editMapButton);
+		editMapPanel = new MenuButtonBackgroundPanel(editMapButton, GUIResources.menuEditMapComponents, new EditMapPanel());
 		
 		agentsButton = new MenuButton("buttonIcons\\Agents.png", "Manage agents");
-		agentsPanel = new MenuButtonBackgroundPanel(agentsButton);
+		agentsPanel = new MenuButtonBackgroundPanel(agentsButton, GUIResources.menuManageAgentsComponents, new AddAgentsPanel());
 		
 		setAlgoButton = new MenuButton("buttonIcons\\Algo.png", "Set algorithm");
-		setAlgoPanel = new MenuButtonBackgroundPanel(setAlgoButton);
+		setAlgoPanel = new MenuButtonBackgroundPanel(setAlgoButton, GUIResources.menuSetAlgorithmComponents, new SetAlgorithmPanel());
 
 		simulationButton = new MenuButton("buttonIcons\\Run.png", "Simulate");
-		simulationPanel = new MenuButtonBackgroundPanel(simulationButton);
+		simulationPanel = new MenuButtonBackgroundPanel(simulationButton, GUIResources.menuSimulateComponents, new SimulationPanel());
 		
 		statiscticsButton = new MenuButton("buttonIcons\\Stats.png", "Show statistics");
-		statiscticsPanel = new MenuButtonBackgroundPanel(statiscticsButton);
-		
-		editMapButton.addActionListener(new SetFunctionalPanelListener(new EditMapPanel()));
-		agentsButton.addActionListener(new SetFunctionalPanelListener(new AddAgentsPanel()));
-		setAlgoButton.addActionListener(new SetFunctionalPanelListener(new SetAlgorithmPanel()));
-		simulationButton.addActionListener(new SetFunctionalPanelListener(new SimulationPanel()));
-		statiscticsButton.addActionListener(new SetFunctionalPanelListener(new StatisticsPanel()));
+		statiscticsPanel = new MenuButtonBackgroundPanel(statiscticsButton, GUIResources.menuShowStaticticsComponents, new StatisticsPanel());
 		
 		add(editMapPanel);
 		add(agentsPanel);

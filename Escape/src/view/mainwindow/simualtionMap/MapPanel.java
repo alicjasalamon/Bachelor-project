@@ -9,8 +9,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import controler.mainwindow.simulationMap.SetFunctionalPanelListener;
-
 import model.backbone.agent.Agent;
 import model.backbone.building.Building;
 import model.backbone.building.elements.Danger;
@@ -20,6 +18,7 @@ import model.backbone.building.elements.Staircase;
 import model.backbone.building.elements.Wall;
 import resources.ColorSet;
 import view.mainwindow.legend.LegendPanel;
+import controler.mainwindow.simulationMap.SetFunctionalPanelListener;
 
 public class MapPanel extends JPanel {
 
@@ -30,6 +29,7 @@ public class MapPanel extends JPanel {
 	
 	public MapPanel(Building building)
 	{
+
 		resize = 600;
 		this.building = building;
 		setBackground(Color.white);

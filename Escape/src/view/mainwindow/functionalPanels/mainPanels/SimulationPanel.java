@@ -3,6 +3,8 @@ package view.mainwindow.functionalPanels.mainPanels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import resources.GUIResources;
+
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
@@ -23,13 +25,13 @@ public class SimulationPanel extends FunctionalPanel{
 	public SimulationPanel() {
 		
 		runSimu = new FunctionalButton("functionalPanelsIcons\\Run.png", "Run simulation");
-		runSimuPanel = new FunctionalButtonBackgroundPanel(runSimu);
+		runSimuPanel = new FunctionalButtonBackgroundPanel(runSimu, GUIResources.functionalRunSimulationComponents);
 		
 		pauseSimu = new FunctionalButton("functionalPanelsIcons\\Pause.png", "Pause simulation");
-		pauseSimuPanel = new FunctionalButtonBackgroundPanel(pauseSimu);
+		pauseSimuPanel = new FunctionalButtonBackgroundPanel(pauseSimu, GUIResources.functionalPauseSimulationComponents);
 		
 		stopSimu = new FunctionalButton("functionalPanelsIcons\\Stop.png", "Stop simulation");
-		stopSimuPanel = new FunctionalButtonBackgroundPanel(stopSimu);
+		stopSimuPanel = new FunctionalButtonBackgroundPanel(stopSimu, GUIResources.functionalStopSimulationComponents);
 				
 		add(runSimuPanel);
 		add(pauseSimuPanel);

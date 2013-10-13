@@ -1,6 +1,7 @@
 package view.mainwindow.menubuttons;
 
 import java.awt.Dimension;
+import java.awt.Insets;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,8 +16,9 @@ public class MenuButton extends JButton{
 	public MenuButton(String path, String name) {
 
 		super(name);
+		this.setMargin(new Insets(0, 0, 0, 0));
 		setHorizontalAlignment(SwingConstants.LEFT);
-		setPreferredSize(new Dimension(240, 50));
+		setMinimumSize(new Dimension(250,50));
 		setIcon(new ImageIcon(path));
 		setContentAreaFilled(false);
 		setFocusPainted(false);

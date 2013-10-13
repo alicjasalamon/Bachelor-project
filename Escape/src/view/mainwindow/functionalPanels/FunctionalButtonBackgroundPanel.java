@@ -1,30 +1,35 @@
 package view.mainwindow.functionalPanels;
 
-import java.awt.AWTEvent;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.FlowLayout;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import resources.ColorSet;
-import controler.mainwindow.functionalPanels.TargetedMouseHandler;
+import test.ElementColection;
+import test.FunctionalElementsListener;
+import controler.mainwindow.functionalPanels.ClickAction;
 
 public class FunctionalButtonBackgroundPanel extends JPanel {
 
 	private static final long serialVersionUID = -3290278017196725600L;
 
-	JButton button;
+	JComponent innerComponent;
 
-	public FunctionalButtonBackgroundPanel(JButton jButton) {
+	public FunctionalButtonBackgroundPanel(JComponent jButton, ElementColection elementColection){//, ElementColection elementColection) {
 
-		button = jButton;
+		innerComponent = jButton;
 		setBackground(ColorSet.LIGHT_GRAY);
 		setPreferredSize(new Dimension(300, 50));
-		add(button);
+		add(innerComponent);
 		
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		Toolkit.getDefaultToolkit().addAWTEventListener(new TargetedMouseHandler(this, this.button, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY), AWTEvent.MOUSE_EVENT_MASK);
+		setLayout(new FlowLayout(FlowLayout.LEFT, 0,0));
+		
+		elementColection.addElement(this);
+		elementColection.addElement(innerComponent);
+		elementColection.addMouseListener(new FunctionalElementsListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, new ClickAction()));
+		
+	//	Toolkit.getDefaultToolkit().addAWTEventListener(new TargetedMouseHandler(this, this.innerComponent, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY), AWTEvent.MOUSE_EVENT_MASK);
 	}
 }

@@ -1,33 +1,33 @@
 package view.mainwindow.menubuttons;
 
-import java.awt.AWTEvent;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Toolkit;
+import java.awt.FlowLayout;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JPanel;
 
 import resources.ColorSet;
-
-import controler.mainwindow.functionalPanels.TargetedMouseHandler;
+import test.ElementColection;
+import test.ElementCollectionListener;
 
 public class MenuButtonBackgroundPanel extends JPanel {
 
 	private static final long serialVersionUID = 7416615924647206051L;
 
-	JButton button;
+	JComponent innerComponent;
 
-	public MenuButtonBackgroundPanel(JButton jButton) {
+	public MenuButtonBackgroundPanel(JComponent innerComponent, ElementColection elementColection, JPanel functionalPanel) {
 		
-		button = jButton;
-		setPreferredSize(new Dimension(240, 50));
+		this.innerComponent = innerComponent;
+		setPreferredSize(new Dimension(250, 50));
 		setBackground(Color.WHITE);
-		add(button);
-		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
-		Toolkit.getDefaultToolkit().addAWTEventListener(new TargetedMouseHandler(this, this.button, ColorSet.LIGHT_GRAY, ColorSet.WHITE), AWTEvent.MOUSE_EVENT_MASK);
-
+		add(innerComponent);
+		setLayout(new FlowLayout(FlowLayout.LEFT, 0,0));
+		
+		elementColection.addElement(this);
+		elementColection.addElement(innerComponent);
+		elementColection.addMouseListener(new ElementCollectionListener(elementColection, ColorSet.LIGHT_GRAY, ColorSet.WHITE, functionalPanel));
 	}
 
 }

@@ -5,11 +5,11 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 import resources.ColorSet;
-import resources.Resources;
+import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.logo.LogoPanel;
 import view.mainwindow.menubuttons.MenuButtonsPanel;
-import view.mainwindow.simualtionMap.MapPanel;
+import view.mainwindow.simualtionMap.TabbedMapPanel;
 
 public class MainWindow extends JFrame{
 
@@ -24,14 +24,15 @@ public class MainWindow extends JFrame{
 		setBackground(ColorSet.WHITE);
 		setLayout(new BorderLayout());
 		
-		Resources.mainMenuPanel = new MenuButtonsPanel();
-		Resources.functionalMenuPanel = new FunctionalPanel();
-		Resources.mapPanel = new MapPanel(Resources.building);
+		GUIResources.mainMenuPanel = new MenuButtonsPanel();
+		GUIResources.functionalMenuPanel = new FunctionalPanel();
+		//GUIResources.mapPanel = new MapPanel(SimulationResources.building);
+		GUIResources.mapPanel = new TabbedMapPanel();
 		
 		add(new LogoPanel(), BorderLayout.NORTH);
-		add(Resources.mainMenuPanel, BorderLayout.WEST);		
-		add(Resources.functionalMenuPanel, BorderLayout.CENTER );
-		add(Resources.mapPanel, BorderLayout.EAST);
+		add(GUIResources.mainMenuPanel, BorderLayout.WEST);		
+		add(GUIResources.functionalMenuPanel, BorderLayout.CENTER );
+		add(GUIResources.mapPanel, BorderLayout.EAST);
 		
 		setVisible(true);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);

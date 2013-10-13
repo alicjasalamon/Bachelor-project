@@ -4,11 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 
-import resources.Resources;
-
+import resources.GUIResources;
+import resources.SimulationResources;
 import view.mainwindow.MainWindow;
-
-//import de.javasoft.plaf.synthetica.SyntheticaClassyLookAndFeel;
 
 public class Main {
 
@@ -20,10 +18,9 @@ public class Main {
 
 				try {
 
-					Resources.initialize();
+					SimulationResources.initialize();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-					Resources.mainFrame = new MainWindow();
-
+					GUIResources.mainFrame = new MainWindow();
 				}
 
 				catch (Exception e) {

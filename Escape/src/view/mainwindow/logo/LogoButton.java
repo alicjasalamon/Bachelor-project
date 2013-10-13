@@ -1,5 +1,7 @@
 package view.mainwindow.logo;
 
+import java.awt.Insets;
+
 import javax.swing.JButton;
 
 import resources.FontSet;
@@ -15,6 +17,7 @@ public class LogoButton extends JButton {
 		setContentAreaFilled(false);
 		setFocusPainted(false);
 		setFont(FontSet.MENU_FONT);
+		this.setMargin(new Insets(0, 5, 0, 5));
 		addMouseListener(new LogoButtonListener(this));
 	}
 

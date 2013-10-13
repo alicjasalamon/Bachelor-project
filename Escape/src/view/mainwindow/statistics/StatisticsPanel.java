@@ -2,6 +2,7 @@ package view.mainwindow.statistics;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -12,7 +13,7 @@ public class StatisticsPanel extends JPanel {
 	
 	public StatisticsPanel()
 	{
-	//	setPreferredSize(new Dimension(1200,500));
+
 		JTabbedPane jTabbedPane = new JTabbedPane();
 		jTabbedPane.setFocusable(false);
 		
@@ -20,7 +21,7 @@ public class StatisticsPanel extends JPanel {
 		jTabbedPane.add("Set",new SetPanel());
 		
 		//jTabbedPane.setBorder(null);
-		
+		jTabbedPane.setPreferredSize(new Dimension(1020, 680));
 		setBackground(Color.WHITE);
 		
 		add(jTabbedPane);
