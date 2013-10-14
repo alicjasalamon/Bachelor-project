@@ -28,6 +28,8 @@ public class FunctionalSliderBackgroundPanel extends BasicControl {
 
 	public FunctionalSliderBackgroundPanel(JSlider jSlider, String name, String path, ElementColection elementColection) {
 		
+		super(null);
+		
 		slider = jSlider;
 		setPreferredSize(new Dimension(300, 80));
 		setBackground(new Color(173, 216, 230));

@@ -20,6 +20,7 @@ public class MenuButtonBackgroundPanel extends BasicControl {
 
 	public MenuButtonBackgroundPanel(JComponent innerComponent, ElementColection elementColection, JPanel functionalPanel) {
 		
+		super(null);
 		this.innerComponent = innerComponent;
 		setPreferredSize(new Dimension(250, 50));
 		setBackground(Color.WHITE);

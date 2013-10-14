@@ -1,14 +1,14 @@
 package controler.mainwindow.functionalPanels.simulation;
 
-import controler.mainwindow.functionalPanels.ClickAction;
+import resources.SimulationResources;
 
-public class PauseSimulationListener implements ClickAction {
+public class PauseSimulationListener extends SimulationListener {
 
+	@SuppressWarnings("deprecation")
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
 		
-	}
+		SimulationResources.simulationThread.suspend();
 
-
-}
+		
+	}}

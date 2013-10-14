@@ -3,24 +3,11 @@ package controler.mainwindow.simulationMap;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-import javax.swing.JPanel;
-
-import view.mainwindow.simualtionMap.SimulationThread;
-
-import model.backbone.building.Building;
+import resources.SimulationResources;
 
 public class SetFunctionalPanelListener implements MouseListener {
 
 	long clicks = 0;
-	Building building;
-	JPanel jPanel;
-	Thread simu;
-	
-	public SetFunctionalPanelListener(Building b, JPanel jp) {
-		building = b;
-		jPanel = jp;
-		simu = new SimulationThread(building, jPanel);
-	}
 
 	@SuppressWarnings("deprecation")
 	@Override
@@ -28,14 +15,14 @@ public class SetFunctionalPanelListener implements MouseListener {
 		// TODO Auto-generated method stub
 		clicks++;
 		if(clicks==1)
-			simu.start();
+			SimulationResources.simulationThread.start();
 		else if(clicks%2==0)
 		{
-			simu.suspend();
+			SimulationResources.simulationThread.suspend();
 		}
 		else
 		{
-			simu.resume();
+			SimulationResources.simulationThread.resume();
 		}
 		
 	}

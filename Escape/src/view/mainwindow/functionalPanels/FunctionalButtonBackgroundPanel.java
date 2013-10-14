@@ -5,6 +5,8 @@ import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
 
+import controler.mainwindow.functionalPanels.ClickAction;
+
 import resources.ColorSet;
 import test.ElementColection;
 import test.FunctionalElementsListener;
@@ -16,8 +18,10 @@ public class FunctionalButtonBackgroundPanel extends BasicControl {
 
 	JComponent innerComponent;
 
-	public FunctionalButtonBackgroundPanel(JComponent jButton, ElementColection elementColection){//, ElementColection elementColection) {
+	public FunctionalButtonBackgroundPanel(JComponent jButton, ElementColection elementColection, ClickAction clickAction){//, ElementColection elementColection) {
 
+		super(clickAction);
+		
 		innerComponent = jButton;
 		setBackground(ColorSet.LIGHT_GRAY);
 		setPreferredSize(new Dimension(300, 50));

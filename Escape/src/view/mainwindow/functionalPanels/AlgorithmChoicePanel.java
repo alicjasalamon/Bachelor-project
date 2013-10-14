@@ -29,8 +29,10 @@ public class AlgorithmChoicePanel extends BasicControl {
 	ArrayList<JRadioButton> agentRadioButtons = new ArrayList<JRadioButton>();
 	ButtonGroup buttonGroup;
 	
-	
+
 	public AlgorithmChoicePanel() {
+		
+		super(null);
 		
 		buttonGroup = new ButtonGroup();
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));

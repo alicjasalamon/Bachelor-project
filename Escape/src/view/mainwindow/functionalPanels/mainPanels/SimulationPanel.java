@@ -3,6 +3,10 @@ package view.mainwindow.functionalPanels.mainPanels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import controler.mainwindow.functionalPanels.simulation.PauseSimulationListener;
+import controler.mainwindow.functionalPanels.simulation.RunSimulationListener;
+import controler.mainwindow.functionalPanels.simulation.StopSimulationListener;
+
 import resources.GUIResources;
 
 import view.mainwindow.functionalPanels.FunctionalButton;
@@ -25,13 +29,13 @@ public class SimulationPanel extends FunctionalPanel{
 	public SimulationPanel() {
 		
 		runSimu = new FunctionalButton("functionalPanelsIcons\\Run.png", "Run simulation");
-		runSimuPanel = new FunctionalButtonBackgroundPanel(runSimu, GUIResources.functionalRunSimulationComponents);
+		runSimuPanel = new FunctionalButtonBackgroundPanel(runSimu, GUIResources.functionalRunSimulationComponents, new RunSimulationListener());
 		
 		pauseSimu = new FunctionalButton("functionalPanelsIcons\\Pause.png", "Pause simulation");
-		pauseSimuPanel = new FunctionalButtonBackgroundPanel(pauseSimu, GUIResources.functionalPauseSimulationComponents);
+		pauseSimuPanel = new FunctionalButtonBackgroundPanel(pauseSimu, GUIResources.functionalPauseSimulationComponents, new PauseSimulationListener());
 		
 		stopSimu = new FunctionalButton("functionalPanelsIcons\\Stop.png", "Stop simulation");
-		stopSimuPanel = new FunctionalButtonBackgroundPanel(stopSimu, GUIResources.functionalStopSimulationComponents);
+		stopSimuPanel = new FunctionalButtonBackgroundPanel(stopSimu, GUIResources.functionalStopSimulationComponents, new StopSimulationListener());
 				
 		add(runSimuPanel);
 		add(pauseSimuPanel);

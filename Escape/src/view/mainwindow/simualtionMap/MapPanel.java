@@ -18,7 +18,6 @@ import model.backbone.building.elements.Staircase;
 import model.backbone.building.elements.Wall;
 import resources.ColorSet;
 import view.mainwindow.legend.LegendPanel;
-import controler.mainwindow.simulationMap.SetFunctionalPanelListener;
 
 public class MapPanel extends JPanel {
 
@@ -33,7 +32,6 @@ public class MapPanel extends JPanel {
 		resize = 600;
 		this.building = building;
 		setBackground(Color.white);
-		addMouseListener(new SetFunctionalPanelListener(building, this));
 		setPreferredSize(new Dimension(1020, 520));
 		
 		setLayout(new BorderLayout());
