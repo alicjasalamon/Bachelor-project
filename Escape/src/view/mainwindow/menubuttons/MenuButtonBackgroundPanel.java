@@ -10,8 +10,9 @@ import javax.swing.JPanel;
 import resources.ColorSet;
 import test.ElementColection;
 import test.ElementCollectionListener;
+import view.mainwindow.BasicControl;
 
-public class MenuButtonBackgroundPanel extends JPanel {
+public class MenuButtonBackgroundPanel extends BasicControl {
 
 	private static final long serialVersionUID = 7416615924647206051L;
 

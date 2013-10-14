@@ -14,15 +14,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+import resources.ColorSet;
 import resources.FontSet;
+import test.ElementColection;
+import test.FunctionalElementsListener;
+import view.mainwindow.BasicControl;
 
-public class FunctionalSliderBackgroundPanel extends JPanel {
+public class FunctionalSliderBackgroundPanel extends BasicControl {
 
 	private static final long serialVersionUID = -3290278017196725600L;
 	
 	JSlider slider;
 
-	public FunctionalSliderBackgroundPanel(JSlider jSlider, String name, String path) {
+	public FunctionalSliderBackgroundPanel(JSlider jSlider, String name, String path, ElementColection elementColection) {
 		
 		slider = jSlider;
 		setPreferredSize(new Dimension(300, 80));
@@ -46,6 +50,11 @@ public class FunctionalSliderBackgroundPanel extends JPanel {
 		labelPanel.add(label);
 		add(labelPanel);
 		add(slider);
+		
+		elementColection.addElement(this);
+		elementColection.addElement(jSlider);
+		elementColection.addElement(labelPanel);
+		elementColection.addMouseListener(new FunctionalElementsListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
 		
 	}
 

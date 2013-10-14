@@ -1,14 +1,14 @@
 package controler.mainwindow.functionalPanels.agents;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import controler.mainwindow.functionalPanels.ClickAction;
 
-public class ChangeAgentStepListener implements ActionListener {
+public class ChangeAgentStepListener implements ClickAction {
 
 	@Override
-	public void actionPerformed(ActionEvent arg0) {
+	public void act() {
 		// TODO Auto-generated method stub
-
+		
 	}
+
 
 }

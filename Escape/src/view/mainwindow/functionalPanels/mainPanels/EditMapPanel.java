@@ -38,7 +38,7 @@ public class EditMapPanel extends FunctionalPanel{
 		addDangerPanel = new FunctionalButtonBackgroundPanel(addDanger, GUIResources.functionalAddDangerComponents);
 		
 		dangerSize = new FunctionalSlider();
-		dangerSizePanel = new FunctionalSliderBackgroundPanel(dangerSize, "Set danger size", "functionalPanelsIcons\\Size.png");
+		dangerSizePanel = new FunctionalSliderBackgroundPanel(dangerSize, "Set danger size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetDangerSizeComponents);
 
 		loadMap = new FunctionalButton("functionalPanelsIcons\\LoadMap.png", "Load map");
 		loadMapPanel = new FunctionalButtonBackgroundPanel(loadMap, GUIResources.functionalLoadMapComponents);

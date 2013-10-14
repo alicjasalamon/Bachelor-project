@@ -1,6 +1,5 @@
 package view.mainwindow.menubuttons;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -9,13 +8,11 @@ import javax.swing.JPanel;
 
 import resources.ColorSet;
 import resources.GUIResources;
-import test.ElementCollectionListener;
 import view.mainwindow.functionalPanels.mainPanels.AddAgentsPanel;
 import view.mainwindow.functionalPanels.mainPanels.EditMapPanel;
 import view.mainwindow.functionalPanels.mainPanels.SetAlgorithmPanel;
 import view.mainwindow.functionalPanels.mainPanels.SimulationPanel;
 import view.mainwindow.functionalPanels.mainPanels.StatisticsPanel;
-import controler.mainwindow.SetFunctionalPanelListener;
 
 public class MenuButtonsPanel extends JPanel {
 

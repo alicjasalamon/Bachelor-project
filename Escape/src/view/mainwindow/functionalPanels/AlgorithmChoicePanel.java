@@ -17,9 +17,12 @@ import javax.swing.JRadioButton;
 
 import resources.ColorSet;
 import resources.FontSet;
+import resources.GUIResources;
 import resources.SimulationResources;
+import test.FunctionalElementsListener;
+import view.mainwindow.BasicControl;
 
-public class AlgorithmChoicePanel extends JPanel {
+public class AlgorithmChoicePanel extends BasicControl {
 
 	private static final long serialVersionUID = 8960236852698490291L;
 	
@@ -58,11 +61,19 @@ public class AlgorithmChoicePanel extends JPanel {
 			agentRadioButtons.add(j);
 			buttonGroup.add(j);
 			j.setFont(FontSet.MENU_FONT);
+			j.setFocusable(false);
 			JPanel p = new JPanel();
 			p.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
 			p.add(j);
 			add(p);
+			GUIResources.functionalChooseAlgorithmComponents.addElement(p);
+			GUIResources.functionalChooseAlgorithmComponents.addElement(j);
+			
 		}
+		
+		GUIResources.functionalChooseAlgorithmComponents.addElement(this);
+		GUIResources.functionalChooseAlgorithmComponents.addElement(labelPanel);
+		GUIResources.functionalChooseAlgorithmComponents.addMouseListener(new FunctionalElementsListener(GUIResources.functionalChooseAlgorithmComponents, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
 	}
 
 }
