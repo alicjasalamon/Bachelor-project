@@ -5,12 +5,12 @@ import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
 
+import controler.mainwindow.FunctionalButtonListener;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 import resources.ColorSet;
-import test.ElementColection;
-import test.FunctionalElementsListener;
 import view.mainwindow.BasicControl;
+import view.mainwindow.ElementColection;
 
 public class FunctionalButtonBackgroundPanel extends BasicControl {
 
@@ -31,7 +31,7 @@ public class FunctionalButtonBackgroundPanel extends BasicControl {
 		
 		elementColection.addElement(this);
 		elementColection.addElement(innerComponent);
-		elementColection.addMouseListener(new FunctionalElementsListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
+		elementColection.addMouseListener(new FunctionalButtonListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
 		
 	//	Toolkit.getDefaultToolkit().addAWTEventListener(new TargetedMouseHandler(this, this.innerComponent, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY), AWTEvent.MOUSE_EVENT_MASK);
 	}

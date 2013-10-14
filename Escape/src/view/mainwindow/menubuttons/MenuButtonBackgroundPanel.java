@@ -7,10 +7,11 @@ import java.awt.FlowLayout;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
+import controler.mainwindow.MenuButtonListener;
+
 import resources.ColorSet;
-import test.ElementColection;
-import test.ElementCollectionListener;
 import view.mainwindow.BasicControl;
+import view.mainwindow.ElementColection;
 
 public class MenuButtonBackgroundPanel extends BasicControl {
 
@@ -29,7 +30,7 @@ public class MenuButtonBackgroundPanel extends BasicControl {
 		
 		elementColection.addElement(this);
 		elementColection.addElement(innerComponent);
-		elementColection.addMouseListener(new ElementCollectionListener(elementColection, ColorSet.LIGHT_GRAY, ColorSet.WHITE, functionalPanel));
+		elementColection.addMouseListener(new MenuButtonListener(elementColection, ColorSet.LIGHT_GRAY, ColorSet.WHITE, functionalPanel));
 	}
 
 }

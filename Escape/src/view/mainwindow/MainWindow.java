@@ -26,7 +26,6 @@ public class MainWindow extends JFrame{
 		
 		GUIResources.mainMenuPanel = new MenuButtonsPanel();
 		GUIResources.functionalMenuPanel = new FunctionalPanel();
-		//GUIResources.mapPanel = new MapPanel(SimulationResources.building);
 		GUIResources.mapPanel = new TabbedMapPanel();
 		
 		add(new LogoPanel(), BorderLayout.NORTH);

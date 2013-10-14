@@ -54,6 +54,11 @@ public class MenuButtonsPanel extends JPanel {
 		statiscticsButton = new MenuButton("buttonIcons\\Stats.png", "Show statistics");
 		statiscticsPanel = new MenuButtonBackgroundPanel(statiscticsButton, GUIResources.menuShowStaticticsComponents, new StatisticsPanel());
 		
+		JPanel empty = new JPanel();
+		empty.setBackground(ColorSet.WHITE);
+		empty.setPreferredSize(new Dimension(250,0));
+		
+		add(empty);
 		add(editMapPanel);
 		add(agentsPanel);
 		add(setAlgoPanel);

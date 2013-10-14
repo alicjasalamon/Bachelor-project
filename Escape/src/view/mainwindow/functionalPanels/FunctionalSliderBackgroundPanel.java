@@ -14,11 +14,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
+import controler.mainwindow.FunctionalButtonListener;
+
 import resources.ColorSet;
 import resources.FontSet;
-import test.ElementColection;
-import test.FunctionalElementsListener;
 import view.mainwindow.BasicControl;
+import view.mainwindow.ElementColection;
 
 public class FunctionalSliderBackgroundPanel extends BasicControl {
 
@@ -56,7 +57,7 @@ public class FunctionalSliderBackgroundPanel extends BasicControl {
 		elementColection.addElement(this);
 		elementColection.addElement(jSlider);
 		elementColection.addElement(labelPanel);
-		elementColection.addMouseListener(new FunctionalElementsListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
+		elementColection.addMouseListener(new FunctionalButtonListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
 		
 	}
 

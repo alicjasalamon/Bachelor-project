@@ -3,7 +3,7 @@ package resources;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import test.ElementColection;
+import view.mainwindow.ElementColection;
 
 public class GUIResources {
 

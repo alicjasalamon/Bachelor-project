@@ -62,7 +62,7 @@ public class LogoPanel extends JPanel{
 		//					empty panel							//
 		//////////////////////////////////////////////////////////
 		JPanel emptyPanel = new JPanel();
-		emptyPanel.setPreferredSize(new Dimension(50,50));
+		emptyPanel.setPreferredSize(new Dimension(50,10));
 		emptyPanel.setBackground(ColorSet.WHITE);
 		
 		add(colorPanel);
