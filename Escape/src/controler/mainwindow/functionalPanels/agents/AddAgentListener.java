@@ -1,12 +1,16 @@
 package controler.mainwindow.functionalPanels.agents;
 
+import resources.GUIResources;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class AddAgentListener implements ClickAction {
 
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+
+		GUIResources.drawDanger = false;
+		GUIResources.drawAgent = true;
+		
 		
 	}
 

@@ -24,8 +24,8 @@ import view.mainwindow.legend.LegendPanel;
 public class MapPanel extends JPanel {
 
 	private static final long serialVersionUID = -2686640147259984678L;
-	double resize;
-	int floor;
+	private double resize;
+	private int floor;
 	
 	public MapPanel(int floor)
 	{
@@ -40,6 +40,12 @@ public class MapPanel extends JPanel {
 		
 		addMouseListener(new ClickOnMapListener(floor));
 	}
+
+
+	public int getFloor() {
+		return floor;
+	}
+
 
 	@Override
 	public void paintComponent(Graphics g) {
@@ -82,8 +88,8 @@ public class MapPanel extends JPanel {
 		for(Danger d : SimulationResources.building.getFloors().get(0).getDangers())
 		{
 			g.drawOval(
-					(int)(d.getCenter().getX() * resize), 
-					(int)(d.getCenter().getY() * resize), 
+					(int)((d.getCenter().getX()-d.getRadius()/2.0) * resize), 
+					(int)((d.getCenter().getY()-d.getRadius()/2.0) * resize), 
 					(int)(d.getRadius() * resize),
 					(int)(d.getRadius() * resize));
 		}

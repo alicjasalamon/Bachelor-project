@@ -34,6 +34,14 @@ public class Danger {
 		return radius;
 	}
 
+	public void setCenter(Point center) {
+		this.center = center;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
 	public void printDanger() {
 
 		System.out.println("danger: center " + center.stringRepresentation() + " r " + radius);

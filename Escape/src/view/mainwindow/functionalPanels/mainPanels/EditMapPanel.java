@@ -4,18 +4,17 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-import controler.mainwindow.functionalPanels.map.AddDangerListener;
-import controler.mainwindow.functionalPanels.map.CreateNewMapListener;
-import controler.mainwindow.functionalPanels.map.EditMapListener;
-import controler.mainwindow.functionalPanels.map.LoadMapListener;
-
 import resources.GUIResources;
-
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.functionalPanels.FunctionalSlider;
 import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
+import controler.mainwindow.functionalPanels.map.AddDangerListener;
+import controler.mainwindow.functionalPanels.map.CreateNewMapListener;
+import controler.mainwindow.functionalPanels.map.DangerSizeListener;
+import controler.mainwindow.functionalPanels.map.EditMapListener;
+import controler.mainwindow.functionalPanels.map.LoadMapListener;
 
 public class EditMapPanel extends FunctionalPanel{
 
@@ -43,6 +42,7 @@ public class EditMapPanel extends FunctionalPanel{
 		addDangerPanel = new FunctionalButtonBackgroundPanel(addDanger, GUIResources.functionalAddDangerComponents, new AddDangerListener());
 		
 		dangerSize = new FunctionalSlider();
+		dangerSize.addChangeListener(new DangerSizeListener());
 		dangerSizePanel = new FunctionalSliderBackgroundPanel(dangerSize, "Set danger size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetDangerSizeComponents);
 
 		loadMap = new FunctionalButton("functionalPanelsIcons\\LoadMap.png", "Load map");

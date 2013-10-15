@@ -3,6 +3,7 @@ package resources;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.backbone.building.elements.Danger;
 import view.mainwindow.ElementColection;
 
 public class GUIResources {
@@ -79,5 +80,6 @@ public class GUIResources {
 	
 	public static boolean drawAgent = true;
 	public static boolean drawDanger = false;
+	public static Danger lastDanger;
 	
 }
