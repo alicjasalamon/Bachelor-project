@@ -7,7 +7,6 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import model.backbone.agent.Agent;
 import model.backbone.building.Building;
 import model.backbone.building.elements.Danger;
 import model.backbone.building.elements.Exit;
@@ -44,11 +43,6 @@ public class BuildingExplorer {
 	public Building parseBuilding(String fileName) {
 		
 		Building building = new Building();
-		building.getAgents().add(new Agent(0.1, 0.1, 0));
-		building.getAgents().add(new Agent(0.3, 0.8, 0));
-		building.getAgents().add(new Agent(0.2, 0.2, 0));
-		building.getAgents().add(new Agent(0.4, 0.3, 0));
-		building.getAgents().add(new Agent(0.7, 0.6, 0));
 		
 		try {
 			fXmlFile = new File("building_schema/building1.xml");

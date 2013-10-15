@@ -65,11 +65,18 @@ public class GUIResources {
 	public static ElementColection functionalSaveStatisticsComponents = new ElementColection();
 	
 	//////////////////////////////////////////////////////////////////////////////////
-	//							Logo info files			 							//
+	//							info paths				 							//
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	public static String aboutPath = "textFiles\\About.txt";
 	public static String helpPath = "textFiles\\Help.txt";
 	public static String documentationURL = "http://www.example.com";
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//							buttons action			 							//
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	public static boolean drawAgent = true;
+	public static boolean drawDanger = false;
 	
 }

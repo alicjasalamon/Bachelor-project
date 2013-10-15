@@ -18,8 +18,10 @@ public class TabbedMapPanel extends JPanel{
 		JTabbedPane jTabbedPane = new JTabbedPane();
 		jTabbedPane.setFocusable(false);
 		
-		jTabbedPane.add("floor1", new MapPanel(SimulationResources.building));
-		jTabbedPane.add("floor 2", new MapPanel(SimulationResources.building));
+		for(int i = 0; i<SimulationResources.building.getFloors().size(); i++)
+		{
+			jTabbedPane.add("floor " + (i+1), new MapPanel(i));
+		}
 		
 		//jTabbedPane.setBorder(null);
 		jTabbedPane.setPreferredSize(new Dimension(1020, 705));

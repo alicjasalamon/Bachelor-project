@@ -9,33 +9,37 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+import controler.mainwindow.simulationMap.ClickOnMapListener;
+
 import model.backbone.agent.Agent;
-import model.backbone.building.Building;
 import model.backbone.building.elements.Danger;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Staircase;
 import model.backbone.building.elements.Wall;
 import resources.ColorSet;
+import resources.SimulationResources;
 import view.mainwindow.legend.LegendPanel;
 
 public class MapPanel extends JPanel {
 
 	private static final long serialVersionUID = -2686640147259984678L;
-	Building building;
 	double resize;
 	double shift = 10;
+	int floor;
 	
-	public MapPanel(Building building)
+	public MapPanel(int floor)
 	{
 
 		resize = 600;
-		this.building = building;
+		this.floor = floor;
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(1020, 520));
 		
 		setLayout(new BorderLayout());
 		add(new LegendPanel(), BorderLayout.SOUTH);
+		
+		addMouseListener(new ClickOnMapListener(floor));
 	}
 
 	@Override
@@ -50,7 +54,7 @@ public class MapPanel extends JPanel {
 		g2.setColor(ColorSet.DARK_GRAY);
 		g2.setStroke(new BasicStroke(3));
 		
-		for(Wall w : building.getFloors().get(0).getWalls())
+		for(Wall w : SimulationResources.building.getFloors().get(floor).getWalls())
 		{
 			g2.drawLine(
 					(int)(w.getBegin().getX() * resize + shift), 
@@ -63,7 +67,7 @@ public class MapPanel extends JPanel {
 		//								EXITS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(ColorSet.LIGHT_GREEN);
-		for(Exit e : building.getFloors().get(0).getExits())
+		for(Exit e : SimulationResources.building.getFloors().get(0).getExits())
 		{
 			g.drawLine(
 					(int)(e.getBegin().getX() * resize + shift), 
@@ -76,7 +80,7 @@ public class MapPanel extends JPanel {
 		//								DANGERS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(new Color(225, 60, 64));
-		for(Danger d : building.getFloors().get(0).getDangers())
+		for(Danger d : SimulationResources.building.getFloors().get(0).getDangers())
 		{
 			g.drawOval(
 					(int)(d.getCenter().getX() * resize + shift), 
@@ -89,7 +93,7 @@ public class MapPanel extends JPanel {
 		//								SIGNS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(new Color(23,178,170));
-		for(Sign s : building.getFloors().get(0).getSings())
+		for(Sign s : SimulationResources.building.getFloors().get(0).getSings())
 		{
 			g.drawLine(
 					(int)(s.getBegin().getX() * resize + shift), 
@@ -102,7 +106,7 @@ public class MapPanel extends JPanel {
 		//								STAIRCASES									//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(new Color(173, 216, 230));
-		for(Staircase s : building.getStairCases())
+		for(Staircase s : SimulationResources.building.getStairCases())
 		{
 			g.drawRoundRect(
 					(int)(s.getPoint1().getX() * resize + shift), 
@@ -118,13 +122,16 @@ public class MapPanel extends JPanel {
 		
 		
 		g.setColor(new Color(221, 160, 221));
-		for(Agent a : building.getAgents())
+		for(Agent a : SimulationResources.building.getAgents())
 		{
-			g.fillOval(
-					(int)(a.getLocation().getX() * resize + shift), 
-					(int)(a.getLocation().getY() * resize + shift), 
-					(int)(Agent.getSize() + shift),
-					(int)(Agent.getSize() + shift));
+			if(a.getFloor()==floor)
+			{
+				g.fillOval(
+						(int)(a.getLocation().getX() * resize + shift), 
+						(int)(a.getLocation().getY() * resize + shift), 
+						(int)(Agent.getSize() + shift),
+						(int)(Agent.getSize() + shift));
+			}
 		}
 		
 	}

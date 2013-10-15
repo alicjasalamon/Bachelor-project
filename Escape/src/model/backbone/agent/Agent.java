@@ -1,66 +1,56 @@
 package model.backbone.agent;
 
-import model.backbone.building.elements.Floor;
 import model.backbone.building.helpers.Point;
 
 public class Agent {
-	
+
 	private Point currentLocation;
-	private Floor currentFloor;
+	private int floor;
 	private boolean isEscaped;
-	
+
 	public static double size = 1.0;
 
-	public Agent(Point location, Floor floor){
+	public Agent(Point location, int floor) {
 		currentLocation = location;
-		currentFloor = floor;
+		this.floor = floor;
 	}
-	
-	public Agent(double x, double y, int floor)
-	{
-		currentLocation = new Point(x,y);
-		
+
+	public Agent(double x, double y, int floor) {
+		currentLocation = new Point(x, y);
+
 	}
-	
+
 	public Point getLocation() {
 		return currentLocation;
 	}
-
 
 	public void setLocation(Point location) {
 		this.currentLocation = location;
 	}
 
-
-	public Floor getCurrentFloor() {
-		return currentFloor;
+	public int getFloor() {
+		return floor;
 	}
 
-
-	public void setCurrentFloor(Floor currentFloor) {
-		this.currentFloor = currentFloor;
+	public void setFloor(int floor) {
+		this.floor = floor;
 	}
-
 
 	public boolean isEscaped() {
 		return isEscaped;
 	}
 
-
 	public void setEscaped(boolean isEscaped) {
 		this.isEscaped = isEscaped;
 	}
-
 
 	public static double getSize() {
 		return size;
 	}
 
-
 	public static void setSize(double size) {
 		Agent.size = size;
 	}
-
 
 	public void printAgent() {
 		System.out.println("agent " + currentLocation.stringRepresentation());
