@@ -1,4 +1,4 @@
-package view.mainwindow.simualtionMap;
+package view.mainwindow.simulationMap;
 
 import java.awt.Color;
 import java.awt.Dimension;

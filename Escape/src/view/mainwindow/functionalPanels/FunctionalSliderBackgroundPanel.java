@@ -30,7 +30,7 @@ public class FunctionalSliderBackgroundPanel extends BasicControl {
 		super(null);
 		
 		slider = jSlider;
-		setPreferredSize(new Dimension(300, 80));
+		setPreferredSize(new Dimension(290, 80));
 		setBackground(ColorSet.LIGHT_GRAY);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		

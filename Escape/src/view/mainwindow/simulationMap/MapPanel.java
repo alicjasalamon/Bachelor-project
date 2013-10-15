@@ -1,4 +1,4 @@
-package view.mainwindow.simualtionMap;
+package view.mainwindow.simulationMap;
 
 import java.awt.BasicStroke;
 import java.awt.BorderLayout;
@@ -25,7 +25,6 @@ public class MapPanel extends JPanel {
 
 	private static final long serialVersionUID = -2686640147259984678L;
 	double resize;
-	double shift = 10;
 	int floor;
 	
 	public MapPanel(int floor)
@@ -57,10 +56,10 @@ public class MapPanel extends JPanel {
 		for(Wall w : SimulationResources.building.getFloors().get(floor).getWalls())
 		{
 			g2.drawLine(
-					(int)(w.getBegin().getX() * resize + shift), 
-					(int)(w.getBegin().getY() * resize + shift), 
-					(int)(w.getEnd().getX() * resize + shift),
-					(int)(w.getEnd().getY() * resize + shift));
+					(int)(w.getBegin().getX() * resize), 
+					(int)(w.getBegin().getY() * resize), 
+					(int)(w.getEnd().getX() * resize),
+					(int)(w.getEnd().getY() * resize));
 		}
 		
 		//////////////////////////////////////////////////////////////////////////////
@@ -70,21 +69,21 @@ public class MapPanel extends JPanel {
 		for(Exit e : SimulationResources.building.getFloors().get(0).getExits())
 		{
 			g.drawLine(
-					(int)(e.getBegin().getX() * resize + shift), 
-					(int)(e.getBegin().getY() * resize + shift), 
-					(int)(e.getEnd().getX() * resize + shift),
-					(int)(e.getEnd().getY() * resize + shift));
+					(int)(e.getBegin().getX() * resize), 
+					(int)(e.getBegin().getY() * resize), 
+					(int)(e.getEnd().getX() * resize),
+					(int)(e.getEnd().getY() * resize));
 		}
 		
 		//////////////////////////////////////////////////////////////////////////////
 		//								DANGERS										//
 		//////////////////////////////////////////////////////////////////////////////
-		g.setColor(new Color(225, 60, 64));
+		g.setColor(ColorSet.RED);
 		for(Danger d : SimulationResources.building.getFloors().get(0).getDangers())
 		{
 			g.drawOval(
-					(int)(d.getCenter().getX() * resize + shift), 
-					(int)(d.getCenter().getY() * resize + shift), 
+					(int)(d.getCenter().getX() * resize), 
+					(int)(d.getCenter().getY() * resize), 
 					(int)(d.getRadius() * resize),
 					(int)(d.getRadius() * resize));
 		}
@@ -92,27 +91,27 @@ public class MapPanel extends JPanel {
 		//////////////////////////////////////////////////////////////////////////////
 		//								SIGNS										//
 		//////////////////////////////////////////////////////////////////////////////
-		g.setColor(new Color(23,178,170));
+		g.setColor(ColorSet.SEE_GREEN);
 		for(Sign s : SimulationResources.building.getFloors().get(0).getSings())
 		{
 			g.drawLine(
-					(int)(s.getBegin().getX() * resize + shift), 
-					(int)(s.getBegin().getY() * resize + shift), 
-					(int)(s.getEnd().getX() * resize + shift),
-					(int)(s.getEnd().getY() * resize + shift));
+					(int)(s.getBegin().getX() * resize), 
+					(int)(s.getBegin().getY() * resize), 
+					(int)(s.getEnd().getX() * resize),
+					(int)(s.getEnd().getY() * resize));
 		}
 		
 		//////////////////////////////////////////////////////////////////////////////
 		//								STAIRCASES									//
 		//////////////////////////////////////////////////////////////////////////////
-		g.setColor(new Color(173, 216, 230));
+		g.setColor(ColorSet.LIGHT_BLUE);
 		for(Staircase s : SimulationResources.building.getStairCases())
 		{
 			g.drawRoundRect(
-					(int)(s.getPoint1().getX() * resize + shift), 
-					(int)(s.getPoint1().getY() * resize + shift), 
-					(int)(s.getPoint2().getX() * resize + shift),
-					(int)(s.getPoint2().getY() * resize + shift),
+					(int)(s.getPoint1().getX() * resize), 
+					(int)(s.getPoint1().getY() * resize), 
+					(int)(s.getPoint2().getX() * resize),
+					(int)(s.getPoint2().getY() * resize),
 					20,20);
 		}
 		
@@ -121,16 +120,16 @@ public class MapPanel extends JPanel {
 		//////////////////////////////////////////////////////////////////////////////
 		
 		
-		g.setColor(new Color(221, 160, 221));
+		g.setColor(ColorSet.LIGHT_PURPLE);
 		for(Agent a : SimulationResources.building.getAgents())
 		{
 			if(a.getFloor()==floor)
 			{
 				g.fillOval(
-						(int)(a.getLocation().getX() * resize + shift), 
-						(int)(a.getLocation().getY() * resize + shift), 
-						(int)(Agent.getSize() + shift),
-						(int)(Agent.getSize() + shift));
+						(int)(a.getLocation().getX() * resize), 
+						(int)(a.getLocation().getY() * resize), 
+						(int)(Agent.getSize()*4),
+						(int)(Agent.getSize())*4);
 			}
 		}
 		

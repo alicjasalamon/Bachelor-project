@@ -2,9 +2,11 @@ package view.mainwindow.functionalPanels.mainPanels;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 
 import controler.mainwindow.functionalPanels.simulation.PauseSimulationListener;
 import controler.mainwindow.functionalPanels.simulation.RunSimulationListener;
+import controler.mainwindow.functionalPanels.simulation.SpeedSimulationListener;
 import controler.mainwindow.functionalPanels.simulation.StopSimulationListener;
 
 import resources.GUIResources;
@@ -12,6 +14,8 @@ import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
+import view.mainwindow.functionalPanels.FunctionalSlider;
+import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
 
 public class SimulationPanel extends FunctionalPanel{
 
@@ -26,6 +30,9 @@ public class SimulationPanel extends FunctionalPanel{
 	JButton stopSimu;
 	JPanel stopSimuPanel;
 	
+	JSlider speedSimu;
+	JPanel speedSimuPanel;
+	
 	public SimulationPanel() {
 		
 		runSimu = new FunctionalButton("functionalPanelsIcons\\Run.png", "Run simulation");
@@ -36,9 +43,14 @@ public class SimulationPanel extends FunctionalPanel{
 		
 		stopSimu = new FunctionalButton("functionalPanelsIcons\\Stop.png", "Stop simulation");
 		stopSimuPanel = new FunctionalButtonBackgroundPanel(stopSimu, GUIResources.functionalStopSimulationComponents, new StopSimulationListener());
+		
+		speedSimu = new FunctionalSlider();
+		speedSimu.addChangeListener(new SpeedSimulationListener());
+		speedSimuPanel = new FunctionalSliderBackgroundPanel(speedSimu, "Set simulation speed", "functionalPanelsIcons\\Speed.png", GUIResources.functionalSpeedSimulationComponents);
 				
 		add(runSimuPanel);
 		add(pauseSimuPanel);
 		add(stopSimuPanel);
+		add(speedSimuPanel);
 	}
 }

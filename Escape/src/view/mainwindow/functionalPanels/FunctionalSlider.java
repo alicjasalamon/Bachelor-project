@@ -1,7 +1,5 @@
 package view.mainwindow.functionalPanels;
 
-import java.awt.Dimension;
-
 import javax.swing.JSlider;
 
 import resources.ColorSet;
@@ -12,12 +10,13 @@ public class FunctionalSlider extends JSlider {
 	
 	public FunctionalSlider()
 	{
-		super(0,10,1);
+		super(0,10,5);
 		setAutoscrolls(true);
 		setForeground(ColorSet.BLACK);
 		setOpaque(true);
 		setFocusable(false);
-		setPreferredSize(new Dimension(0,30));
+		//setPreferredSize(new Dimension(0,200));
+		setBounds(0, 0, 100, 100);
 	}
 
 }

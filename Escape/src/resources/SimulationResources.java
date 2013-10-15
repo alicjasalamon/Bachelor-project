@@ -2,7 +2,7 @@ package resources;
 
 import java.util.ArrayList;
 
-import view.mainwindow.simualtionMap.SimulationThread;
+import view.mainwindow.simulationMap.SimulationThread;
 
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
@@ -12,6 +12,7 @@ public class SimulationResources {
 	public static Building building;
 	public static ArrayList<String> agentsNames;
 	public static Thread simulationThread = new SimulationThread();
+	public static int simulationSpeed = 5;
 	
 	
 	public static void initialize()

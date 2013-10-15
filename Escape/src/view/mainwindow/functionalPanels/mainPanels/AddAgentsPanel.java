@@ -5,6 +5,8 @@ import javax.swing.JPanel;
 import javax.swing.JSlider;
 
 import controler.mainwindow.functionalPanels.agents.AddAgentListener;
+import controler.mainwindow.functionalPanels.agents.AgentsSizeListener;
+import controler.mainwindow.functionalPanels.agents.AgentsStepListener;
 
 import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalButton;
@@ -33,10 +35,12 @@ public class AddAgentsPanel extends FunctionalPanel{
 		addAgentPanel = new FunctionalButtonBackgroundPanel(addAgent, GUIResources.functionalAddAgentComponents, new AddAgentListener());
 		
 		agentSize = new FunctionalSlider();
+		agentSize.addChangeListener(new AgentsSizeListener());
 		agentSizePanel = new FunctionalSliderBackgroundPanel(agentSize, "Set agent size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentSizeComponents);
 		
 		agentStep = new FunctionalSlider();
-		agentStepPanel = new FunctionalSliderBackgroundPanel(agentStep, "Set step size  ", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentStepComponents);
+		agentStep.addChangeListener(new AgentsStepListener());
+		agentStepPanel = new FunctionalSliderBackgroundPanel(agentStep, "Set step size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentStepComponents);
 		
 		add(addAgentPanel);
 		add(agentSizePanel);

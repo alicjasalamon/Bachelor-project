@@ -57,6 +57,7 @@ public class GUIResources {
 	public static ElementColection functionalRunSimulationComponents = new ElementColection();
 	public static ElementColection functionalPauseSimulationComponents = new ElementColection();
 	public static ElementColection functionalStopSimulationComponents = new ElementColection(); 
+	public static ElementColection functionalSpeedSimulationComponents = new ElementColection();
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	//							show statistics components 							//
@@ -73,7 +74,7 @@ public class GUIResources {
 	public static String documentationURL = "http://www.example.com";
 	
 	//////////////////////////////////////////////////////////////////////////////////
-	//							buttons action			 							//
+	//							buttons for drawing 	 							//
 	//////////////////////////////////////////////////////////////////////////////////
 	
 	public static boolean drawAgent = true;

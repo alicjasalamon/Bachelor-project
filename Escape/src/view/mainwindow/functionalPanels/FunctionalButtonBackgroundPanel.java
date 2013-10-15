@@ -5,12 +5,11 @@ import java.awt.FlowLayout;
 
 import javax.swing.JComponent;
 
-import controler.mainwindow.FunctionalButtonListener;
-import controler.mainwindow.functionalPanels.ClickAction;
-
 import resources.ColorSet;
 import view.mainwindow.BasicControl;
 import view.mainwindow.ElementColection;
+import controler.mainwindow.FunctionalButtonListener;
+import controler.mainwindow.functionalPanels.ClickAction;
 
 public class FunctionalButtonBackgroundPanel extends BasicControl {
 

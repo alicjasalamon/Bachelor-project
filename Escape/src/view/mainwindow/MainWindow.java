@@ -9,7 +9,7 @@ import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.logo.LogoPanel;
 import view.mainwindow.menubuttons.MenuButtonsPanel;
-import view.mainwindow.simualtionMap.TabbedMapPanel;
+import view.mainwindow.simulationMap.TabbedMapPanel;
 
 public class MainWindow extends JFrame{
 

@@ -20,9 +20,11 @@ public class ClickOnMapListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		SimulationResources.building.getAgents().add(new Agent(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), floor));		
-		GUIResources.mapPanel.repaint();
-
+		if(GUIResources.drawAgent)
+		{
+			SimulationResources.building.getAgents().add(new Agent(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), floor));		
+			GUIResources.mapPanel.repaint();
+		}
 	}
 
 	@Override
