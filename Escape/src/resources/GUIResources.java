@@ -14,6 +14,10 @@ public class GUIResources {
 	public static JPanel mainMenuPanel;
 	public static JPanel functionalMenuPanel;
 	public static JPanel mapPanel;
+	
+
+	public static boolean isMapOnMainPanel = true;
+	public static boolean isStatisticOnMainPanel = false;
 
 	//////////////////////////////////////////////////////////////////////////////////
 	//							menu buttons										//
@@ -59,5 +63,13 @@ public class GUIResources {
 	//////////////////////////////////////////////////////////////////////////////////
 	public static ElementColection functionalShowStatisticsComponents = new ElementColection();
 	public static ElementColection functionalSaveStatisticsComponents = new ElementColection();
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//							Logo info files			 							//
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	public static String aboutPath = "textFiles\\About.txt";
+	public static String helpPath = "textFiles\\Help.txt";
+	public static String documentationURL = "http://www.example.com";
 	
 }

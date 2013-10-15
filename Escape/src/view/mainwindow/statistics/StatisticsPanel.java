@@ -21,7 +21,7 @@ public class StatisticsPanel extends JPanel {
 		jTabbedPane.add("Set",new SetPanel());
 		
 		//jTabbedPane.setBorder(null);
-		jTabbedPane.setPreferredSize(new Dimension(1020, 680));
+		jTabbedPane.setPreferredSize(new Dimension(1020, 705));
 		setBackground(Color.WHITE);
 		
 		add(jTabbedPane);

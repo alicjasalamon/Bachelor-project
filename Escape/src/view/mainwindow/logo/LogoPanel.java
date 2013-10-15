@@ -9,8 +9,13 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import controler.mainwindow.logo.DocumentationListener;
+import controler.mainwindow.logo.LogoAboutListener;
+import controler.mainwindow.logo.LogoHelpListener;
 
 import resources.ColorSet;
 import resources.FontSet;
@@ -53,9 +58,18 @@ public class LogoPanel extends JPanel{
 		logoButtons.setPreferredSize(new Dimension(1400,40));
 		logoButtons.setBackground(ColorSet.LIGHT_GRAY);
 
-		logoButtons.add(new LogoButton("About"));
-		logoButtons.add(new LogoButton("Help"));
-		logoButtons.add(new LogoButton("Documentation"));
+		JButton aboutButton = new LogoButton("About");
+		aboutButton.addActionListener(new LogoAboutListener());
+		logoButtons.add(aboutButton);
+		
+		JButton helpButton = new LogoButton("Help");
+		helpButton.addActionListener(new LogoHelpListener());
+		logoButtons.add(helpButton);
+		
+		JButton docuButton = new LogoButton("Documentation");
+		docuButton.addActionListener(new DocumentationListener());
+		logoButtons.add(docuButton);
+		
 		colorPanel.add(logoButtons);
 
 		//////////////////////////////////////////////////////////

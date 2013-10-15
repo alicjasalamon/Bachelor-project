@@ -17,7 +17,7 @@ public class FunctionalSlider extends JSlider {
 		setForeground(ColorSet.BLACK);
 		setOpaque(true);
 		setFocusable(false);
-		setPreferredSize(new Dimension(10,30));
+		setPreferredSize(new Dimension(0,30));
 	}
 
 }

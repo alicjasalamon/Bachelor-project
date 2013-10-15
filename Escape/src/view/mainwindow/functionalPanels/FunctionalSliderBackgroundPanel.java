@@ -1,6 +1,5 @@
 package view.mainwindow.functionalPanels;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.image.BufferedImage;
@@ -14,12 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-import controler.mainwindow.FunctionalButtonListener;
-
 import resources.ColorSet;
 import resources.FontSet;
 import view.mainwindow.BasicControl;
 import view.mainwindow.ElementColection;
+import controler.mainwindow.FunctionalButtonListener;
 
 public class FunctionalSliderBackgroundPanel extends BasicControl {
 
@@ -33,7 +31,7 @@ public class FunctionalSliderBackgroundPanel extends BasicControl {
 		
 		slider = jSlider;
 		setPreferredSize(new Dimension(300, 80));
-		setBackground(new Color(173, 216, 230));
+		setBackground(ColorSet.LIGHT_GRAY);
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		BufferedImage myPicture = null;

@@ -2,10 +2,12 @@ package view.mainwindow.simualtionMap;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
+import resources.ColorSet;
 import resources.SimulationResources;
 
 public class TabbedMapPanel extends JPanel{
@@ -23,6 +25,14 @@ public class TabbedMapPanel extends JPanel{
 		jTabbedPane.setPreferredSize(new Dimension(1020, 705));
 		setBackground(Color.WHITE);
 		
-		add(jTabbedPane);	// TODO Auto-generated constructor stub
+		JPanel empty = new JPanel();
+		empty.setPreferredSize(new Dimension(1020, 5));
+		empty.setBackground(ColorSet.WHITE);
+		
+		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+		setPreferredSize(new Dimension(1020, 710));
+		
+		add(empty);
+		add(jTabbedPane);
 	}
 }

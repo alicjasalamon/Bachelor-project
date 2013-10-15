@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import resources.GUIResources;
 import view.mainwindow.ElementColection;
+import view.mainwindow.simualtionMap.TabbedMapPanel;
 
 public class MenuButtonListener implements MouseListener {
 
@@ -28,10 +29,20 @@ public class MenuButtonListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
+		if(!GUIResources.isMapOnMainPanel) 
+		{
+			GUIResources.mapPanel.removeAll();
+			GUIResources.mapPanel.add(new TabbedMapPanel());
+			GUIResources.mapPanel.repaint();
+			
+			GUIResources.isMapOnMainPanel = true;
+			GUIResources.isStatisticOnMainPanel = false;
+			
+		}
 		GUIResources.functionalMenuPanel.removeAll();
 		GUIResources.functionalMenuPanel.add(functionalPanel);
-
 		GUIResources.functionalMenuPanel.repaint();
+		
 		GUIResources.mainFrame.repaint();
 		GUIResources.mainFrame.setVisible(true);
 	}
