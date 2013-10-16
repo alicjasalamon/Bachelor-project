@@ -8,8 +8,8 @@ public class Agent {
 	private int floor;
 	private boolean isEscaped;
 
-	public static double size = 5.0;
-	public static double step = 5.0;
+	public static double size = 0.05;
+	public static double step = 0.005;
 
 	public Agent(Point location, int floor) {
 		currentLocation = location;

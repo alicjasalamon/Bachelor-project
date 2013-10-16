@@ -9,8 +9,6 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import controler.mainwindow.simulationMap.ClickOnMapListener;
-
 import model.backbone.agent.Agent;
 import model.backbone.building.elements.Danger;
 import model.backbone.building.elements.Exit;
@@ -20,6 +18,7 @@ import model.backbone.building.elements.Wall;
 import resources.ColorSet;
 import resources.SimulationResources;
 import view.mainwindow.legend.LegendPanel;
+import controler.mainwindow.simulationMap.ClickOnMapListener;
 
 public class MapPanel extends JPanel {
 
@@ -72,7 +71,7 @@ public class MapPanel extends JPanel {
 		//								EXITS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(ColorSet.LIGHT_GREEN);
-		for(Exit e : SimulationResources.building.getFloors().get(0).getExits())
+		for(Exit e : SimulationResources.building.getFloors().get(floor).getExits())
 		{
 			g.drawLine(
 					(int)(e.getBegin().getX() * resize), 
@@ -85,11 +84,11 @@ public class MapPanel extends JPanel {
 		//								DANGERS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(ColorSet.RED);
-		for(Danger d : SimulationResources.building.getFloors().get(0).getDangers())
+		for(Danger d : SimulationResources.building.getFloors().get(floor).getDangers())
 		{
 			g.drawOval(
-					(int)((d.getCenter().getX()-d.getRadius()/2.0) * resize), 
-					(int)((d.getCenter().getY()-d.getRadius()/2.0) * resize), 
+					(int)((d.getCenter().getX() - 0.5 * d.getRadius()) * resize), 
+					(int)((d.getCenter().getY() - 0.5 * d.getRadius()) * resize), 
 					(int)(d.getRadius() * resize),
 					(int)(d.getRadius() * resize));
 		}
@@ -98,7 +97,7 @@ public class MapPanel extends JPanel {
 		//								SIGNS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(ColorSet.SEE_GREEN);
-		for(Sign s : SimulationResources.building.getFloors().get(0).getSings())
+		for(Sign s : SimulationResources.building.getFloors().get(floor).getSings())
 		{
 			g.drawLine(
 					(int)(s.getBegin().getX() * resize), 
@@ -132,10 +131,11 @@ public class MapPanel extends JPanel {
 			if(a.getFloor()==floor)
 			{
 				g.fillOval(
-						(int)(a.getLocation().getX() * resize), 
-						(int)(a.getLocation().getY() * resize), 
-						(int)(Agent.getSize()*4),
-						(int)(Agent.getSize())*4);
+						(int)((a.getLocation().getX() - 0.5 * Agent.getSize()) * resize), 
+						(int)((a.getLocation().getY() - 0.5 * Agent.getSize()) * resize), 
+						(int)(Agent.size * resize),
+						(int)(Agent.size * resize));
+				
 			}
 		}
 		

@@ -82,4 +82,12 @@ public class GUIResources {
 	public static boolean drawDanger = false;
 	public static Danger lastDanger;
 	
+	//////////////////////////////////////////////////////////////////////////////////
+	//							initial sizes			 							//
+	//////////////////////////////////////////////////////////////////////////////////
+	
+	public static int dangerSizeSliderValue = 50;
+	public static int agentSizeSliderValue = 50;
+	public static int agentStepSliderValue = 50;
+	
 }

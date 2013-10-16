@@ -8,7 +8,7 @@ import resources.SimulationResources;
 
 public class SimulationThread extends Thread{
 	
-	Random rand = new Random();
+	Random rand = new Random(System.currentTimeMillis());
 	
 	
     public void run() {
@@ -16,15 +16,19 @@ public class SimulationThread extends Thread{
         for (;;) {
 			for(Agent a : SimulationResources.building.getAgents())
 			{
-//				double change = rand.nextDouble()/10 - 0.05;
-				double change = (rand.nextDouble()/100)*Agent.step - 0.005*Agent.step;
-				a.getLocation().setX(a.getLocation().getX()+change);
-				change = (rand.nextDouble()/100)*Agent.step - 0.005*Agent.step;
-				a.getLocation().setY(a.getLocation().getY()+change);
+				double x, y, angle;
+				angle = rand.nextDouble() * 6.28;
+				
+				x = Math.sin(angle) * Agent.step;
+				y = Math.cos(angle) * Agent.step;
+				
+				a.getLocation().setX(a.getLocation().getX() + x);
+				a.getLocation().setY(a.getLocation().getY() + y);
+				
 				GUIResources.mapPanel.repaint();
 			}
 			try {
-				Thread.sleep((10 - SimulationResources.simulationSpeed)*50);
+				Thread.sleep((100 - SimulationResources.simulationSpeed)*4);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

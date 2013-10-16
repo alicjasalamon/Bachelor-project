@@ -28,16 +28,16 @@ public class ClickOnMapListener implements MouseListener {
 		{
 			SimulationResources.building.getAgents().add(new Agent(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), floor));		
 			GUIResources.mapPanel.repaint();
+			SimulationResources.building.printBuilding();
 		}
 		
 		if(GUIResources.drawDanger)
 		{		
 			System.out.println(source.getFloor());
-			Danger newDanger = new Danger(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), 0.5);
+			Danger newDanger = new Danger(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), Danger.initialRadius);
 			GUIResources.lastDanger = newDanger;
 			SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);
-				//	new Agent(, floor));	
-			System.out.println("dodaje");
+
 			GUIResources.mapPanel.repaint();
 			SimulationResources.building.printBuilding();
 		}

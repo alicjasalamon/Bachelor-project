@@ -10,13 +10,12 @@ public class FunctionalSlider extends JSlider {
 	
 	public FunctionalSlider()
 	{
-		super(0,10,5);
+		super(0,100,50);
 		setAutoscrolls(true);
 		setForeground(ColorSet.BLACK);
 		setOpaque(true);
 		setFocusable(false);
-		//setPreferredSize(new Dimension(0,200));
-		setBounds(0, 0, 100, 100);
+//		setBounds(0, 0, 100, 100);
 	}
 
 }

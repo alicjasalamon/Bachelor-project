@@ -4,8 +4,10 @@ import model.backbone.building.helpers.Point;
 
 public class Danger {
 
-	Point center;
-	double radius;
+	private Point center;
+	private double radius;
+	public static double initialRadius = 0.225;
+	// y = 0.0035 * slider + 0.05
 	
 	public Danger() {
 		
