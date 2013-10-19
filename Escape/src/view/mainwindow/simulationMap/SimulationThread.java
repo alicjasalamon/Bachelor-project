@@ -28,7 +28,7 @@ public class SimulationThread extends Thread{
 				GUIResources.mapPanel.repaint();
 			}
 			try {
-				Thread.sleep((100 - SimulationResources.simulationSpeed)*4);
+				Thread.sleep((100 - SimulationResources.simulationSpeed)*4 + 10);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -21,7 +21,6 @@ public class AgentsStepListener implements ChangeListener {
 			GUIResources.agentStepSliderValue = source.getValue();
 			Agent.step = a * GUIResources.agentStepSliderValue + b;
 			GUIResources.mapPanel.repaint();
-			System.out.println("step " + Agent.step);
 		}
 
 	}
