@@ -1,6 +1,7 @@
 package controler.mainwindow.functionalPanels.simulation;
 
 import resources.SimulationResources;
+import model.backbone.simulation.Simulator;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class StopSimulationListener implements ClickAction {
@@ -9,8 +10,7 @@ public class StopSimulationListener implements ClickAction {
 	@Override
 	public void act() {
 	
-		SimulationResources.simulationThread.stop();
-		SimulationListener.simulationClicksNumber=0;
+		SimulationResources.simulator.stopSimulation();
 		
 	}
 

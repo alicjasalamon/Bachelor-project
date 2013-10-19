@@ -1,6 +1,7 @@
 package controler.mainwindow.functionalPanels.simulation;
 
 import resources.SimulationResources;
+import model.backbone.simulation.Simulator;
 
 public class PauseSimulationListener extends SimulationListener {
 
@@ -8,7 +9,7 @@ public class PauseSimulationListener extends SimulationListener {
 	@Override
 	public void act() {
 		
-		SimulationResources.simulationThread.suspend();
+		SimulationResources.simulator.pauseSimulation();
 
 		
 	}}

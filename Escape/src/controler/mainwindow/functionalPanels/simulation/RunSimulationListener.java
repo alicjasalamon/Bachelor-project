@@ -1,6 +1,7 @@
 package controler.mainwindow.functionalPanels.simulation;
 
 import resources.SimulationResources;
+import model.backbone.simulation.Simulator;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class RunSimulationListener implements ClickAction {
@@ -9,13 +10,14 @@ public class RunSimulationListener implements ClickAction {
 	@Override
 	public void act() {
 		
-		if(SimulationListener.simulationClicksNumber==0)
-		{	
-			SimulationListener.simulationClicksNumber++;
-			SimulationResources.simulationThread.start();
-		}
-		else
-			SimulationResources.simulationThread.resume();
+		SimulationResources.simulator.startSimulation();
+//		if(SimulationListener.simulationClicksNumber==0)
+//		{	
+//			SimulationListener.simulationClicksNumber++;
+//			Simulator.simulationThread.start();
+//		}
+//		else
+//			Simulator.simulationThread.resume();
 		
 	}
 

@@ -4,6 +4,8 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import model.backbone.simulation.Simulator;
+
 import resources.GUIResources;
 import resources.SimulationResources;
 
@@ -14,7 +16,7 @@ public class SpeedSimulationListener implements ChangeListener{
 		
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
-			SimulationResources.simulationSpeed = source.getValue() + 1;
+			SimulationResources.simulator.setSimulationSpeed(source.getValue() + 1);
 			GUIResources.mapPanel.repaint();
 
 		}

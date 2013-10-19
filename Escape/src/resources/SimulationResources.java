@@ -2,18 +2,17 @@ package resources;
 
 import java.util.ArrayList;
 
-import view.mainwindow.simulationMap.SimulationThread;
 
+import model.backbone.algorithm.PogoPeopleAlgorithm;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
+import model.backbone.simulation.Simulator;
 
 public class SimulationResources {
 	
 	public static Building building;
 	public static ArrayList<String> agentsNames;
-	public static Thread simulationThread = new SimulationThread();
-	public static int simulationSpeed = 5;
-	
+	public static Simulator simulator;
 	
 	public static void initialize()
 	{
@@ -24,6 +23,12 @@ public class SimulationResources {
 		agentsNames.add("Not so smart");
 		agentsNames.add("Super smart");
 		agentsNames.add("Mensa style");
+		
+		simulator = new Simulator();
+		simulator.setAlgorithm(new PogoPeopleAlgorithm());
+		simulator.initialize();
+		
+		
 		
 	}
 
