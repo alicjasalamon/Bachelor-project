@@ -10,6 +10,9 @@ public class Floor {
 	private List<Exit> exits = new ArrayList<Exit>();
 	private List<Sign> sings = new ArrayList<Sign>();
 
+	private int sizeX;
+	private int sizeY;
+	
 	public void printFloor() {
 		System.out.println("WALLS:");
 
@@ -65,5 +68,14 @@ public class Floor {
 	public List<Sign> getSings() {
 		return sings;
 	}
+	
+	public void setSizeX(int sizeX) {
+		this.sizeX = sizeX;
+	}
+
+	public void setSizeY(int sizeY) {
+		this.sizeY = sizeY;
+	}
+
 
 }

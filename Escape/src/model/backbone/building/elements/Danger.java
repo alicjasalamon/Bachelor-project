@@ -5,8 +5,8 @@ import model.backbone.building.helpers.Point;
 public class Danger {
 
 	private Point center;
-	private double radius;
-	public static double initialRadius = 0.225;
+	private int radius;
+	public static int initialRadius = 20;
 	// y = 0.0035 * slider + 0.05
 	
 	public Danger() {
@@ -15,13 +15,13 @@ public class Danger {
 		radius = 0;
 	}
 	
-	public Danger(double x, double y, double r)
+	public Danger(int x, int y, int r)
 	{
 		center = new Point(x,y);
 		radius = r;
 	}
 	
-	public Danger(Point p, double r)
+	public Danger(Point p, int r)
 	{
 		center = p;
 		radius = r;
@@ -32,7 +32,7 @@ public class Danger {
 		return center;
 	}
 
-	public double getRadius() {
+	public int getRadius() {
 		return radius;
 	}
 
@@ -40,7 +40,7 @@ public class Danger {
 		this.center = center;
 	}
 
-	public void setRadius(double radius) {
+	public void setRadius(int radius) {
 		this.radius = radius;
 	}
 

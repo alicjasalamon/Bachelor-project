@@ -2,8 +2,8 @@ package model.backbone.building.helpers;
 
 public class Point {
 
-	public double x;
-	public double y;
+	public int x;
+	public int y;
 	
 	public Point()
 	{
@@ -11,24 +11,24 @@ public class Point {
 		y=0;
 	}
 	
-	public double getX() {
+	public int getX() {
 		return x;
 	}
 
-	public double getY() {
+	public int getY() {
 		return y;
 	}
 	
 
-	public void setX(double x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
-	public void setY(double y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 
-	public Point(double x, double y)
+	public Point(int x, int y)
 	{
 		this.x = x;
 		this.y = y;

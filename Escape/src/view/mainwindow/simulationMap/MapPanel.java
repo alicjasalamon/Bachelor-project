@@ -29,7 +29,7 @@ public class MapPanel extends JPanel {
 	public MapPanel(int floor)
 	{
 
-		resize = 600;
+		resize = 1.0;
 		this.floor = floor;
 		setBackground(Color.white);
 		setPreferredSize(new Dimension(1020, 520));

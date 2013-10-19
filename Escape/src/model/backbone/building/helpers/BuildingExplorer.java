@@ -72,25 +72,41 @@ public class BuildingExplorer {
 							//								WALLS										//
 							//////////////////////////////////////////////////////////////////////////////
 							if (floorElementNode.getNodeName().equals("walls")) {
-
+							
 								NodeList wallsList = floorElementNode.getChildNodes();
-
+								
 								for (int w = 0; w < wallsList.getLength(); w++) { 
-									
+								
 									Node wallNode = wallsList.item(w);
 									if (wallNode.getNodeType() == Node.ELEMENT_NODE) {
-
+									
 										NamedNodeMap nodeMap = wallNode.getAttributes();
 										Wall wall = new Wall(
-												Double.parseDouble(nodeMap.getNamedItem("x1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("x2").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y2").getNodeValue()));
-
+										Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
+										
 										floor.addWall(wall);
 									}
-									
+								
 								}
+							
+							}
+
+							//////////////////////////////////////////////////////////////////////////////
+							//								RESOLUTION									//
+							//////////////////////////////////////////////////////////////////////////////
+							if (floorElementNode.getNodeName().equals("resolution")) {
+
+								if (floorElementNode.getNodeType() == Node.ELEMENT_NODE) {
+									
+									NamedNodeMap nodeMap = floorElementNode.getAttributes();
+									floor.setSizeX(Integer.parseInt(nodeMap.getNamedItem("x").getNodeValue()));
+									floor.setSizeY(Integer.parseInt(nodeMap.getNamedItem("y").getNodeValue()));
+								}
+									
+								
 
 							}
 							
@@ -109,10 +125,10 @@ public class BuildingExplorer {
 
 										NamedNodeMap nodeMap = signNode.getAttributes();
 										Sign sign = new Sign(
-												Double.parseDouble(nodeMap.getNamedItem("x1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("x2").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y2").getNodeValue()));
+												Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
 
 										floor.addSign(sign);
 										}
@@ -136,9 +152,9 @@ public class BuildingExplorer {
 										
 										NamedNodeMap nodeMap = dangerNode.getAttributes();
 										Danger danger = new Danger(
-												Double.parseDouble(nodeMap.getNamedItem("x").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("r").getNodeValue()));
+												Integer.parseInt(nodeMap.getNamedItem("x").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("y").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("r").getNodeValue()));
 
 										floor.addDanger(danger);
 									}
@@ -161,10 +177,10 @@ public class BuildingExplorer {
 										
 										NamedNodeMap nodeMap = exitNode.getAttributes();
 										Exit exit = new Exit(
-												Double.parseDouble(nodeMap.getNamedItem("x1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y1").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("x2").getNodeValue()),
-												Double.parseDouble(nodeMap.getNamedItem("y2").getNodeValue()));
+												Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
 
 										floor.addExit(exit);
 
@@ -193,10 +209,10 @@ public class BuildingExplorer {
 					
 					NamedNodeMap nodeMap = staircaseNode.getAttributes();
 					Staircase staircase = new Staircase(
-							Double.parseDouble(nodeMap.getNamedItem("x1").getNodeValue()),
-							Double.parseDouble(nodeMap.getNamedItem("y1").getNodeValue()),
-							Double.parseDouble(nodeMap.getNamedItem("x2").getNodeValue()),
-							Double.parseDouble(nodeMap.getNamedItem("y2").getNodeValue()));
+							Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
 
 					building.addStaircase(staircase);
 				}

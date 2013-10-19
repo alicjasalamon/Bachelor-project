@@ -17,7 +17,7 @@ public class Wall {
 		end = b;
 	}
 	
-	public Wall(double x1, double y1, double x2, double y2){
+	public Wall(int x1, int y1, int x2, int y2){
 		begin = new Point(x1, y1);
 		end = new Point(x2, y2);
 	}

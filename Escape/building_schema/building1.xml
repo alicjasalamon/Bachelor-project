@@ -2,36 +2,36 @@
 	
 	<floors>
 		<floor>
-		
+			<resolution x="600" y="600"/>
 			<walls>
-				<wall x1="0" y1="0" x2="0" y2="1"/>
-				<wall x1="0" y1="0" x2="1" y2="0"/>
-				<wall x1="0" y1="1" x2="1" y2="1"/>
-				<wall x1="1" y1="0" x2="1" y2="1"/>
-				<wall x1="0" y1="0.5" x2="0.5" y2="0.5"/>
+				<wall x1="0" y1="0" x2="0" y2="600"/>
+				<wall x1="0" y1="0" x2="600" y2="0"/>
+				<wall x1="0" y1="600" x2="600" y2="600"/>
+				<wall x1="600" y1="0" x2="600" y2="600"/>
+				<wall x1="0" y1="300" x2="300" y2="300"/>
 			</walls>
 			
 			<dangers>
-				<danger x="0.5" y="0.5" r="0.2"/>
+				<danger x="300" y="300" r="20"/>
 			</dangers>
 			
 			<exits>
-				<exit x1="0.25" y1="0" x2="0.75" y2="0"/>
+				<exit x1="150" y1="0" x2="475" y2="0"/>
 			</exits>
 			
 			<signs>
-				<sign x1="0" y1="1" x2="0" y2="0.8"/>
+				<sign x1="0" y1="600" x2="0" y2="480"/>
 			</signs>
 			
 		</floor>
 		
 		<floor>
-		
+			<resolution x="600" y="600"/>
 			<walls>
-				<wall x1="0" y1="0" x2="0" y2="1"/>
-				<wall x1="0" y1="0" x2="1" y2="0"/>
-				<wall x1="0" y1="1" x2="1" y2="1"/>
-				<wall x1="1" y1="0" x2="1" y2="1"/>
+				<wall x1="0" y1="0" x2="0" y2="600"/>
+				<wall x1="0" y1="0" x2="600" y2="0"/>
+				<wall x1="0" y1="600" x2="600" y2="600"/>
+				<wall x1="600" y1="0" x2="600" y2="600"/>
 			</walls>
 			
 		</floor>
@@ -39,7 +39,7 @@
 	</floors>
 	
 	<staircases>
-			<staircase x1="0" y1="0" x2="0.2" y2="0.2"/>
+			<staircase x1="0" y1="0" x2="150" y2="150"/>
 	</staircases>
 	
 </building>

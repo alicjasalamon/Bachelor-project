@@ -8,7 +8,7 @@ public class Agent {
 	private int floor;
 	private boolean isEscaped;
 
-	public static double size = 0.05;
+	public static double size = 20;
 	public static double step = 0.005;
 
 	public Agent(Point location, int floor) {
@@ -16,7 +16,7 @@ public class Agent {
 		this.floor = floor;
 	}
 
-	public Agent(double x, double y, int floor) {
+	public Agent(int x, int y, int floor) {
 		currentLocation = new Point(x, y);
 
 	}

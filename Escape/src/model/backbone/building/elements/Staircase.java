@@ -19,7 +19,7 @@ public class Staircase {
 		point2 = b;
 	}
 	
-	public Staircase(double x1, double y1, double x2, double y2)
+	public Staircase(int x1, int y1, int x2, int y2)
 	{
 		point1 = new Point(x1, y1);
 		point2 = new Point(x2, y2);

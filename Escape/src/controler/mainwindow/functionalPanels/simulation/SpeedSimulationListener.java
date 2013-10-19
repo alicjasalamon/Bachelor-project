@@ -4,8 +4,6 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import model.backbone.simulation.Simulator;
-
 import resources.GUIResources;
 import resources.SimulationResources;
 

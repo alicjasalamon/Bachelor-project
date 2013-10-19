@@ -11,11 +11,9 @@ public class PogoPeopleAlgorithm implements Algorithm {
 	
 	@Override
 	public void moveAgent(Agent agent) {
-		double x, y, angle;
-		angle = rand.nextDouble() * 6.28;
-		
-		x = Math.sin(angle) * Agent.step;
-		y = Math.cos(angle) * Agent.step;
+		int x, y;
+		x = rand.nextInt(2)-1;
+		y = rand.nextInt(2)-1;
 		
 		agent.getLocation().setX(agent.getLocation().getX() + x);
 		agent.getLocation().setY(agent.getLocation().getY() + y);

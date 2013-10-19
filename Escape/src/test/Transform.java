@@ -14,13 +14,17 @@ public class Transform {
     private Transform(double[][] mat) {
         this.m = mat;
     }
-    
+    //TODO o co tu chodzi ;p
+//    public Point apply(Point a) {
+//        double x = m[0][0] * a.x + m[0][1] * a.y + m[0][2];
+//        double y = m[1][0] * a.x + m[1][1] * a.y + m[1][2];
+//        return new Point(x, y);
+//    }
     public Point apply(Point a) {
-        double x = m[0][0] * a.x + m[0][1] * a.y + m[0][2];
-        double y = m[1][0] * a.x + m[1][1] * a.y + m[1][2];
+        int x = (int) (m[0][0] * a.x + m[0][1] * a.y + m[0][2]);
+        int y = (int) (m[1][0] * a.x + m[1][1] * a.y + m[1][2]);
         return new Point(x, y);
     }
-    
     public Point invert(Point p) {
         double a = m[0][0];
         double b = m[0][1];
@@ -42,7 +46,10 @@ public class Transform {
             
             double x = m00 * p.x + m01 * p.y + m02;
             double y = m10 * p.x + m11 * p.y + m12;
-            return new Point(x / det, y / det);
+            //return new Point(x / det, y / det);
+            return new Point((int)(x / det),(int)( y / det));
+            //TODO ??? o co tu chodzi ;p
+        
         } else {
             throw new ArithmeticException("det = 0");
         }

@@ -26,7 +26,7 @@ public class ClickOnMapListener implements MouseListener {
 		
 		if(GUIResources.drawAgent)
 		{
-			SimulationResources.building.getAgents().add(new Agent(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), floor));		
+			SimulationResources.building.getAgents().add(new Agent(new Point( e.getX() , e.getY()), floor));		
 			GUIResources.mapPanel.repaint();
 			SimulationResources.building.printBuilding();
 		}
@@ -34,7 +34,7 @@ public class ClickOnMapListener implements MouseListener {
 		if(GUIResources.drawDanger)
 		{		
 			System.out.println(source.getFloor());
-			Danger newDanger = new Danger(new Point((((double) e.getX()) / 600.0), (((double) e.getY()) / 600.0)), Danger.initialRadius);
+			Danger newDanger = new Danger((new Point( e.getX() , e.getY())), Danger.initialRadius);
 			GUIResources.lastDanger = newDanger;
 			SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);
 
