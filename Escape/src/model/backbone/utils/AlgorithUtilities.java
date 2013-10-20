@@ -100,7 +100,6 @@ public class AlgorithUtilities {
 		//Check if agent will not come too close to the wall
 		for (Wall w : walls) {
 			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination) < 12) {
-				System.out.println(MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination));
 				return false;
 			}
 		}
