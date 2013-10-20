@@ -8,6 +8,7 @@ public class Simulator {
 
 	private enum OveralSimulationState { Started,  Stopped };
 	private enum PreciseSimulationState { Running, Paused };
+	
 	private OveralSimulationState overalState;
 	private PreciseSimulationState preciseState;
 	private Algorithm algorithm;
@@ -28,12 +29,13 @@ public class Simulator {
 			simulationThread = new SimulationThread(algorithm, simulationSpeed);
 			simulationThread.allowSimulation();
 			simulationThread.start();
-		} else {
+		} else if (this.preciseState == PreciseSimulationState.Paused ){
 			this.preciseState = PreciseSimulationState.Running;
-			this.simulationThread.notify();
+			this.simulationThread.allowSimulation();
+			this.simulationThread.notifyAll();
 			
 		}
-		this.simulationThread.allowSimulation();
+		
 	}
 	
 	public void pauseSimulation() {

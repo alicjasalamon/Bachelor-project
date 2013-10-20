@@ -10,7 +10,7 @@ public class PogoPeopleAlgorithm implements Algorithm {
 	Random rand = new Random(System.currentTimeMillis());
 	
 	@Override
-	public void moveAgent(Agent agent) {
+	public void makeYourMove(Agent agent) {
 		int x, y;
 		x = rand.nextInt(2)-1;
 		y = rand.nextInt(2)-1;

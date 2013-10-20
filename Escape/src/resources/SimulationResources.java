@@ -3,6 +3,7 @@ package resources;
 import java.util.ArrayList;
 
 import model.backbone.algorithm.PogoPeopleAlgorithm;
+import model.backbone.algorithm.TestAlgorithm;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
 import model.backbone.simulation.Simulator;
@@ -24,7 +25,7 @@ public class SimulationResources {
 		agentsNames.add("Mensa style");
 		
 		simulator = new Simulator();
-		simulator.setAlgorithm(new PogoPeopleAlgorithm());
+		simulator.setAlgorithm(new TestAlgorithm());
 		simulator.initialize();
 		
 		

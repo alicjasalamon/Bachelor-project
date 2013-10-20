@@ -4,6 +4,6 @@ import model.backbone.agent.Agent;
 
 public interface Algorithm {
 
-	public void moveAgent(Agent agent);
+	public void makeYourMove(Agent agent);
 
 }

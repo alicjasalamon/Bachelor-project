@@ -97,7 +97,7 @@ public class MapPanel extends JPanel {
 		//								SIGNS										//
 		//////////////////////////////////////////////////////////////////////////////
 		g.setColor(ColorSet.SEE_GREEN);
-		for(Sign s : SimulationResources.building.getFloors().get(floor).getSings())
+		for(Sign s : SimulationResources.building.getFloors().get(floor).getSigns())
 		{
 			g.drawLine(
 					(int)(s.getBegin().getX() * resize), 
@@ -128,7 +128,7 @@ public class MapPanel extends JPanel {
 		g.setColor(ColorSet.LIGHT_PURPLE);
 		for(Agent a : SimulationResources.building.getAgents())
 		{
-			if(a.getFloor()==floor)
+			if(a.getFloor()==floor && !a.isEscaped())
 			{
 				g.fillOval(
 						(int)((a.getLocation().getX() - 0.5 * Agent.getSize()) * resize), 

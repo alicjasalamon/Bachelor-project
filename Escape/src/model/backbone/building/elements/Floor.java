@@ -8,7 +8,7 @@ public class Floor {
 	private List<Wall> walls = new ArrayList<Wall>();
 	private List<Danger> dangers = new ArrayList<Danger>();
 	private List<Exit> exits = new ArrayList<Exit>();
-	private List<Sign> sings = new ArrayList<Sign>();
+	private List<Sign> signs = new ArrayList<Sign>();
 
 	private int sizeX;
 	private int sizeY;
@@ -28,7 +28,7 @@ public class Floor {
 			e.printExit();
 		}
 		
-		for(Sign s : sings) {
+		for(Sign s : signs) {
 			s.printSign();
 		}
 
@@ -50,7 +50,7 @@ public class Floor {
 	
 	public void addSign(Sign sign)
 	{
-		sings.add(sign);
+		signs.add(sign);
 	}
 
 	public List<Wall> getWalls() {
@@ -65,8 +65,8 @@ public class Floor {
 		return exits;
 	}
 
-	public List<Sign> getSings() {
-		return sings;
+	public List<Sign> getSigns() {
+		return signs;
 	}
 	
 	public void setSizeX(int sizeX) {

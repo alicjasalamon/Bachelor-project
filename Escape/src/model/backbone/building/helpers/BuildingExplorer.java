@@ -128,7 +128,9 @@ public class BuildingExplorer {
 												Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
 												Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
 												Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
+												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("targetx").getNodeValue()),
+												Integer.parseInt(nodeMap.getNamedItem("targety").getNodeValue()));
 
 										floor.addSign(sign);
 										}
@@ -258,7 +260,7 @@ public class BuildingExplorer {
 			//////////////////////////////////////////////////////////////////////////////
 		
 			sb.append("\t\t\t<signs>\n");
-			for(Sign sign : floor.getSings())
+			for(Sign sign : floor.getSigns())
 			{
 				sb.append("\t\t\t\t<sign "+ sign.forXMLRepresentation() + "/>\n");				
 			}
