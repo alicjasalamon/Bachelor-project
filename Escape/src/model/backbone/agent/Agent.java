@@ -4,14 +4,14 @@ import model.backbone.building.helpers.Point;
 
 public class Agent {
 
-	public enum DestinationType { Exit, Sign, None, Inaccurate }
+	public enum DestinationType { Exit, Sign, None}
 	private Point currentLocation;
 	private int floor;
 	private boolean isEscaped;
-	
+	private boolean isDead;
 	private DestinationType destination;
 	private Point DestinationPoint;
-	
+	private int myHitPoints = 700;
 	public static double size = 20;
 	public static double step = 0.005;
 
@@ -21,6 +21,7 @@ public class Agent {
 		destination = DestinationType.None;
 		DestinationPoint = null;
 		isEscaped = false;
+		isDead = false;
 	}
 
 	public Agent(int x, int y, int floor) {
@@ -34,7 +35,8 @@ public class Agent {
 	public void setLocation(Point location) {
 		this.currentLocation = location;
 	}
-
+	
+	
 	public int getFloor() {
 		return floor;
 	}
@@ -72,7 +74,20 @@ public class Agent {
 	}
 	
 	public void setDestination(DestinationType dest, Point destPoint) {
+			if (this.destination == DestinationType.Exit) return;
 			this.destination = dest;
 			this.DestinationPoint = destPoint;
 	}
+	
+	public boolean isDead() {
+		return isDead;
+	}
+	
+	public void ageHim() {
+		myHitPoints -= 1;
+		if(myHitPoints < 1) {
+			isDead = true;
+		}
+	}
+	
 }

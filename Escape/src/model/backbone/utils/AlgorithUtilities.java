@@ -62,11 +62,12 @@ public class AlgorithUtilities {
 		ArrayList<Agent> agents = (ArrayList<Agent>) SimulationResources.building.getAgents();
 	
 		for (Agent a : agents) {
-			
+			//check if its not the same agent!
+			if (a.equals(me)) continue;
 			//Can the agents hear each other?
 			if (a.getFloor() == me.getFloor() && canISeeIt(me, a.getLocation())) {
 				
-				//Random chance for reacting to heard information
+				//Random chance for reaction to hearing information
 				if (rand.nextInt(100) > 20) {
 					
 					//React to information by changing destination
@@ -79,12 +80,38 @@ public class AlgorithUtilities {
 	
 	public static void moveTowardsTheDestination(Agent me) {
 		if (!(me.getDestinationType() == DestinationType.None)) {
-			//Determine the move
+			
+			//Determine the destination
 			int xDest = (me.getLocation().getX() == me.getDestinationPoint().getX()) ? 0 :
 				(me.getLocation().getX() > me.getDestinationPoint().getX()) ? -1 : 1;
 			int yDest = me.getLocation().getY() == me.getDestinationPoint().getY() ? 0 :
 				(me.getLocation().getY() > me.getDestinationPoint().getY()) ? -1 : 1;
 			
+			//Flag determining if the agent should "hug the wall"
+			boolean wallHugger= false;
+			//Check if you are close to the wall
+			//X axis:
+			if (!canISeeIt(me, new Point(me.getLocation().getX()+20*xDest, me.getLocation().getY()))) {
+				xDest = 0;
+				wallHugger = true;
+			} else if (!canISeeIt(me, new Point(me.getLocation().getX(), me.getLocation().getY()+20*yDest))) {
+				yDest = 0;
+				wallHugger = true;
+			}
+			//Pick the route with some randomness if the distance is high:
+			//If the distance from the target is higher on one axis
+			//it is more likely for that agent to move to the target in a straight line
+			if (!wallHugger && MathUtils.getDistanceBetweenTwoPoints(me.getLocation(), me.getDestinationPoint()) > 70) {
+				//Determine the the target distance
+				int xDist = Math.abs(me.getLocation().getX()- me.getDestinationPoint().getX());
+				int yDist = Math.abs(me.getLocation().getY()- me.getDestinationPoint().getY());
+				
+				if (rand.nextFloat() > (xDist/(xDist+yDist))) {
+					xDest = 0;
+				} else {
+					yDest = 0;
+				}
+			}
 			//Try to move
 			if (canIMoveThere(me, xDest, yDest)) {
 				moveAgent(me,new Point(xDest,yDest));
@@ -99,7 +126,7 @@ public class AlgorithUtilities {
 		Point myDestination = new Point(me.getLocation().getX()+xDest, me.getLocation().getY()+yDest);
 		//Check if agent will not come too close to the wall
 		for (Wall w : walls) {
-			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination) < 12) {
+			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination) < 30) {
 				return false;
 			}
 		}
@@ -111,7 +138,7 @@ public class AlgorithUtilities {
 			//Are the agents on the same floor
 			if (a.getFloor() == me.getFloor()) {
 					//Is any other agent too close to our destination
-					if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), myDestination) < 12) {
+					if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), myDestination) < 30) {
 						return false;
 					}	
 			}
@@ -130,7 +157,7 @@ public class AlgorithUtilities {
 					|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(e.getBegin(), e.getEnd()))) {
 				if (nearestExit == null || exitDistance > MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), me.getDestinationPoint())) {
 					nearestExit = e;
-					exitDistance = MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), me.getDestinationPoint());
+					exitDistance = MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), me.getLocation());
 				} 
 			}
 		}
@@ -152,7 +179,7 @@ public class AlgorithUtilities {
 			}
 		}
 		
-		me.setDestination(DestinationType.Inaccurate, nearestSign.getTarget());
+		me.setDestination(DestinationType.Sign, nearestSign.getTarget());
 	}
 	
 	public static void moveAgent(Agent me, Point direction) {
@@ -162,7 +189,7 @@ public class AlgorithUtilities {
 		ArrayList<Exit> exits = (ArrayList<Exit>) SimulationResources.building.getFloors().get(me.getFloor()).getExits();
 		
 		for (Exit e : exits) {			
-			if (MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), me.getLocation()) < 10) {
+			if (MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), me.getLocation()) < 15) {
 				me.setEscaped(true);
 			}
 		}

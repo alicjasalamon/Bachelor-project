@@ -1,6 +1,7 @@
 package model.backbone.simulation;
 
 import model.backbone.algorithm.Algorithm;
+import model.backbone.algorithm.TestAlgorithm;
 
 
 
@@ -16,17 +17,23 @@ public class Simulator {
 	private SimulationThread simulationThread;
 	 
 	 
-	public void initialize() {
+	public Simulator() {
 		this.preciseState = PreciseSimulationState.Paused;
 		this.overalState = OveralSimulationState.Stopped;
-		this.simulationSpeed = 10;
+		this.simulationSpeed = 90;
+		simulationThread = new SimulationThread();
 	}
 	
 	public void startSimulation() {
 		if (this.overalState == OveralSimulationState.Stopped) {
+			//May look weird but its initialization of the Simulator
+			 
 			this.overalState = OveralSimulationState.Started;
 			this.preciseState = PreciseSimulationState.Running;
-			simulationThread = new SimulationThread(algorithm, simulationSpeed);
+			this.setAlgorithm(new TestAlgorithm());
+			simulationThread.initialize(algorithm,simulationSpeed);
+			//TODO Tutaj do podpiecia wybieranie algorytmow
+			
 			simulationThread.allowSimulation();
 			simulationThread.start();
 		} else if (this.preciseState == PreciseSimulationState.Paused ){

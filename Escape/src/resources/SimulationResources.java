@@ -25,8 +25,6 @@ public class SimulationResources {
 		agentsNames.add("Mensa style");
 		
 		simulator = new Simulator();
-		simulator.setAlgorithm(new TestAlgorithm());
-		simulator.initialize();
 		
 		
 		

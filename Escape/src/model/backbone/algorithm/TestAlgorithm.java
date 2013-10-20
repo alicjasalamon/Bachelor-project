@@ -15,12 +15,12 @@ public class TestAlgorithm implements Algorithm {
 		}
 		
 		//Helping others
-		if (agent.getDestinationType() == DestinationType.Exit) {
-			//Randomly chose to let others know about the exit or not
-			if (AlgorithUtilities.rand.nextInt(100) > 50) {
-				AlgorithUtilities.letThemKnowAboutTheExit(agent);
-			}
-		}
+//		if (agent.getDestinationType() == DestinationType.Exit) {
+//			//Randomly chose to let others know about the exit or not
+//			if (AlgorithUtilities.rand.nextInt(100) > 50) {
+//				AlgorithUtilities.letThemKnowAboutTheExit(agent);
+//			}
+//		}
 		
 		AlgorithUtilities.moveTowardsTheDestination(agent);
 		

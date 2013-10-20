@@ -11,8 +11,11 @@ public class SimulationThread extends Thread{
 	private Algorithm simulationAlgorithm;
 	private int simulationSpeed; 
 	
-	public SimulationThread(Algorithm algorithm, int simulationSpeed) {
+	public SimulationThread() {
 		this.shouldSimulationRun = false;
+	}
+	
+	public void initialize(Algorithm algorithm, int simulationSpeed) {
 		this.simulationAlgorithm = algorithm;
 		this.simulationSpeed = simulationSpeed;
 	}
@@ -21,10 +24,15 @@ public class SimulationThread extends Thread{
     	try {
 	        for (;;) {
 	        	if (!shouldSimulationRun) wait();
+	        	if (SimulationResources.building.getAgents().size() == 0) {
+	        		
+	        		//TODO Tuta
+	        	}
 				for(Agent a : SimulationResources.building.getAgents())
 				{
 					if (!a.isEscaped()) {
 						simulationAlgorithm.makeYourMove(a);
+						a.ageHim();
 						GUIResources.mapPanel.repaint();
 					}
 				}

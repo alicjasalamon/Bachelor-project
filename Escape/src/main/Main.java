@@ -21,6 +21,7 @@ public class Main {
 					SimulationResources.initialize();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					GUIResources.mainFrame = new MainWindow();
+					
 				}
 
 				catch (Exception e) {
