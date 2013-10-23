@@ -115,8 +115,7 @@ public class MapPanel extends JPanel {
 			g.drawRoundRect(
 					(int)(s.getPoint1().getX() * resize), 
 					(int)(s.getPoint1().getY() * resize), 
-					(int)(s.getPoint2().getX() * resize),
-					(int)(s.getPoint2().getY() * resize),
+					10,10,
 					20,20);
 		}
 		

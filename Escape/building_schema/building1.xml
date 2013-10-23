@@ -40,7 +40,7 @@
 	</floors>
 	
 	<staircases>
-			<staircase x1="0" y1="0" x2="150" y2="150"/>
+			<staircase x1="80" y1="80" lenght="150" height="150"/>
 	</staircases>
 	
 </building>

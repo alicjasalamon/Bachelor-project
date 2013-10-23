@@ -4,7 +4,6 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import model.backbone.agent.Agent;
 import resources.GUIResources;
 
 public class AgentsStepListener implements ChangeListener {
@@ -19,7 +18,7 @@ public class AgentsStepListener implements ChangeListener {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 			GUIResources.agentStepSliderValue = source.getValue();
-			Agent.step = a * GUIResources.agentStepSliderValue + b;
+		//	Agent.step = a * GUIResources.agentStepSliderValue + b;
 			GUIResources.mapPanel.repaint();
 		}
 

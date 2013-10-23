@@ -29,7 +29,7 @@ public class SimulationThread extends Thread{
 					}
 				}
 				try {
-					Thread.sleep((100 - simulationSpeed)*4 + 10);
+					Thread.sleep((100 - SimulationResources.simulator.getSimulationSpeed())*4 + 10);
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

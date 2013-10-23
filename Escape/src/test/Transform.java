@@ -1,6 +1,5 @@
 package test;
 
-import model.backbone.building.helpers.Point;
 
 public class Transform {
     
@@ -14,18 +13,21 @@ public class Transform {
     private Transform(double[][] mat) {
         this.m = mat;
     }
-    //TODO o co tu chodzi ;p
-//    public Point apply(Point a) {
-//        double x = m[0][0] * a.x + m[0][1] * a.y + m[0][2];
-//        double y = m[1][0] * a.x + m[1][1] * a.y + m[1][2];
-//        return new Point(x, y);
-//    }
-    public Point apply(Point a) {
-        int x = (int) (m[0][0] * a.x + m[0][1] * a.y + m[0][2]);
-        int y = (int) (m[1][0] * a.x + m[1][1] * a.y + m[1][2]);
-        return new Point(x, y);
+    
+    public Vec2d apply(Vec2d a) {
+        double x = (m[0][0] * a.x + m[0][1] * a.y + m[0][2]);
+        double y = (m[1][0] * a.x + m[1][1] * a.y + m[1][2]);
+        return new Vec2d(x, y);
     }
-    public Point invert(Point p) {
+    
+    public Vec2d applyToDirection(Vec2d a) {
+    	double x = (m[0][0] * a.x + m[0][1] * a.y);
+        double y = (m[1][0] * a.x + m[1][1] * a.y);
+        return new Vec2d(x, y);
+    }
+    
+    public Vec2d invert(Vec2d p) {
+    	
         double a = m[0][0];
         double b = m[0][1];
         double c = m[0][2];
@@ -46,9 +48,7 @@ public class Transform {
             
             double x = m00 * p.x + m01 * p.y + m02;
             double y = m10 * p.x + m11 * p.y + m12;
-            //return new Point(x / det, y / det);
-            return new Point((int)(x / det),(int)( y / det));
-            //TODO ??? o co tu chodzi ;p
+            return new Vec2d((x / det),( y / det));
         
         } else {
             throw new ArithmeticException("det = 0");
@@ -111,7 +111,7 @@ public class Transform {
             return this;
         }
         
-        public Builder t(Point v) {
+        public Builder t(Vec2d v) {
             return t(v.x, v.y);
         }
         

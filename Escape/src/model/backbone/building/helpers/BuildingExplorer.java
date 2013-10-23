@@ -213,8 +213,8 @@ public class BuildingExplorer {
 					Staircase staircase = new Staircase(
 							Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
 							Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
-							Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
-							Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
+							Integer.parseInt(nodeMap.getNamedItem("lenght").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("height").getNodeValue()));
 
 					building.addStaircase(staircase);
 				}

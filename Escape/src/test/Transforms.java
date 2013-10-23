@@ -1,6 +1,5 @@
 package test;
 
-import model.backbone.building.helpers.Point;
 
 public class Transforms {
 
@@ -15,7 +14,7 @@ public class Transforms {
         return new Transform.Builder().t(dx, dy).create();
     }
 
-    public static Transform t(Point v) {
+    public static Transform t(Vec2d v) {
         return new Transform.Builder().t(v).create();
     }
     

@@ -9,6 +9,8 @@ import javax.swing.JTabbedPane;
 
 import resources.ColorSet;
 import resources.SimulationResources;
+import test.CanvasPanel;
+import view.mainwindow.legend.LegendPanel;
 
 public class TabbedMapPanel extends JPanel{
 	
@@ -20,15 +22,15 @@ public class TabbedMapPanel extends JPanel{
 		
 		for(int i = 0; i<SimulationResources.building.getFloors().size(); i++)
 		{
-			jTabbedPane.add("floor " + (i+1), new MapPanel(i));
+			jTabbedPane.add("floor " + (i+1), new CanvasPanel(i));
 		}
 		
 		//jTabbedPane.setBorder(null);
-		jTabbedPane.setPreferredSize(new Dimension(1020, 705));
+		jTabbedPane.setPreferredSize(new Dimension(1020, 700));
 		setBackground(Color.WHITE);
 		
 		JPanel empty = new JPanel();
-		empty.setPreferredSize(new Dimension(1020, 5));
+		empty.setPreferredSize(new Dimension(1050, 5));
 		empty.setBackground(ColorSet.WHITE);
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
@@ -36,5 +38,6 @@ public class TabbedMapPanel extends JPanel{
 		
 		add(empty);
 		add(jTabbedPane);
+		add(new LegendPanel());
 	}
 }

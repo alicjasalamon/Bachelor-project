@@ -12,8 +12,8 @@ public class Agent {
 	private DestinationType destination;
 	private Point DestinationPoint;
 	
-	public static double size = 20;
-	public static double step = 0.005;
+	public static int size = 30;
+//	public static double step = 0.005;
 
 	public Agent(Point location, int floor) {
 		currentLocation = location;
@@ -55,7 +55,7 @@ public class Agent {
 		return size;
 	}
 
-	public static void setSize(double size) {
+	public static void setSize(int size) {
 		Agent.size = size;
 	}
 

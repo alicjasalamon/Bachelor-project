@@ -15,6 +15,8 @@ public class SpeedSimulationListener implements ChangeListener{
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 			SimulationResources.simulator.setSimulationSpeed(source.getValue() + 1);
+
+			System.out.println("zmieniam predkosc");
 			GUIResources.mapPanel.repaint();
 
 		}

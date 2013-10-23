@@ -8,7 +8,7 @@ import model.backbone.building.elements.Danger;
 import model.backbone.building.helpers.Point;
 import resources.GUIResources;
 import resources.SimulationResources;
-import view.mainwindow.simulationMap.MapPanel;
+import test.CanvasPanel;
 
 public class ClickOnMapListener implements MouseListener {
 
@@ -22,7 +22,7 @@ public class ClickOnMapListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		MapPanel source = (MapPanel) e.getSource();
+		CanvasPanel source = (CanvasPanel) e.getSource();
 		
 		if(GUIResources.drawAgent)
 		{
