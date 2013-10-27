@@ -13,8 +13,8 @@ public class AgentsSizeListener implements ChangeListener {
 	/*
 	 * Agent size formula: y = ax + b; x is jSlider value
 	 */
-	private static final double a = 0.0006;
-	private static final double b = 0.02;
+	private static final double a = 0.4;
+	private static final double b = 10.0;
 	
 	@Override
 	public void stateChanged(ChangeEvent e) {
@@ -22,8 +22,12 @@ public class AgentsSizeListener implements ChangeListener {
 
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
+			
+			double newValue = a*source.getValue() + b;
 			GUIResources.agentSizeSliderValue = source.getValue();
-			Agent.size = a * GUIResources.agentSizeSliderValue + b;
+			Agent.size = (int) newValue;
+			GUIResources.mapPanel.repaint();
+			System.out.println("zmiana");
 		}
 
 	}

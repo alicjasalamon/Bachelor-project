@@ -30,7 +30,7 @@ public class MainWindow extends JFrame{
 		
 		add(new LogoPanel(), BorderLayout.NORTH);
 		add(GUIResources.mainMenuPanel, BorderLayout.WEST);		
-		add(GUIResources.functionalMenuPanel, BorderLayout.CENTER );
+		add(GUIResources.functionalMenuPanel, BorderLayout.CENTER);
 		add(GUIResources.mapPanel, BorderLayout.EAST);
 		
 		setVisible(true);

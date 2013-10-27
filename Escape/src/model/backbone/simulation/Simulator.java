@@ -62,4 +62,7 @@ public class Simulator {
 		this.algorithm = algorithm;
     	
     }
+	public int getSimulationSpeed() {
+		return simulationSpeed;
+	}
 }

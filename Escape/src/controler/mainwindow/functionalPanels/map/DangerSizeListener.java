@@ -15,15 +15,15 @@ public class DangerSizeListener implements ChangeListener {
 	public void stateChanged(ChangeEvent e) {
 		// TODO 
 
-//		JSlider source = (JSlider) e.getSource();
-//		if (!source.getValueIsAdjusting()) {
-//
-//			GUIResources.lastDanger.setRadius(((double) source.getValue() + 1.0) / 10.0);
-//			GUIResources.dangerSizeSliderValue = source.getValue();
-//			GUIResources.lastDanger.setRadius(a * GUIResources.dangerSizeSliderValue + b);
-//			GUIResources.mapPanel.repaint();
-//
-//		}
+		JSlider source = (JSlider) e.getSource();
+		if (!source.getValueIsAdjusting()) {
+
+			GUIResources.lastDanger.setRadius( source.getValue());
+			GUIResources.dangerSizeSliderValue = source.getValue();
+			GUIResources.lastDanger.setRadius(GUIResources.dangerSizeSliderValue);
+			GUIResources.mapPanel.repaint();
+
+		}
 
 	}
 
