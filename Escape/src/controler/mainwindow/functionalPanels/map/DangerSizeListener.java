@@ -1,7 +1,10 @@
 package controler.mainwindow.functionalPanels.map;
 
+import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import resources.GUIResources;
 
 public class DangerSizeListener implements ChangeListener {
 
