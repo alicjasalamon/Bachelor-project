@@ -6,11 +6,14 @@ public class Agent {
 
 	public enum DestinationType { Exit, Sign, None}
 	private Point currentLocation;
+	private Point lastLocation;
 	private int floor;
 	private boolean isEscaped;
 	private boolean isDead;
 	private DestinationType destination;
 	private Point DestinationPoint;
+	private Point direction;
+
 
 	private int myHitPoints = 700;
 	
@@ -19,6 +22,7 @@ public class Agent {
 
 	public Agent(Point location, int floor) {
 		currentLocation = location;
+		lastLocation = null;
 		this.floor = floor;
 		destination = DestinationType.None;
 		DestinationPoint = null;
@@ -35,7 +39,9 @@ public class Agent {
 	}
 
 	public void setLocation(Point location) {
+		this.lastLocation = currentLocation;
 		this.currentLocation = location;
+		
 	}
 	
 	
@@ -92,4 +98,17 @@ public class Agent {
 		}
 	}
 	
+	
+	public Point getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Point direction) {
+		this.direction = direction;
+	}
+	
+	public Point getLastLocation() {
+		return lastLocation;
+	}
+
 }

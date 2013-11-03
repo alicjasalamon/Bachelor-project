@@ -3,27 +3,26 @@ package model.backbone.algorithm;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.utils.AlgorithUtilities;
+import model.backbone.utils.MathUtils;
 
-public class TestAlgorithm implements Algorithm {
+public class TestAlgorithm extends Algorithm {
 
 	@Override
-	public void makeYourMove(Agent agent) {
+	public void setAgentDestination(Agent agent) {
 		
 		//Update agent's destination
 		if (!(agent.getDestinationType() == DestinationType.Exit)) {
 			lookAround(agent);
 		}
 		
-		//Helping others
+//		//Helping others
 //		if (agent.getDestinationType() == DestinationType.Exit) {
 //			//Randomly chose to let others know about the exit or not
-//			if (AlgorithUtilities.rand.nextInt(100) > 50) {
+//			if (MathUtils.rand.nextInt(100) > 50) {
 //				AlgorithUtilities.letThemKnowAboutTheExit(agent);
 //			}
 //		}
-		
-		AlgorithUtilities.moveTowardsTheDestination(agent);
-		
+			
 	}
 
 	public void lookAround(Agent agent) {

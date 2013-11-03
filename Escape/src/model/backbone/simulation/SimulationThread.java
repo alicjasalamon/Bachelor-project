@@ -31,9 +31,12 @@ public class SimulationThread extends Thread{
 				for(Agent a : SimulationResources.building.getAgents())
 				{
 					if (!a.isEscaped()) {
-						simulationAlgorithm.makeYourMove(a);
+						simulationAlgorithm.setAgentDestination(a);		
+						simulationAlgorithm.setAgentDirection(a);
+						simulationAlgorithm.moveAgent(a);
 						a.ageHim();
 						GUIResources.mapPanel.repaint();
+						
 					}
 				}
 				try {
