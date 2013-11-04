@@ -127,7 +127,7 @@ public class MapPanel extends JPanel {
 		g.setColor(ColorSet.LIGHT_PURPLE);
 		for(Agent a : SimulationResources.building.getAgents())
 		{
-			if(a.getFloor()==floor && !a.isEscaped() && !a.isDead())
+			if(a.getFloor()==floor && !a.isEscaped())
 			{
 				g.fillOval(
 						(int)((a.getLocation().getX() - 0.5 * Agent.getSize()) * resize), 

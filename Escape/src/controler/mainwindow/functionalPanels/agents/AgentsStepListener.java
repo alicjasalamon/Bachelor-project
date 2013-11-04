@@ -8,8 +8,8 @@ import resources.GUIResources;
 
 public class AgentsStepListener implements ChangeListener {
 
-	private static final double a = 0.00025;
-	private static final double b = 0.005;
+//	private static final double a = 0.00025;
+//	private static final double b = 0.005;
 	
 	@Override
 	public void stateChanged(ChangeEvent e) {

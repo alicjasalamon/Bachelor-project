@@ -9,10 +9,11 @@ import resources.GUIResources;
 public class DangerSizeListener implements ChangeListener {
 
 	/*
-	 * Danger size formula: y = ax + b; x is jSlider value
+	 * Danger size formula: y = ax + b; 
+	 * x is jSlider value
 	 */
-	private static final double a = 0.0035;
-	private static final double b = 0.02;
+	private static final double a = 1.4;
+	private static final double b = 60;
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
@@ -21,9 +22,10 @@ public class DangerSizeListener implements ChangeListener {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 
+			double newValue = a *  source.getValue() + b;
 			GUIResources.lastDanger.setRadius( source.getValue());
 			GUIResources.dangerSizeSliderValue = source.getValue();
-			GUIResources.lastDanger.setRadius(GUIResources.dangerSizeSliderValue);
+			GUIResources.lastDanger.setRadius((int) newValue);
 			GUIResources.mapPanel.repaint();
 
 		}

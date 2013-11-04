@@ -45,7 +45,7 @@ public class BuildingExplorer {
 		Building building = new Building();
 		
 		try {
-			fXmlFile = new File("building_schema/building1.xml");
+			fXmlFile = new File(fileName);
 			doc = dBuilder.parse(fXmlFile);
 			doc.getDocumentElement().normalize();
 

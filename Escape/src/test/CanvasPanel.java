@@ -27,18 +27,30 @@ public class CanvasPanel extends JPanel {
     private Transform screenToNorm;
 	private Transform planeToNorm;
 	private Transform transformTotal;
-	int floor;
+	private int floor;
+	private int maxSize = 0;
+	
+	int sizeX = 650 , sizeY = 300;
 	
 	/**
      * Creates new canvas panel.
      */
     public CanvasPanel(int floor) {
-		setPreferredSize(new Dimension(920, 420));
+		 
+    	setPreferredSize(new Dimension(sizeX, sizeY));
         setBackground(ColorSet.WHITE);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
         this.floor=floor;
-        planeToNorm = new Transform.Builder().s(1.0/300).t(-1.0, -1.0).create();  // 1/300 to trzeba zmienic na 1/(max/2)
+        
+        int x, y;
+        x = SimulationResources.building.getFloors().get(floor).getSizeX();
+   	    y =  SimulationResources.building.getFloors().get(floor).getSizeY();
+        
+        maxSize = ( x > y) ? x : y;
+        
+        
+        planeToNorm = new Transform.Builder().s(1.0/(maxSize/2)).t(-1.0, -1.0).create();
         
         addComponentListener(new ComponentAdapter() {
             
@@ -72,8 +84,9 @@ public class CanvasPanel extends JPanel {
 
     private void recomputeTransform() {
         
-    	int panelWidth = 620;//= getWidth();											//a tutaj na max okienko
-        int panelHeight = 620;//= getHeight();
+    	//int max = (getWidth() > getHeight()) ? getWidth() : getHeight();
+    	int panelWidth = sizeX; //max; //620;//= getWidth();											//a tutaj na max okienko
+        int panelHeight = sizeX; //max;// 620;//= getHeight();
         
         Transform.Builder builder = new Transform.Builder()
                 .flipY()
@@ -127,7 +140,6 @@ public class CanvasPanel extends JPanel {
         recomputeTransform();
 
         setBackground(ColorSet.WHITE);
-        int floor = 0; // a mmnie zrob polem
         
         super.paintComponent(g);
     	
@@ -240,7 +252,7 @@ public class CanvasPanel extends JPanel {
 			{
 				Vec2d a1;
 				a1 = transformModelPoint(a.getLocation());
-				Vec2d rd = transformTotal.applyToDirection(new Vec2d(a.size, 0));
+				Vec2d rd = transformTotal.applyToDirection(new Vec2d(Agent.size, 0));
 //				double rlol = rd.x;
 				
 				g.fillOval(
@@ -256,4 +268,3 @@ public class CanvasPanel extends JPanel {
     }
     
     
-
