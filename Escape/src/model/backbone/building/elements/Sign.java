@@ -2,6 +2,7 @@ package model.backbone.building.elements;
 
 import model.backbone.building.helpers.Point;
 
+
 public class Sign {
 
 	private Point begin;
@@ -38,7 +39,7 @@ public class Sign {
 	
 	public String forXMLRepresentation()
 	{
-		return "x1=\"" + begin.getX() + "\" y1=\"" + begin.getY() + "\" x2=\"" + end.getX() + "\" y2=\"" + end.getY() + "\"";
+		return "x1=\"" + begin.getX() + "\" y1=\"" + begin.getY() + "\" x2=\"" + end.getX() + "\" y2=\"" + end.getY() + "\""  + "\" targetx=\"" + target.getX() + "\" target.y=\"" + target.getY() + "\"";
 	}
 
 }

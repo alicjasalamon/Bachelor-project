@@ -1,6 +1,5 @@
 package view.mainwindow.simulationMap;
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -26,17 +25,17 @@ public class TabbedMapPanel extends JPanel{
 		}
 		
 		//jTabbedPane.setBorder(null);
-		jTabbedPane.setPreferredSize(new Dimension(1020, 700));
-		setBackground(Color.WHITE);
+		jTabbedPane.setPreferredSize(new Dimension(1000, 680));
+		setBackground(ColorSet.WHITE);
 		
 		JPanel empty = new JPanel();
-		empty.setPreferredSize(new Dimension(1050, 5));
+		empty.setPreferredSize(new Dimension(950, 5));
 		empty.setBackground(ColorSet.WHITE);
 		
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setPreferredSize(new Dimension(1020, 710));
 		
-		add(empty);
+	//	add(empty);
 		add(jTabbedPane);
 		add(new LegendPanel());
 	}

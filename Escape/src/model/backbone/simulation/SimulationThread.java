@@ -9,6 +9,7 @@ public class SimulationThread extends Thread{
 	
 	private boolean shouldSimulationRun;
 	private Algorithm simulationAlgorithm;
+	@SuppressWarnings("unused")
 	private int simulationSpeed; 
 	
 	public SimulationThread(Algorithm algorithm, int simulationSpeed) {

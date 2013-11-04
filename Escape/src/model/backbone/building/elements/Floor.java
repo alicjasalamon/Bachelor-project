@@ -31,6 +31,8 @@ public class Floor {
 		for(Sign s : signs) {
 			s.printSign();
 		}
+		
+		System.out.println(sizeX + sizeY);
 
 	}
 	
@@ -77,5 +79,14 @@ public class Floor {
 		this.sizeY = sizeY;
 	}
 
+	public int getSizeX() {
+		return sizeX;
+	}
+
+	public int getSizeY() {
+		return sizeY;
+	}
+
+	
 
 }

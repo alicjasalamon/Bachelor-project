@@ -14,8 +14,11 @@ import resources.SimulationResources;
 
 public class CanvasController implements MouseListener, MouseMotionListener, MouseWheelListener {
 
+	@SuppressWarnings("unused")
 	private Transform normToScreen;
+	@SuppressWarnings("unused")
 	private Transform screenToNorm;
+	@SuppressWarnings("unused")
 	private Transform planeToNorm;
 	Transform transformTotal;
 	int floor;
@@ -35,10 +38,10 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 
 	}
 
-	private Vec2d getScreenPos(MouseEvent e) {
-		java.awt.Point p = e.getPoint();
-		return new Vec2d(p.x, p.y);
-	}
+//	private Vec2d getScreenPos(MouseEvent e) {
+//		java.awt.Point p = e.getPoint();
+//		return new Vec2d(p.x, p.y);
+//	}
 	
 
 	@Override
@@ -93,6 +96,7 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 	@Override
 	public void mouseEntered(MouseEvent arg0) {
 		// TODO Auto-generated method stub
+		
 
 	}
 

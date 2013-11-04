@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 
 import resources.ColorSet;
 import resources.GUIResources;
+import view.mainwindow.errorPanel.ErrorPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.logo.LogoPanel;
 import view.mainwindow.menubuttons.MenuButtonsPanel;
@@ -27,14 +28,19 @@ public class MainWindow extends JFrame{
 		GUIResources.mainMenuPanel = new MenuButtonsPanel();
 		GUIResources.functionalMenuPanel = new FunctionalPanel();
 		GUIResources.mapPanel = new TabbedMapPanel();
+		GUIResources.messagePanel = new ErrorPanel();
 		
 		add(new LogoPanel(), BorderLayout.NORTH);
 		add(GUIResources.mainMenuPanel, BorderLayout.WEST);		
 		add(GUIResources.functionalMenuPanel, BorderLayout.CENTER);
 		add(GUIResources.mapPanel, BorderLayout.EAST);
+		add(GUIResources.messagePanel, BorderLayout.SOUTH);
+		
+		
 		
 		setVisible(true);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		System.out.println(getWidth() + " " + getHeight());
 	}
 
 }

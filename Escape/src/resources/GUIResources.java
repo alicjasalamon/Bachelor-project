@@ -15,6 +15,7 @@ public class GUIResources {
 	public static JPanel mainMenuPanel;
 	public static JPanel functionalMenuPanel;
 	public static JPanel mapPanel;
+	public static JPanel messagePanel;
 	
 
 	public static boolean isMapOnMainPanel = true;
