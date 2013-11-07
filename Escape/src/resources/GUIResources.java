@@ -54,7 +54,8 @@ public class GUIResources {
 	//							set algorithm components 							//
 	//////////////////////////////////////////////////////////////////////////////////
 	public static ElementColection functionalChooseAlgorithmComponents = new ElementColection();
-	public static ElementColection functionalAddNewAlgorithmComponents = new ElementColection();
+	public static ElementColection functionalLoadNewAlgorithmComponents = new ElementColection();
+	public static ElementColection functionalEditAlgorithmComponents = new ElementColection();
 	public static ElementColection functionalCreateNewAlgorithmComponents = new ElementColection(); 
 	
 	//////////////////////////////////////////////////////////////////////////////////

@@ -25,7 +25,7 @@ public class TabbedMapPanel extends JPanel {
 
 		//jTabbedPane.setBorder(null);
 		jTabbedPane.setPreferredSize(new Dimension(1000, 700));
-		setBackground(ColorSet.SEE_GREEN);
+		setBackground(ColorSet.WHITE);
 
 		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 		setPreferredSize(new Dimension(1020, 710));

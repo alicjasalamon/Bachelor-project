@@ -10,7 +10,7 @@ public class AddDangerListener implements ClickAction {
 		
 		GUIResources.drawDanger = true;
 		GUIResources.drawAgent = false;
-
+		GUIResources.setSuccesMessage("click on map to add a Danger");
 	}
 
 }

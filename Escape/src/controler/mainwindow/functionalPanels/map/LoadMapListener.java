@@ -17,18 +17,13 @@ public class LoadMapListener implements ClickAction {
 		FileDialog fd = new FileDialog(GUIResources.mainFrame, "Choose a building", FileDialog.LOAD);
 		fd.setDirectory("building_schema");
 		fd.setVisible(true);
-
 		String filename = fd.getFile();
-		if (filename == null)
-		  System.out.println("You cancelled the choice");
-		else
-		  System.out.println("You chose " + filename);
-		
-		SimulationResources.building = new BuildingExplorer().parseBuilding("building_schema/" + filename);
-		GUIResources.mapPanel.repaint();
 	
-		
-	}
+		if (filename != null) {
+			SimulationResources.building = new BuildingExplorer().parseBuilding("building_schema/" + filename);
+			GUIResources.mapPanel.repaint();
+		}
 
+	}
 
 }

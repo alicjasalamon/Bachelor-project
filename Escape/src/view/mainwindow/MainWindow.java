@@ -43,11 +43,6 @@ public class MainWindow extends JFrame{
 		helpPanel.add(GUIResources.mainMenuPanel, BorderLayout.WEST);
 		helpPanel.add(GUIResources.functionalMenuPanel, BorderLayout.CENTER);
 		helpPanel.add(GUIResources.messagePanel, BorderLayout.SOUTH);
-		
-		JPanel emptyPanel = new JPanel();
-		emptyPanel.setBackground(Color.PINK);
-		emptyPanel.setPreferredSize(new Dimension(30, 10));
-	//	helpPanel.add(emptyPanel, BorderLayout.EAST);
 
 		add(new LogoPanel(), BorderLayout.NORTH);
 //		add(GUIResources.mainMenuPanel, BorderLayout.WEST);		

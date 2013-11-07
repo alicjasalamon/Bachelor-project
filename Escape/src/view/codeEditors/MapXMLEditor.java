@@ -1,4 +1,4 @@
-package view;
+package view.codeEditors;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -11,7 +11,6 @@ import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -56,7 +55,7 @@ public class MapXMLEditor extends JFrame {
 		
 		cp.add(fb, BorderLayout.SOUTH);
 		setTitle("Map editor");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(HIDE_ON_CLOSE);
 		pack();
 		setLocationRelativeTo(null);
 		setVisible(true);

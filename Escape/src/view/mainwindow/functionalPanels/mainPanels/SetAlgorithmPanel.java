@@ -3,15 +3,14 @@ package view.mainwindow.functionalPanels.mainPanels;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
-import controler.mainwindow.functionalPanels.algorithm.AddNewAlgorithmListener;
-import controler.mainwindow.functionalPanels.algorithm.CreateNewAlgorithmListener;
-
 import resources.GUIResources;
-
 import view.mainwindow.functionalPanels.AlgorithmChoicePanel;
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
+import controler.mainwindow.functionalPanels.algorithm.CreateNewAlgorithmListener;
+import controler.mainwindow.functionalPanels.algorithm.EditAlgorithmListener;
+import controler.mainwindow.functionalPanels.algorithm.LoadAlgorithmListener;
 
 public class SetAlgorithmPanel extends FunctionalPanel {
 
@@ -19,8 +18,11 @@ public class SetAlgorithmPanel extends FunctionalPanel {
 
 	JPanel choicePanel;
 
-	JPanel addAlgorithmPanel;
-	JButton addAlgorithmButton;
+	JPanel loadAlgorithmPanel;
+	JButton loadAlgorithmButton;
+	
+	JPanel editAlgorithmPanel;
+	JButton editAlgorithmButton;
 	
 	JPanel createAlgorithmPanel;
 	JButton createAlgorithmButton;
@@ -30,14 +32,18 @@ public class SetAlgorithmPanel extends FunctionalPanel {
 		
 		choicePanel = new AlgorithmChoicePanel();
 		
-		addAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\Add.png", "Add new algorithm");
-		addAlgorithmPanel = new FunctionalButtonBackgroundPanel(addAlgorithmButton, GUIResources.functionalAddNewAlgorithmComponents, new AddNewAlgorithmListener());
+		loadAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\LoadAlgo.png", "Load algorithm");
+		loadAlgorithmPanel = new FunctionalButtonBackgroundPanel(loadAlgorithmButton, GUIResources.functionalLoadNewAlgorithmComponents, new LoadAlgorithmListener());
+		
+		editAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\EditAlgo.png", "Edit algorithm");
+		editAlgorithmPanel = new FunctionalButtonBackgroundPanel(editAlgorithmButton, GUIResources.functionalEditAlgorithmComponents, new EditAlgorithmListener());
 		
 		createAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\CreateAlgo.png", "Create new algorithm");
 		createAlgorithmPanel = new FunctionalButtonBackgroundPanel(createAlgorithmButton, GUIResources.functionalCreateNewAlgorithmComponents, new CreateNewAlgorithmListener());
 		
 		add(choicePanel);
-		add(addAlgorithmPanel);
+		add(loadAlgorithmPanel);
+		add(editAlgorithmPanel);
 		add(createAlgorithmPanel);
 	}
 	
