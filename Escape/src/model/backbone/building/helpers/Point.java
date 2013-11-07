@@ -11,6 +11,18 @@ public class Point {
 		y=0;
 	}
 	
+	public Point(Point p)
+	{
+		this.x = p.x;
+		this.y = p.y;
+	}
+	
+	public Point(Point p, int xOffset, int yOffset)
+	{
+		this.x = p.x+xOffset;
+		this.y = p.y+yOffset;
+	}
+	
 	public int getX() {
 		return x;
 	}

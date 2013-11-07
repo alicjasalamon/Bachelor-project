@@ -7,12 +7,13 @@ import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.helpers.Point;
 import model.backbone.utils.AlgorithUtilities;
+import model.backbone.utils.CollisionUtils;
 import model.backbone.utils.MathUtils;
 import resources.SimulationResources;
 
 /**
  * To create a new Algorithm you need to extend this class and override setDestination
- * Optionally you can override setAgentDirection and moveAgent for full control of agents behaviour
+ * Optionally you can override setAgentDirection and moveAgent for full control of agent's behavior
  */
 public abstract class Algorithm {
 	
@@ -23,46 +24,57 @@ public abstract class Algorithm {
 	public void setAgentDirection(Agent agent) {
 		if (!(agent.getDestinationType() == DestinationType.None)) {
 			
+			if (CollisionUtils.areThereObstaclesInMyPath(agent, agent.getDestinationPoint())) {
+				if (!agent.isAvoidingCollision()) {					
+					CollisionUtils.rerouteMe(agent);
+				}
+			} else {
+				agent.setAvoidingCollision(false);
+			}
 			//Determine the destination
-			int xDest = (agent.getLocation().getX() == agent.getDestinationPoint().getX()) ? 0 :
-				(agent.getLocation().getX() > agent.getDestinationPoint().getX()) ? -1 : 1;
-			int yDest = agent.getLocation().getY() == agent.getDestinationPoint().getY() ? 0 :
-				(agent.getLocation().getY() > agent.getDestinationPoint().getY()) ? -1 : 1;
+			Point destination = agent.getDestinationPoint();
+			if (agent.isAvoidingCollision()) {
+				
+				ArrayList<Point> tempDestPoints = agent.getTemporaryDestinationPoints();
+				for (Point p : tempDestPoints) {
+					if (MathUtils.getDistanceBetweenTwoPoints(agent.getLocation(), p) < 5) {
+						ArrayList<Point> newPoints = new ArrayList<Point>(tempDestPoints);
+						newPoints.remove(p);
+						agent.setTemporaryDestinationPoints(newPoints);
+					}
+				}
+				
+				tempDestPoints = agent.getTemporaryDestinationPoints();
+				
+				for (Point p : tempDestPoints) {
+					if (!CollisionUtils.areThereObstaclesInMyPath(agent, p)) {
+						destination = p;
+						break;
+					}
+				}
+			}
+			
+			int xDest = (agent.getLocation().getX() == destination.getX()) ? 0 :
+				(agent.getLocation().getX() > destination.getX()) ? -1 : 1;
+			int yDest = agent.getLocation().getY() == destination.getY() ? 0 :
+				(agent.getLocation().getY() > destination.getY()) ? -1 : 1;
 			
 
-			//Pick the route with some randomness if the distance is high:
-			//If the distance from the target is higher on one axis
-			//it is more likely for that agent to move to the target in a straight line
-//			if (MathUtils.getDistanceBetweenTwoPoints(agent.getLocation(), agent.getDestinationPoint()) > 70) {
-				//Determine the the target distance
-			int xDist = Math.abs(agent.getLocation().getX()- agent.getDestinationPoint().getX());
-			int yDist = Math.abs(agent.getLocation().getY()- agent.getDestinationPoint().getY());
-//				
-//				if (AlgorithUtilities.rand.nextFloat() > (xDist/(xDist+yDist))) {
-//					xDest = 0;
-//				} else {
-//					yDest = 0;
-//				}
-//			}
-			
-//			//Try to move
-//			while (!AlgorithUtilities.canIMoveThere(agent, xDest, yDest)) {
-//				
-//			}
-			if (AlgorithUtilities.howFarToClosestExit(agent) < 50) agent.setDirection(new Point(xDest, yDest));
-			if (AlgorithUtilities.canIMoveThere(agent, xDest, yDest)) {
+		
+			//if (AlgorithUtilities.howFarToClosestExit(agent) < 50) agent.setDirection(new Point(xDest, yDest));
+			if (CollisionUtils.canIMoveThere(agent, xDest, yDest)) {
 				agent.setDirection(new Point(xDest, yDest));
 			} 
-			else if (AlgorithUtilities.canIMoveThere(agent, xDest, 0)) {
+			else if (CollisionUtils.canIMoveThere(agent, xDest, 0)) {
 				agent.setDirection(new Point(xDest, 0));
 			}
-			else if (AlgorithUtilities.canIMoveThere(agent, 0, yDest)) {
+			else if (CollisionUtils.canIMoveThere(agent, 0, yDest)) {
 				agent.setDirection(new Point(0, yDest));
 			}
-			else if (AlgorithUtilities.canIMoveThere(agent, xDest, -yDest)) {
+			else if (CollisionUtils.canIMoveThere(agent, xDest, -yDest)) {
 				agent.setDirection(new Point(xDest, -yDest));
 			} 
-			else if (AlgorithUtilities.canIMoveThere(agent, -xDest, yDest)){
+			else if (CollisionUtils.canIMoveThere(agent, -xDest, yDest)){
 				agent.setDirection(new Point(-xDest, yDest));
 			} else {
 				agent.setDirection(new Point(0, 0));

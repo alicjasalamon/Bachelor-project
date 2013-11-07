@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
-import model.backbone.building.elements.Danger;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Wall;
@@ -12,6 +11,7 @@ import model.backbone.building.helpers.Point;
 import resources.SimulationResources;
 
 public class AlgorithUtilities {
+
 
 	//Checks whether the target is behind the wall
 	public static boolean canISeeIt(Agent me, Point myTarget) {
@@ -76,49 +76,6 @@ public class AlgorithUtilities {
 	}
 	
 	
-	
-	public static boolean canIMoveThere(Agent me, int xDest, int yDest) {
-		ArrayList<Agent> agents = (ArrayList<Agent>) SimulationResources.building.getAgents();
-		ArrayList<Wall> walls = (ArrayList<Wall>) SimulationResources.building.getFloors().get(me.getFloor()).getWalls();
-		ArrayList<Danger> dangers = (ArrayList<Danger>) SimulationResources.building.getFloors().get(me.getFloor()).getDangers();
-		
-		Point myDestination = new Point(me.getLocation().getX()+xDest, me.getLocation().getY()+yDest);
-		if (me.getLastLocation() != null &&
-				myDestination.stringRepresentation().equals(me.getLastLocation().stringRepresentation())) return false;
-		//Check if agent will not come too close to the wall
-		for (Wall w : walls) {
-			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination) < 30
-					&& MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), myDestination)
-					< MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), me.getLocation()) ) {
-				return false;
-			}
-		}
-		//Check if agent will not come too close to the danger
-		for (Danger d : dangers) {
-			if (MathUtils.getDistanceBetweenTwoPoints(d.getCenter(), myDestination) < d.getRadius()+20
-					&& MathUtils.getDistanceBetweenTwoPoints(d.getCenter(), myDestination)
-					< MathUtils.getDistanceBetweenTwoPoints(d.getCenter(), me.getLocation())  ) {
-				return false;
-			}
-		}
-		
-		//Check if any other agent will block this agent's path
-		for (Agent a : agents) {
-			//check if its not the same agent!
-			if (a.equals(me) || a.isEscaped()) continue;
-			//Are the agents on the same floor
-			if (a.getFloor() == me.getFloor()) {
-					//Is any other agent too close to our destination
-				if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), myDestination) < 40
-						&& MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), myDestination)
-						< MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), me.getLocation())) {
-					return false;
-				}	
-			}
-		}
-		
-		return true;
-	}
 	
 	public static void setDestinationToNearestExit(Agent me) {
 		ArrayList<Exit> exits = (ArrayList<Exit>) SimulationResources.building.getFloors().get(me.getFloor()).getExits();
@@ -189,7 +146,6 @@ public class AlgorithUtilities {
 		
 		return exitDistance;
 	}
-	
 	
 	
 	

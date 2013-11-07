@@ -3,7 +3,6 @@ package model.backbone.algorithm;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.utils.AlgorithUtilities;
-import model.backbone.utils.MathUtils;
 
 public class TestAlgorithm extends Algorithm {
 

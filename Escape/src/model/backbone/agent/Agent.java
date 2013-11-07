@@ -1,5 +1,7 @@
 package model.backbone.agent;
 
+import java.util.ArrayList;
+
 import model.backbone.building.helpers.Point;
 
 public class Agent {
@@ -13,7 +15,9 @@ public class Agent {
 	private DestinationType destination;
 	private Point DestinationPoint;
 	private Point direction;
-
+	//Collision
+	private boolean isAvoidingCollision;
+	private ArrayList<Point> temporaryDestinationPoints;
 
 	private int myHitPoints = 700;
 	
@@ -28,6 +32,8 @@ public class Agent {
 		DestinationPoint = null;
 		isEscaped = false;
 		isDead = false;
+		setAvoidingCollision(false);
+		setTemporaryDestinationPoints(null);
 	}
 
 	public Agent(int x, int y, int floor) {
@@ -109,6 +115,23 @@ public class Agent {
 	
 	public Point getLastLocation() {
 		return lastLocation;
+	}
+
+	public boolean isAvoidingCollision() {
+		return isAvoidingCollision;
+	}
+
+	public void setAvoidingCollision(boolean isAvoidingCollision) {
+		this.isAvoidingCollision = isAvoidingCollision;
+	}
+
+	public ArrayList<Point> getTemporaryDestinationPoints() {
+		return temporaryDestinationPoints;
+	}
+
+	public void setTemporaryDestinationPoints(
+			ArrayList<Point> temporaryDestinationPoints) {
+		this.temporaryDestinationPoints = temporaryDestinationPoints;
 	}
 
 }
