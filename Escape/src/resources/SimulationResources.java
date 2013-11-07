@@ -2,7 +2,6 @@ package resources;
 
 import java.util.ArrayList;
 
-import model.backbone.algorithm.TestAlgorithm;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
 import model.backbone.simulation.Simulator;

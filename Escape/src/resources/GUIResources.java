@@ -1,10 +1,14 @@
 package resources;
 
+import java.awt.Color;
+
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import model.backbone.building.elements.Danger;
 import view.mainwindow.ElementColection;
+import view.mainwindow.ErrorPanel;
 
 public class GUIResources {
 
@@ -15,7 +19,7 @@ public class GUIResources {
 	public static JPanel mainMenuPanel;
 	public static JPanel functionalMenuPanel;
 	public static JPanel mapPanel;
-	public static JPanel messagePanel;
+	public static ErrorPanel messagePanel;
 	
 
 	public static boolean isMapOnMainPanel = true;
@@ -90,5 +94,19 @@ public class GUIResources {
 	public static int dangerSizeSliderValue = 50;
 	public static int agentSizeSliderValue = 50;
 	public static int agentStepSliderValue = 50;
+	
+	public static void setSuccesMessage(String message)
+	{
+		messagePanel.label.setForeground(ColorSet.BLACK);
+		messagePanel.label.setText(message);
+		messagePanel.repaint();
+	}
+	
+	public static void setErrorMessage(String message)
+	{
+		messagePanel.label.setForeground(ColorSet.RED);
+		messagePanel.label.setText(message);
+		messagePanel.repaint();
+	}
 	
 }

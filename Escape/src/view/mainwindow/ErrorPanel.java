@@ -16,25 +16,16 @@ public class ErrorPanel extends JPanel{
 	
 	String message;
 	Color fontColor;
+	public JLabel label = new JLabel();
 	
-	public ErrorPanel() {
-		
-		message = "hello :) ";
-		fontColor = Color.DARK_GRAY;
-		JLabel label = new JLabel(message);
-		label.setFont(FontSet.ERROR_FONT);
-		label.setForeground(fontColor);
+	public ErrorPanel()
+	{
 		setBackground(ColorSet.WHITE);
-		add(label);
 		setPreferredSize(new Dimension(20, 30));
 		setLayout(new FlowLayout(FlowLayout.LEFT));
-	}
-	
-	public void updateMessage(String message, boolean success)
-	{
-		this.message = message;
-		fontColor = (success) ? ColorSet.DARK_GRAY : ColorSet.RED;
-		this.repaint();
+		label.setText(message);
+		label.setFont(FontSet.ERROR_FONT);
+		add(label);
 	}
 	
 }
