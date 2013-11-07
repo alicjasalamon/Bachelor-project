@@ -23,6 +23,13 @@
 			<artifactId>jfreechart</artifactId>
 			<version>1.0.13</version>
 		</dependency>
+		<dependency>
+			<groupId>com.fifesoft</groupId>
+			<artifactId>rsyntaxtextarea</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+
+
 
 	</dependencies>
 </project>

@@ -1,14 +1,44 @@
-<company>
-	<staff id="1001">
-		<firstname>yong</firstname>
-		<lastname>mook kim</lastname>
-		<nickname>mkyong</nickname>
-		<salary>100000</salary>
-	</staff>
-	<staff id="2001">
-		<firstname>low</firstname>
-		<lastname>yin fong</lastname>
-		<nickname>fong fong</nickname>
-		<salary>200000</salary>
-	</staff>
-</company>
+<building>
+	
+	<floors>
+		<floor>
+			<resolution x="600" y="600"/>
+			
+			<walls>
+				<wall x1="0" y1="0" x2="0" y2="600"/>
+				<wall x1="0" y1="600" x2="600" y2="600"/>
+				<wall x1="600" y1="0" x2="600" y2="600"/>
+			</walls>
+			
+			<dangers>
+				<danger x="300" y="300" r="20"/>
+			</dangers>
+			<signs>
+				<sign x1="300" y1="450" x2="300" y2="460" targetx="450" targety="200"/>
+			</signs>
+			<exits>
+				<exit x1="150" y1="0" x2="475" y2="0"/>
+			</exits>
+			
+
+			
+		</floor>
+		
+		<floor>
+			<resolution x="600" y="600"/>
+			<walls>
+				<wall x1="0" y1="0" x2="0" y2="600"/>
+				<wall x1="0" y1="0" x2="600" y2="0"/>
+				<wall x1="0" y1="600" x2="600" y2="600"/>
+				<wall x1="600" y1="0" x2="600" y2="600"/>
+			</walls>
+			
+		</floor>
+	
+	</floors>
+	
+	<staircases>
+			<staircase x1="80" y1="80" lenght="150" height="150"/>
+	</staircases>
+	
+</building>
