@@ -48,7 +48,6 @@ public class GUIResources {
 	//////////////////////////////////////////////////////////////////////////////////
 	public static ElementColection functionalAddAgentComponents = new ElementColection();
 	public static ElementColection functionalSetAgentSizeComponents = new ElementColection();
-	public static ElementColection functionalSetAgentStepComponents = new ElementColection();
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	//							set algorithm components 							//

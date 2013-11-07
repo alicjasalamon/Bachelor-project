@@ -24,10 +24,6 @@ public class AddAgentsPanel extends FunctionalPanel{
 	
 	JPanel agentSizePanel;
 	JSlider agentSize;
-
-	JPanel agentStepPanel;
-	JSlider agentStep;
-
 	
 	public AddAgentsPanel()
 	{
@@ -37,14 +33,9 @@ public class AddAgentsPanel extends FunctionalPanel{
 		agentSize = new FunctionalSlider();
 		agentSize.addChangeListener(new AgentsSizeListener());
 		agentSizePanel = new FunctionalSliderBackgroundPanel(agentSize, "Set agent size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentSizeComponents);
-		
-		agentStep = new FunctionalSlider();
-		agentStep.addChangeListener(new AgentsStepListener());
-		agentStepPanel = new FunctionalSliderBackgroundPanel(agentStep, "Set step size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentStepComponents);
-		
+	
 		add(addAgentPanel);
 		add(agentSizePanel);
-		add(agentStepPanel);
 		
 	}
 
