@@ -3,8 +3,6 @@ package model.backbone.algorithm;
 import java.util.Random;
 
 import model.backbone.agent.Agent;
-import model.backbone.building.helpers.Point;
-import resources.GUIResources;
 
 public class PogoPeopleAlgorithm extends Algorithm {
 
