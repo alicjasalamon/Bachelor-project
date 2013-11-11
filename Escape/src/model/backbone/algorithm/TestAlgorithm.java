@@ -37,7 +37,13 @@ public class TestAlgorithm extends Algorithm {
 			AlgorithUtilities.setDestinationAccordingToNearestSign(agent);
 			return;
 		}
-
+		
+		//Can the agent see a node of interest
+		if (AlgorithUtilities.canISeeAnyNodesOfInterest(agent)) {
+			AlgorithUtilities.setDestinationAccordingToNearestNodeOfInterest(agent);
+			return;
+		}
+		
 	}
 	
 }

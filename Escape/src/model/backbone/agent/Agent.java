@@ -6,7 +6,8 @@ import model.backbone.building.helpers.Point;
 
 public class Agent {
 
-	public enum DestinationType { Exit, Sign, None}
+	//NOI stands for NodeOfInterest
+	public enum DestinationType { Exit, Sign, NOI, None}
 	private Point currentLocation;
 	private Point lastLocation;
 	private int floor;

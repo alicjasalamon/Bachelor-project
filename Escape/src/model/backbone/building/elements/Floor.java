@@ -9,7 +9,7 @@ public class Floor {
 	private List<Danger> dangers = new ArrayList<Danger>();
 	private List<Exit> exits = new ArrayList<Exit>();
 	private List<Sign> signs = new ArrayList<Sign>();
-
+	private List<NodeOfInterest> nodesOfInterest = new ArrayList<NodeOfInterest>();
 	private int sizeX;
 	private int sizeY;
 	
@@ -50,6 +50,11 @@ public class Floor {
 		exits.add(exit);
 	}
 	
+	public void addNodeOfInterest(NodeOfInterest noi)
+	{
+		nodesOfInterest.add(noi);
+	}
+	
 	public void addSign(Sign sign)
 	{
 		signs.add(sign);
@@ -85,6 +90,14 @@ public class Floor {
 
 	public int getSizeY() {
 		return sizeY;
+	}
+
+	public List<NodeOfInterest> getNodesOfInterest() {
+		return nodesOfInterest;
+	}
+
+	public void setNodesOfInterest(List<NodeOfInterest> nodesOfInterest) {
+		this.nodesOfInterest = nodesOfInterest;
 	}
 
 	

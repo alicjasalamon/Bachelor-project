@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
+import model.backbone.building.elements.NodeOfInterest;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Wall;
 import model.backbone.building.helpers.Point;
@@ -34,6 +35,19 @@ public class AlgorithUtilities {
 		for (Exit e : exits) {			
 			if (canISeeIt(me, e.getBegin()) || canISeeIt(me, e.getEnd())
 					|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(e.getBegin(), e.getEnd()))) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public static boolean canISeeAnyNodesOfInterest(Agent me) {
+		
+		ArrayList<NodeOfInterest> nodes = (ArrayList<NodeOfInterest>) SimulationResources.building.getFloors().get(me.getFloor()).getNodesOfInterest();
+
+		for (NodeOfInterest n : nodes) {			
+			if (canISeeIt(me, n.getBegin()) || canISeeIt(me, n.getEnd())
+					|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(n.getBegin(), n.getEnd()))) {
 				return true;
 			}
 		}
@@ -127,6 +141,24 @@ public class AlgorithUtilities {
 		}
 		
 		me.setDestination(DestinationType.Sign, nearestSign.getTarget());
+	}
+	
+	public static void setDestinationAccordingToNearestNodeOfInterest(Agent me) {
+		ArrayList<NodeOfInterest> nodes = (ArrayList<NodeOfInterest>) SimulationResources.building.getFloors().get(me.getFloor()).getNodesOfInterest();
+		NodeOfInterest nearestNode = null;
+		int nodeDistance = 0;
+		
+		for (NodeOfInterest n : nodes) {			
+			if (canISeeIt(me, n.getBegin()) || canISeeIt(me, n.getEnd())
+					|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(n.getBegin(), n.getEnd()))) {
+				if (nearestNode == null || nodeDistance > MathUtils.getDistanceBetweenPointAndLine(n.getBegin(), n.getEnd(), me.getLocation())) {
+					nearestNode = n;
+					nodeDistance = MathUtils.getDistanceBetweenPointAndLine(n.getBegin(), n.getEnd(), me.getLocation());
+				} 
+			}
+		}
+		
+		me.setDestination(DestinationType.NOI, MathUtils.getMiddlePointOfTheLine(nearestNode.getBegin(), nearestNode.getEnd()));
 	}
 	
 	public static int howFarToClosestExit(Agent me) {

@@ -15,9 +15,7 @@
 			<dangers>
 				<danger x="300" y="300" r="20"/>
 			</dangers>
-			<signs>
-				<sign x1="300" y1="450" x2="300" y2="460" targetx="450" targety="200"/>
-			</signs>
+
 			<exits>
 				<exit x1="150" y1="0" x2="475" y2="0"/>
 			</exits>

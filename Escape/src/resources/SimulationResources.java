@@ -5,12 +5,14 @@ import java.util.ArrayList;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
 import model.backbone.simulation.Simulator;
+import model.backbone.utils.NodeOfInterestUtils;
 
 public class SimulationResources {
 	
 	public static Building building;
 	public static ArrayList<String> agentsNames;
 	public static Simulator simulator;
+	public static NodeOfInterestUtils utils = new NodeOfInterestUtils();
 	
 	public static void initialize()
 	{

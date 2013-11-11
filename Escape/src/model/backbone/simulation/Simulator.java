@@ -1,5 +1,6 @@
 package model.backbone.simulation;
 
+import resources.SimulationResources;
 import model.backbone.algorithm.Algorithm;
 import model.backbone.algorithm.TestAlgorithm;
 
@@ -33,7 +34,7 @@ public class Simulator {
 			this.setAlgorithm(new TestAlgorithm());
 			simulationThread.initialize(algorithm,simulationSpeed);
 			//TODO Tutaj do podpiecia wybieranie algorytmow
-			
+			SimulationResources.utils.initialize();	
 			simulationThread.allowSimulation();
 			simulationThread.start();
 		} else if (this.preciseState == PreciseSimulationState.Paused ){
