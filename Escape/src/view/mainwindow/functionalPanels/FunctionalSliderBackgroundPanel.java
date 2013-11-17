@@ -18,6 +18,7 @@ import resources.FontSet;
 import view.mainwindow.BasicControl;
 import view.mainwindow.ElementColection;
 import controler.mainwindow.FunctionalButtonListener;
+import controler.mainwindow.FunctionalSliderListener;
 
 public class FunctionalSliderBackgroundPanel extends BasicControl {
 
@@ -55,7 +56,7 @@ public class FunctionalSliderBackgroundPanel extends BasicControl {
 		elementColection.addElement(this);
 		elementColection.addElement(jSlider);
 		elementColection.addElement(labelPanel);
-		elementColection.addMouseListener(new FunctionalButtonListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
+		elementColection.addMouseListener(new FunctionalSliderListener(elementColection, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY));
 		
 	}
 

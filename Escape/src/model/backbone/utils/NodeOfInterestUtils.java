@@ -22,13 +22,13 @@ public class NodeOfInterestUtils {
 		building = SimulationResources.building;
 		List<Floor> floors = building.getFloors();
 		
+		int sizeX = SimulationResources.building.getResolutionX() + 1;
+		int sizeY = SimulationResources.building.getResolutionY() + 1;
 		
 		for (int floorNumber = 0; floorNumber < floors.size();floorNumber++) {
 			Floor floor = building.getFloors().get(floorNumber); 
 			List<Wall> walls = floor.getWalls();
 			
-			int sizeX = floor.getSizeX()+1;
-			int sizeY = floor.getSizeY()+1;
 			Integer adjacentSquares[][] = new Integer[sizeX][sizeY];
 			
 			//fill in with zeros

@@ -37,8 +37,6 @@ public class GUIResources {
 	//////////////////////////////////////////////////////////////////////////////////
 	//							edit map components 								//
 	//////////////////////////////////////////////////////////////////////////////////
-	public static ElementColection functionalAddDangerComponents = new ElementColection();
-	public static ElementColection functionalSetDangerSizeComponents = new ElementColection();
 	public static ElementColection functionalLoadMapComponents = new ElementColection(); 
 	public static ElementColection functionalEditMapComponents = new ElementColection();
 	public static ElementColection functionalCreateNewMapComponents = new ElementColection();
@@ -46,6 +44,8 @@ public class GUIResources {
 	//////////////////////////////////////////////////////////////////////////////////
 	//							manage agents components 							//
 	//////////////////////////////////////////////////////////////////////////////////
+	public static ElementColection functionalSetDangerSizeComponents = new ElementColection();
+	public static ElementColection functionalAddDangerComponents = new ElementColection();
 	public static ElementColection functionalAddAgentComponents = new ElementColection();
 	public static ElementColection functionalSetAgentSizeComponents = new ElementColection();
 	

@@ -11,7 +11,7 @@ public class LoadAlgorithmListener implements ClickAction {
 	public void act() {
 		// TODO Auto-generated method stub
 		FileDialog fd = new FileDialog(GUIResources.mainFrame, "Save your algorithm", FileDialog.SAVE);
-		fd.setDirectory("building_schema");
+		fd.setDirectory("algorithms");
 		fd.setVisible(true);
 
 		//	String filename = fd.getFile();

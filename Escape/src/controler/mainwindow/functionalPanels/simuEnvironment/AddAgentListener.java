@@ -1,4 +1,4 @@
-package controler.mainwindow.functionalPanels.agents;
+package controler.mainwindow.functionalPanels.simuEnvironment;
 
 import resources.GUIResources;
 import controler.mainwindow.functionalPanels.ClickAction;

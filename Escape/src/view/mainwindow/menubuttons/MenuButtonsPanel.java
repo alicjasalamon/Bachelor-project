@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 
 import resources.ColorSet;
 import resources.GUIResources;
-import view.mainwindow.functionalPanels.mainPanels.AddAgentsPanel;
+import view.mainwindow.functionalPanels.mainPanels.SetSimuEnvironment;
 import view.mainwindow.functionalPanels.mainPanels.EditMapPanel;
 import view.mainwindow.functionalPanels.mainPanels.SetAlgorithmPanel;
 import view.mainwindow.functionalPanels.mainPanels.SimulationPanel;
@@ -42,8 +42,8 @@ public class MenuButtonsPanel extends JPanel {
 		editMapButton = new MenuButton("buttonIcons\\Maps.png", "Manage maps");
 		editMapPanel = new MenuButtonBackgroundPanel(editMapButton, GUIResources.menuEditMapComponents, new EditMapPanel());
 		
-		agentsButton = new MenuButton("buttonIcons\\Agents.png", "Set simulation environment");
-		agentsPanel = new MenuButtonBackgroundPanel(agentsButton, GUIResources.menuManageAgentsComponents, new AddAgentsPanel());
+		agentsButton = new MenuButton("buttonIcons\\Agents.png", "Set environment");
+		agentsPanel = new MenuButtonBackgroundPanel(agentsButton, GUIResources.menuManageAgentsComponents, new SetSimuEnvironment());
 		
 		setAlgoButton = new MenuButton("buttonIcons\\Algo.png", "Set algorithm");
 		setAlgoPanel = new MenuButtonBackgroundPanel(setAlgoButton, GUIResources.menuSetAlgorithmComponents, new SetAlgorithmPanel());

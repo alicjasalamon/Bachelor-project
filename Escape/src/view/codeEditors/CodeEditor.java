@@ -34,7 +34,7 @@ public class CodeEditor {
 	private void XMLEdit() {
 
 		FileDialog fd = new FileDialog(GUIResources.mainFrame, "Save your building", FileDialog.LOAD);
-		fd.setDirectory("building_schemas");
+		fd.setDirectory("building_schema");
 		fd.setVisible(true);
 
 		String fileName = fd.getFile();
@@ -64,7 +64,7 @@ public class CodeEditor {
 			public void actionPerformed(ActionEvent e) {
 
 				FileDialog fd = new FileDialog(GUIResources.mainFrame, "Save your building", FileDialog.SAVE);
-				fd.setDirectory("building_schemas");
+				fd.setDirectory("building_schema");
 				fd.setVisible(true);
 
 				String fileName = fd.getFile();

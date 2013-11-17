@@ -12,6 +12,8 @@ public class Building {
 	private List<Floor> floors = new ArrayList<Floor>();
 	private List<Staircase> stairCases = new ArrayList<Staircase>();
 	private List<Agent> agents = new ArrayList<Agent>();
+	private int resolutionX;
+	private int resolutionY;
 
 	public void printBuilding() {
 
@@ -57,4 +59,25 @@ public class Building {
 		stairCases.add(staircase);
 	}
 
+
+	public int getResolutionX() {
+		return resolutionX;
+	}
+
+
+	public void setResolutionX(int resolutionX) {
+		this.resolutionX = resolutionX;
+	}
+
+
+	public int getResolutionY() {
+		return resolutionY;
+	}
+
+
+	public void setResolutionY(int resolutionY) {
+		this.resolutionY = resolutionY;
+	}
+
+	
 }

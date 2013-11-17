@@ -7,7 +7,7 @@ public class Danger {
 	private Point center;
 	private int radius;
 	public static int initialRadius = 140;
-	// y = 0.0035 * slider + 0.05
+	// y = 0.4 * slider + 10
 	
 	public Danger() {
 		

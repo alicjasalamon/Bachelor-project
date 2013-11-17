@@ -44,8 +44,8 @@ public class CanvasPanel extends JPanel {
         this.floor=floor;
         
         int x, y;
-        x = SimulationResources.building.getFloors().get(floor).getSizeX();
-   	    y =  SimulationResources.building.getFloors().get(floor).getSizeY();
+        x = SimulationResources.building.getResolutionX();
+   	    y = SimulationResources.building.getResolutionY();
         
         maxSize = ( x > y) ? x : y;
         

@@ -9,14 +9,6 @@ public class RunSimulationListener implements ClickAction {
 	public void act() {
 		
 		SimulationResources.simulator.startSimulation();
-//		if(SimulationListener.simulationClicksNumber==0)
-//		{	
-//			SimulationListener.simulationClicksNumber++;
-//			Simulator.simulationThread.start();
-//		}
-//		else
-//			Simulator.simulationThread.resume();
-		
 	}
 
 

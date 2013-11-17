@@ -4,11 +4,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-import controler.mainwindow.functionalPanels.agents.AddAgentListener;
-import controler.mainwindow.functionalPanels.agents.AgentsSizeListener;
-import controler.mainwindow.functionalPanels.agents.AgentsStepListener;
-import controler.mainwindow.functionalPanels.map.AddDangerListener;
-import controler.mainwindow.functionalPanels.map.DangerSizeListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AddAgentListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AddDangerListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AgentsSizeListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AgentsStepListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.DangerSizeListener;
 
 import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalButton;
@@ -17,7 +17,7 @@ import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.functionalPanels.FunctionalSlider;
 import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
 
-public class AddAgentsPanel extends FunctionalPanel{
+public class SetSimuEnvironment extends FunctionalPanel{
 
 	private static final long serialVersionUID = -2214054905060884710L;
 	
@@ -33,10 +33,9 @@ public class AddAgentsPanel extends FunctionalPanel{
 	JPanel dangerSizePanel;
 	JSlider dangerSize;
 	
-	public AddAgentsPanel()
+	public SetSimuEnvironment()
 	{
 
-		
 		addDanger = new FunctionalButton("functionalPanelsIcons\\Danger.png", "Add danger");
 		addDangerPanel = new FunctionalButtonBackgroundPanel(addDanger, GUIResources.functionalAddDangerComponents, new AddDangerListener());
 		

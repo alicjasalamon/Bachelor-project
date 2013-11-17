@@ -1,4 +1,4 @@
-package controler.mainwindow.functionalPanels.agents;
+package controler.mainwindow.functionalPanels.simuEnvironment;
 
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;

@@ -1,8 +1,10 @@
-package controler.mainwindow.functionalPanels.map;
+package controler.mainwindow.functionalPanels.simuEnvironment;
 
 import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import model.backbone.building.elements.Danger;
 
 import resources.GUIResources;
 
@@ -22,11 +24,16 @@ public class DangerSizeListener implements ChangeListener {
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 
-			double newValue = a *  source.getValue() + b;
-			GUIResources.lastDanger.setRadius( source.getValue());
+			int newValue = (int) (a *  source.getValue() + b);
 			GUIResources.dangerSizeSliderValue = source.getValue();
-			GUIResources.lastDanger.setRadius((int) newValue);
+			Danger.initialRadius = newValue;
+			
+			if(GUIResources.lastDanger!=null) {
+				GUIResources.lastDanger.setRadius( source.getValue());
+				GUIResources.lastDanger.setRadius((int) newValue);	
+			}
 			GUIResources.mapPanel.repaint();
+
 
 		}
 

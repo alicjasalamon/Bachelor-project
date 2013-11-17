@@ -8,7 +8,6 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 import model.backbone.building.Building;
-import model.backbone.building.elements.Danger;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.elements.Floor;
 import model.backbone.building.elements.Sign;
@@ -71,128 +70,53 @@ public class BuildingExplorer {
 							//////////////////////////////////////////////////////////////////////////////
 							//								WALLS										//
 							//////////////////////////////////////////////////////////////////////////////
-							if (floorElementNode.getNodeName().equals("walls")) {
+							if (floorElementNode.getNodeName().equals("wall")) {
 							
-								NodeList wallsList = floorElementNode.getChildNodes();
+								NamedNodeMap nodeMap = floorElementNode.getAttributes();
+								Wall wall = new Wall(
+									Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+									Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+									Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+									Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
 								
-								for (int w = 0; w < wallsList.getLength(); w++) { 
-								
-									Node wallNode = wallsList.item(w);
-									if (wallNode.getNodeType() == Node.ELEMENT_NODE) {
-									
-										NamedNodeMap nodeMap = wallNode.getAttributes();
-										Wall wall = new Wall(
-										Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
-										Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
-										Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
-										Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
-										
-										floor.addWall(wall);
-									}
-								
-								}
-							
+								floor.addWall(wall);		
 							}
 
-							//////////////////////////////////////////////////////////////////////////////
-							//								RESOLUTION									//
-							//////////////////////////////////////////////////////////////////////////////
-							if (floorElementNode.getNodeName().equals("resolution")) {
-
-								if (floorElementNode.getNodeType() == Node.ELEMENT_NODE) {
-									
-									NamedNodeMap nodeMap = floorElementNode.getAttributes();
-									floor.setSizeX(Integer.parseInt(nodeMap.getNamedItem("x").getNodeValue()));
-									floor.setSizeY(Integer.parseInt(nodeMap.getNamedItem("y").getNodeValue()));
-								}
-									
-								
-
-							}
-							
 							//////////////////////////////////////////////////////////////////////////////
 							//								SIGNS										//
 							//////////////////////////////////////////////////////////////////////////////
 							if (floorElementNode.getNodeName().equals("signs")) {
-								
 
-								NodeList signsList = floorElementNode.getChildNodes();
-								for (int w = 0; w < signsList.getLength(); w++) {
+								NamedNodeMap nodeMap = floorElementNode.getAttributes();
+								Sign sign = new Sign(
+										Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("targetx").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("targety").getNodeValue()));
 
-									Node signNode = signsList.item(w);
-
-									if (signNode.getNodeType() == Node.ELEMENT_NODE) {
-
-										NamedNodeMap nodeMap = signNode.getAttributes();
-										Sign sign = new Sign(
-												Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("targetx").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("targety").getNodeValue()));
-
-										floor.addSign(sign);
-										}
-									
-								}
-
-							}
+								floor.addSign(sign);
 							
-							//////////////////////////////////////////////////////////////////////////////
-							//								DANGERS										//
-							//////////////////////////////////////////////////////////////////////////////
-							if (floorElementNode.getNodeName().equals("dangers")) {
-								
-								NodeList dangersList = floorElementNode.getChildNodes();
-
-								for (int w = 0; w < dangersList.getLength(); w++) {
-
-									Node dangerNode = dangersList.item(w);
-									
-									if (dangerNode.getNodeType() == Node.ELEMENT_NODE) {
-										
-										NamedNodeMap nodeMap = dangerNode.getAttributes();
-										Danger danger = new Danger(
-												Integer.parseInt(nodeMap.getNamedItem("x").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("r").getNodeValue()));
-
-										floor.addDanger(danger);
-									}
-									
-								}
-
 							}
 							
 							//////////////////////////////////////////////////////////////////////////////
 							//								EXITS										//
 							//////////////////////////////////////////////////////////////////////////////
-							if (floorElementNode.getNodeName().equals("exits")) {
+				
+							if (floorElementNode.getNodeName().equals("exit")) {
+								
+								NamedNodeMap nodeMap = floorElementNode.getAttributes();
+								Exit exit = new Exit(
+										Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
+										Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
 
-								NodeList exitsList = floorElementNode.getChildNodes();
+								floor.addExit(exit);
 
-								for (int w = 0; w < exitsList.getLength(); w++) {
-
-									Node exitNode = exitsList.item(w);
-									if (exitNode.getNodeType() == Node.ELEMENT_NODE) {
-										
-										NamedNodeMap nodeMap = exitNode.getAttributes();
-										Exit exit = new Exit(
-												Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("x2").getNodeValue()),
-												Integer.parseInt(nodeMap.getNamedItem("y2").getNodeValue()));
-
-										floor.addExit(exit);
-
-									}
-								}
-
-							}
-							
+							}		
 						}
-						
 					}
 				}
 				building.addFloor(floor);
@@ -211,15 +135,23 @@ public class BuildingExplorer {
 					
 					NamedNodeMap nodeMap = staircaseNode.getAttributes();
 					Staircase staircase = new Staircase(
-							Integer.parseInt(nodeMap.getNamedItem("x1").getNodeValue()),
-							Integer.parseInt(nodeMap.getNamedItem("y1").getNodeValue()),
-							Integer.parseInt(nodeMap.getNamedItem("lenght").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("x").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("y").getNodeValue()),
+							Integer.parseInt(nodeMap.getNamedItem("width").getNodeValue()),
 							Integer.parseInt(nodeMap.getNamedItem("height").getNodeValue()));
 
 					building.addStaircase(staircase);
 				}
 			}
-
+			
+			//////////////////////////////////////////////////////////////////////////////
+			//								RESOLUTION									//
+			//////////////////////////////////////////////////////////////////////////////
+			
+			Node resolutionNode = doc.getElementsByTagName("resolution").item(0);
+			building.setResolutionX(Integer.parseInt(resolutionNode.getAttributes().getNamedItem("x").getNodeValue()));
+			building.setResolutionY(Integer.parseInt(resolutionNode.getAttributes().getNamedItem("y").getNodeValue()));
+			
 		} catch (SAXException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -248,44 +180,27 @@ public class BuildingExplorer {
 			//								WALLS										//
 			//////////////////////////////////////////////////////////////////////////////
 
-			sb.append("\t\t\t<walls>\n");
 			for(Wall wall : floor.getWalls())
 			{
 				sb.append("\t\t\t\t<wall "+ wall.forXMLRepresentation() + "/>\n");			
 			}
-			sb.append("\t\t\t</walls>\n");
 	
 			//////////////////////////////////////////////////////////////////////////////
 			//								SIGNS										//
 			//////////////////////////////////////////////////////////////////////////////
-		
-			sb.append("\t\t\t<signs>\n");
+
 			for(Sign sign : floor.getSigns())
 			{
 				sb.append("\t\t\t\t<sign "+ sign.forXMLRepresentation() + "/>\n");				
 			}
-			sb.append("\t\t\t</signs>\n");
-									
-			//////////////////////////////////////////////////////////////////////////////
-			//								DANGERS										//
-			//////////////////////////////////////////////////////////////////////////////
-		
-			sb.append("\t\t\t<dangers>\n");
-			for(Danger danger : floor.getDangers())
-			{
-				sb.append("\t\t\t\t<danger "+ danger.forXMLRepresentation() + "/>\n");			
-			}
-			sb.append("\t\t\t</dangers>\n");				
+												
 			//////////////////////////////////////////////////////////////////////////////
 			//								EXITS										//
 			//////////////////////////////////////////////////////////////////////////////
-			sb.append("\t\t\t<exits>\n");
 			for(Exit exit : floor.getExits())
 			{
 				sb.append("\t\t\t\t<exit "+ exit.forXMLRepresentation() + "/>\n");			
 			}
-			sb.append("\t\t\t</exits>\n");	
-		
 			
 			sb.append("\t\t</floor>\n");
 		}
@@ -294,7 +209,10 @@ public class BuildingExplorer {
 			//////////////////////////////////////////////////////////////////////////////
 			//								STAIRCASES									//
 			//////////////////////////////////////////////////////////////////////////////
-
+			for(Staircase staircase : building.getStairCases())
+			{
+				sb.append("\t\t\t\t<exit "+ staircase.forXMLRepresentation() + "/>\n");			
+			}
 
 			sb.append("</bulding>");
 			String result =  sb.toString();

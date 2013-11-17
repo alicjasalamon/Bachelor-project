@@ -5,27 +5,27 @@ import model.backbone.building.helpers.Point;
 public class Staircase {
 
 	private Point point1;
-	private int lenght;
+	private int width;
 	private int height;
 	
 	public Staircase()
  	{
 		point1 = new Point();
-		lenght = 0;
+		width = 0;
 		height = 0;
 	}
 	
 	public Staircase(Point a, int l, int h)
 	{
 		point1 = a;
-		lenght = l;
+		width = l;
 		height = h;
 	}
 	
 	public Staircase(int x1, int y1, int l, int h)
 	{
 		point1 = new Point(x1, y1);
-		lenght = l;
+		width = l;
 		height = h;
 	}
 	
@@ -34,7 +34,7 @@ public class Staircase {
 	}
 
 	public int getLenght() {
-		return lenght;
+		return width;
 	}
 
 	public int getHeight() {
@@ -42,11 +42,11 @@ public class Staircase {
 	}
 
 	public void printStaircase() {
-		System.out.println("staircase: " + point1.stringRepresentation() + " - " + lenght + " " + height);
+		System.out.println("staircase: " + point1.stringRepresentation() + " - " + width + " " + height);
 	}
 
 	public String forXMLRepresentation()
 	{
-		return "x1=\"" + point1.getX() + "\" y1=\"" + point1.getY() + "\" lenght=\"" + lenght + "\" height=\"" + height + "\"";
+		return "x=\"" + point1.getX() + "\" y=\"" + point1.getY() + "\" width=\"" + width + "\" height=\"" + height + "\"";
 	}
 }

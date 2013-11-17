@@ -10,8 +10,8 @@ public class Floor {
 	private List<Exit> exits = new ArrayList<Exit>();
 	private List<Sign> signs = new ArrayList<Sign>();
 	private List<NodeOfInterest> nodesOfInterest = new ArrayList<NodeOfInterest>();
-	private int sizeX;
-	private int sizeY;
+//	private int sizeX;
+//	private int sizeY;
 	
 	public void printFloor() {
 		System.out.println("WALLS:");
@@ -32,8 +32,6 @@ public class Floor {
 			s.printSign();
 		}
 		
-		System.out.println(sizeX + sizeY);
-
 	}
 	
 	public void addWall(Wall wall){
@@ -76,21 +74,21 @@ public class Floor {
 		return signs;
 	}
 	
-	public void setSizeX(int sizeX) {
-		this.sizeX = sizeX;
-	}
-
-	public void setSizeY(int sizeY) {
-		this.sizeY = sizeY;
-	}
-
-	public int getSizeX() {
-		return sizeX;
-	}
-
-	public int getSizeY() {
-		return sizeY;
-	}
+//	public void setSizeX(int sizeX) {
+//		this.sizeX = sizeX;
+//	}
+//
+//	public void setSizeY(int sizeY) {
+//		this.sizeY = sizeY;
+//	}
+//
+//	public int getSizeX() {
+//		return sizeX;
+//	}
+//
+//	public int getSizeY() {
+//		return sizeY;
+//	}
 
 	public List<NodeOfInterest> getNodesOfInterest() {
 		return nodesOfInterest;
