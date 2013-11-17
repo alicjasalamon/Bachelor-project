@@ -20,11 +20,7 @@ public class EditMapPanel extends FunctionalPanel{
 
 	private static final long serialVersionUID = -5433820953259752619L;
 	
-	JPanel addDangerPanel;
-	JButton addDanger;
-	
-	JPanel dangerSizePanel;
-	JSlider dangerSize;
+
 	
 	JPanel loadMapPanel;
 	JButton loadMap;
@@ -38,12 +34,6 @@ public class EditMapPanel extends FunctionalPanel{
 	public EditMapPanel()
 	{
 		
-		addDanger = new FunctionalButton("functionalPanelsIcons\\Danger.png", "Add danger");
-		addDangerPanel = new FunctionalButtonBackgroundPanel(addDanger, GUIResources.functionalAddDangerComponents, new AddDangerListener());
-		
-		dangerSize = new FunctionalSlider();
-		dangerSize.addChangeListener(new DangerSizeListener());
-		dangerSizePanel = new FunctionalSliderBackgroundPanel(dangerSize, "Set danger size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetDangerSizeComponents);
 
 		loadMap = new FunctionalButton("functionalPanelsIcons\\LoadMap.png", "Load map");
 		loadMapPanel = new FunctionalButtonBackgroundPanel(loadMap, GUIResources.functionalLoadMapComponents, new LoadMapListener() );
@@ -54,8 +44,6 @@ public class EditMapPanel extends FunctionalPanel{
 		createMap = new FunctionalButton("functionalPanelsIcons\\NewMap.png", "Create new map");
 		createMapPanel = new FunctionalButtonBackgroundPanel(createMap, GUIResources.functionalCreateNewMapComponents, new CreateNewMapListener());
 		
-		add(addDangerPanel);
-		add(dangerSizePanel);
 		add(loadMapPanel);
 		add(editMapPanel);
 		add(createMapPanel);

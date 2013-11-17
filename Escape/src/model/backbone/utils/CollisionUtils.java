@@ -31,7 +31,7 @@ public class CollisionUtils {
 
 		Danger danger = getClosestObstacleInMyPath(me);
 		ArrayList<Point> possibleReroutePoints = getReroutePoints(danger, me.getFloor()); 
-		ArrayList<Point> sortedByPriorityPoints = new ArrayList<>();
+		ArrayList<Point> sortedByPriorityPoints = new ArrayList<Point>();
 		
 		while (true) {
 			

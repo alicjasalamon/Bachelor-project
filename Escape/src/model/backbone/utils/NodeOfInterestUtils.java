@@ -17,7 +17,7 @@ public class NodeOfInterestUtils {
 	private Building building;
 	private Map<Integer, Integer[][]> adjacentSquaresMap = new HashMap<Integer, Integer[][]>();
 	//some of those points, will pass filtering and become NodesOfInterest
-	private Map<Integer, List<Point>> interestingPoints = new HashMap<>(); 
+	private Map<Integer, List<Point>> interestingPoints = new HashMap<Integer, List<Point>>(); 
 	public void initialize() {
 		building = SimulationResources.building;
 		List<Floor> floors = building.getFloors();

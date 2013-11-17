@@ -39,10 +39,10 @@ public class MenuButtonsPanel extends JPanel {
 		setBackground(ColorSet.WHITE);
 		setLayout(new FlowLayout(FlowLayout.LEFT, 10, 5));
 		
-		editMapButton = new MenuButton("buttonIcons\\Maps.png", "Edit map");
+		editMapButton = new MenuButton("buttonIcons\\Maps.png", "Manage maps");
 		editMapPanel = new MenuButtonBackgroundPanel(editMapButton, GUIResources.menuEditMapComponents, new EditMapPanel());
 		
-		agentsButton = new MenuButton("buttonIcons\\Agents.png", "Manage agents");
+		agentsButton = new MenuButton("buttonIcons\\Agents.png", "Set simulation environment");
 		agentsPanel = new MenuButtonBackgroundPanel(agentsButton, GUIResources.menuManageAgentsComponents, new AddAgentsPanel());
 		
 		setAlgoButton = new MenuButton("buttonIcons\\Algo.png", "Set algorithm");
