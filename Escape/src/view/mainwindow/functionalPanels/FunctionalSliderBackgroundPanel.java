@@ -17,7 +17,6 @@ import resources.ColorSet;
 import resources.FontSet;
 import view.mainwindow.BasicControl;
 import view.mainwindow.ElementColection;
-import controler.mainwindow.FunctionalButtonListener;
 import controler.mainwindow.FunctionalSliderListener;
 
 public class FunctionalSliderBackgroundPanel extends BasicControl {

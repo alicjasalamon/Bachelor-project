@@ -2,19 +2,14 @@ package view.mainwindow.functionalPanels.mainPanels;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
-import javax.swing.JSlider;
 
 import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
-import view.mainwindow.functionalPanels.FunctionalSlider;
-import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
 import controler.mainwindow.functionalPanels.map.CreateNewMapListener;
 import controler.mainwindow.functionalPanels.map.EditMapListener;
 import controler.mainwindow.functionalPanels.map.LoadMapListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.AddDangerListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.DangerSizeListener;
 
 public class EditMapPanel extends FunctionalPanel{
 

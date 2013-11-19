@@ -4,18 +4,16 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 
-import controler.mainwindow.functionalPanels.simuEnvironment.AddAgentListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.AddDangerListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.AgentsSizeListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.AgentsStepListener;
-import controler.mainwindow.functionalPanels.simuEnvironment.DangerSizeListener;
-
 import resources.GUIResources;
 import view.mainwindow.functionalPanels.FunctionalButton;
 import view.mainwindow.functionalPanels.FunctionalButtonBackgroundPanel;
 import view.mainwindow.functionalPanels.FunctionalPanel;
 import view.mainwindow.functionalPanels.FunctionalSlider;
 import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
+import controler.mainwindow.functionalPanels.simuEnvironment.AddAgentListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AddDangerListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AgentsSizeListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.DangerSizeListener;
 
 public class SetSimuEnvironment extends FunctionalPanel{
 

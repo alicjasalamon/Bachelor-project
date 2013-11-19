@@ -6,7 +6,6 @@ import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.helpers.Point;
-import model.backbone.utils.AlgorithUtilities;
 import model.backbone.utils.CollisionUtils;
 import model.backbone.utils.MathUtils;
 import resources.SimulationResources;

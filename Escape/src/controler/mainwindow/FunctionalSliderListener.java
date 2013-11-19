@@ -8,8 +8,6 @@ import javax.swing.JComponent;
 
 import view.mainwindow.ElementColection;
 
-import controler.mainwindow.functionalPanels.ClickAction;
-
 public class FunctionalSliderListener implements MouseListener {
 
 	private ElementColection elementColection;
