@@ -1,77 +1,38 @@
 package view.infos;
 
-import java.awt.Dimension;
-import java.awt.Frame;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.awt.GridLayout;
 
-import javax.swing.BoxLayout;
-import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 
-import resources.ColorSet;
 import resources.FontSet;
-import resources.GUIResources;
 
-public class AboutFrame extends JFrame {
+public class AboutFrame extends InfoFrame {
 
 	private static final long serialVersionUID = -338909528663988811L;
 	
 	public AboutFrame() {
+		JPanel pnl = new JPanel(new GridLayout(14, 1));
+		pnl.add(createLabel("Project:\n", FontSet.INFO_FRAME_BOLD_FONT));
+		pnl.add(createLabel("System for modeling and simulation of building evacuation process\n\n", FontSet.INFO_FRAME_FONT));
+		pnl.add(createLabel("\n", FontSet.INFO_FRAME_FONT));
 		
-		super("ABOUT");
-		String everything = null;
+		pnl.add(createLabel("Authors:\n", FontSet.INFO_FRAME_BOLD_FONT));
+		pnl.add(createLabel("Alicja Salamon, Dawid Aksamit\n\n", FontSet.INFO_FRAME_FONT));
+		pnl.add(createLabel("\n", FontSet.INFO_FRAME_FONT));
 		
-		BufferedReader br = null;
-	    try {
-	    	 br = new BufferedReader(new FileReader(GUIResources.aboutPath));
-	        StringBuilder sb = new StringBuilder();
-	        String line = br.readLine();
-
-	        while (line != null) {
-	            sb.append(line);
-	            sb.append('\n');
-	            line = br.readLine();
-	        }
-	        everything = sb.toString();
-	    } catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
-	    finally {
-	        try {
-				br.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
-	    
-	//	setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setLocation(200, 200);
-		setPreferredSize(new Dimension(800,500));
-		setBackground(ColorSet.WHITE);
+		pnl.add(createLabel("Supervisor:\n", FontSet.INFO_FRAME_BOLD_FONT));
+		pnl.add(createLabel("Rafa³ Dre¿ewski PhD\n\n", FontSet.INFO_FRAME_FONT));
+		pnl.add(createLabel("\n", FontSet.INFO_FRAME_FONT));
 		
-		JPanel mainPanel = new JPanel(); 
-		mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
-		JTextArea info = new JTextArea(everything);
+		pnl.add(createLabel("AGH University of Science and Technology\n", FontSet.INFO_FRAME_BOLD_FONT));
+		pnl.add(createLabel("Department: Computer Science, Electronics and Telecommunications\n", FontSet.INFO_FRAME_FONT));
+		pnl.add(createLabel("Faculty: Computer Science\n\n", FontSet.INFO_FRAME_FONT));
+		pnl.add(createLabel("\n", FontSet.INFO_FRAME_FONT));
 		
-		info.setFont(FontSet.MENU_FONT);
-		info.setEditable(false);
+		pnl.add(createLabel("Academic year 2013/2014\n", FontSet.INFO_FRAME_FONT));
 		
-		info.setLineWrap(true);
-		info.setWrapStyleWord(true);
-
-		mainPanel.add(info);
-		//mainPanel.setPreferredSize(new Dimension(20, 200));
-		pack();
-	    setVisible(true);
-	    setState(Frame.ICONIFIED);
-	    setState(Frame.NORMAL);
-		add(mainPanel);
-		setVisible(true);
+		JOptionPane.showMessageDialog(null, pnl);
 
 	}
 
