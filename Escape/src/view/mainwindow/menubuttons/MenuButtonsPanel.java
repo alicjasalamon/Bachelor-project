@@ -51,7 +51,7 @@ public class MenuButtonsPanel extends JPanel {
 		simulationButton = new MenuButton("buttonIcons\\Run.png", "Simulate");
 		simulationPanel = new MenuButtonBackgroundPanel(simulationButton, GUIResources.menuSimulateComponents, new SimulationPanel());
 		
-		statiscticsButton = new MenuButton("buttonIcons\\Stats.png", "Show statistics");
+		statiscticsButton = new MenuButton("buttonIcons\\Stats.png", "Analyze statistics");
 		statiscticsPanel = new MenuButtonBackgroundPanel(statiscticsButton, GUIResources.menuShowStaticticsComponents, new StatisticsPanel());
 		
 		JPanel empty = new JPanel();

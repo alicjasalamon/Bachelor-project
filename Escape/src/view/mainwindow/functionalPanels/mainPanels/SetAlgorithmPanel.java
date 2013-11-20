@@ -38,7 +38,7 @@ public class SetAlgorithmPanel extends FunctionalPanel {
 		editAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\EditAlgo.png", "Edit algorithm");
 		editAlgorithmPanel = new FunctionalButtonBackgroundPanel(editAlgorithmButton, GUIResources.functionalEditAlgorithmComponents, new EditAlgorithmListener());
 		
-		createAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\CreateAlgo.png", "Create new algorithm");
+		createAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\CreateAlgo.png", "Create algorithm");
 		createAlgorithmPanel = new FunctionalButtonBackgroundPanel(createAlgorithmButton, GUIResources.functionalCreateNewAlgorithmComponents, new CreateNewAlgorithmListener());
 		
 		add(choicePanel);

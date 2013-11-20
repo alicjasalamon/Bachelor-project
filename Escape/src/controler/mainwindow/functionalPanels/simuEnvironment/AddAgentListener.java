@@ -11,7 +11,7 @@ public class AddAgentListener implements ClickAction {
 		GUIResources.drawDanger = false;
 		GUIResources.drawAgent = true;
 		
-		GUIResources.setSuccesMessage("click on map to add an Agent");
+		GUIResources.setSuccesMessage("Click on map to add an Agent");
 	}
 
 
