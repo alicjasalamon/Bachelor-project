@@ -18,7 +18,12 @@ import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.ErrorHandler;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
+import org.xml.sax.SAXParseException;
+
+import resources.GUIResources;
 
 public class BuildingExplorer {
 
@@ -30,8 +35,34 @@ public class BuildingExplorer {
 	public BuildingExplorer() {
 
 		try {
+			
 			dbFactory = DocumentBuilderFactory.newInstance();
+			dbFactory.setValidating(false);
+			dbFactory.setNamespaceAware(true);
 			dBuilder = dbFactory.newDocumentBuilder();
+			
+			dBuilder.setErrorHandler(new ErrorHandler() {
+				
+				@Override
+				public void warning(SAXParseException exception) throws SAXException {
+					// TODO Auto-generated method stub
+					GUIResources.setErrorMessage("Error while loading this file");
+				}
+				
+				@Override
+				public void fatalError(SAXParseException exception) throws SAXException {
+					// TODO Auto-generated method stub
+					GUIResources.setErrorMessage("Error while loading this file");
+					
+				}
+				
+				@Override
+				public void error(SAXParseException exception) throws SAXException {
+					// TODO Auto-generated method stub
+					GUIResources.setErrorMessage("Error while loading this file");
+					
+				}
+			});
 
 		} catch (ParserConfigurationException e) {
 			e.printStackTrace();
@@ -45,9 +76,10 @@ public class BuildingExplorer {
 		
 		try {
 			fXmlFile = new File(fileName);
-			doc = dBuilder.parse(fXmlFile);
+			System.out.println("zoim");
+			doc = dBuilder.parse(new InputSource(fileName));
+			System.out.println("ziom2");
 			doc.getDocumentElement().normalize();
-
 			//////////////////////////////////////////////////////////////////////////////
 			//								FLOORS										//
 			//////////////////////////////////////////////////////////////////////////////
@@ -153,12 +185,15 @@ public class BuildingExplorer {
 			building.setResolutionY(Integer.parseInt(resolutionNode.getAttributes().getNamedItem("y").getNodeValue()));
 			
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			GUIResources.setErrorMessage("Error while processing map file");
+		//	e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			GUIResources.setErrorMessage("Error while loading this file");
+		//	e.printStackTrace();
+		} catch (Exception e) {
+			GUIResources.setErrorMessage("Error while loading this file");
+		//	e.printStackTrace();
+	}
 		return building;
 	}
 

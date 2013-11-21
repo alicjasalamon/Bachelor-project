@@ -16,6 +16,7 @@ import resources.SimulationResources;
  */
 public abstract class Algorithm {
 	
+
 	//Set agent's destination to which he will try to get
 	public abstract void setAgentDestination(Agent agent);
 	

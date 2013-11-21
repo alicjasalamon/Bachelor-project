@@ -79,7 +79,6 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 
 			SimulationResources.building.getAgents().add(new Agent(new Point((int) click.x, (int) click.y), floor));
 			GUIResources.mapPanel.repaint();
-			SimulationResources.building.printBuilding();
 		}
 
 		if (GUIResources.drawDanger) {
@@ -87,9 +86,8 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 			Danger newDanger = new Danger((new Point((int) (click.x), (int) (click.y))), Danger.initialRadius);
 			GUIResources.lastDanger = newDanger;
 			SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);
-
 			GUIResources.mapPanel.repaint();
-			SimulationResources.building.printBuilding();
+
 		}
 	}
 

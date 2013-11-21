@@ -3,6 +3,8 @@ package view.codeEditors;
 import java.awt.FileDialog;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
@@ -19,7 +21,7 @@ public class CodeEditor {
 	public CodeEditor(String language, String mode) {
 
 		codeFrame = new CodeFrame();
-		
+
 		if (language.equals("Java") && mode.equals("new"))
 			JavaNew();
 		else if (language.equals("Java") && mode.equals("edit"))
@@ -37,27 +39,37 @@ public class CodeEditor {
 		fd.setDirectory("building_schema");
 		fd.setVisible(true);
 
-		String fileName = fd.getFile();
+		final String fileName = fd.getFile();
 		if (fileName != null) {
-			
+
 			codeFrame.setTitle(fileName);
 			codeFrame.setLanguage(SyntaxConstants.SYNTAX_STYLE_XML);
 			codeFrame.setInitText("building_schema\\" + fileName);
 			codeFrame.setActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("zapisuje to co mam w okienku w pliku");					
+
+					PrintWriter out = null;
+					try {
+						out = new PrintWriter("building_schema\\" + fileName);
+						out.write(codeFrame.textArea.getText());
+						GUIResources.setSuccesMessage("Map successfully saved");
+					} catch (FileNotFoundException e1) {
+						GUIResources.setErrorMessage("Error while saving the map");
+						e1.printStackTrace();
+					}finally{
+						out.close();
+					}
 				}
 			});
 			codeFrame.setVisible(true);
 		}
 
-
 	}
 
 	private void XMLNew() {
-		
+
 		codeFrame.setActionListener(new ActionListener() {
 
 			@Override
@@ -69,7 +81,18 @@ public class CodeEditor {
 
 				String fileName = fd.getFile();
 				if (fileName != null) {
-					System.out.println("zapisujemy budynek");
+
+					PrintWriter out = null;
+					try {
+						out = new PrintWriter("building_schema\\" + fileName);
+						out.write(codeFrame.textArea.getText());
+						GUIResources.setSuccesMessage("Map successfully saved");
+					} catch (FileNotFoundException e1) {
+						e1.printStackTrace();
+						GUIResources.setErrorMessage("Error while saving the map");
+					}finally{
+						out.close();
+					}
 				}
 			}
 		});
@@ -81,22 +104,21 @@ public class CodeEditor {
 	}
 
 	private void JavaEdit() {
-	
 
 		FileDialog fd = new FileDialog(GUIResources.mainFrame, "Save your algorithm", FileDialog.LOAD);
 		fd.setDirectory("algorithms");
 		fd.setVisible(true);
-		
+
 		final String fileName = fd.getFile();
 		if (fileName != null) {
-			
+
 			codeFrame.setTitle(fileName);
 			codeFrame.setInitText("algorithms\\" + fileName);
 			codeFrame.setActionListener(new ActionListener() {
-				
+
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					System.out.println("zapisuje algosa");	
+					System.out.println("zapisuje algosa");
 
 				}
 			});

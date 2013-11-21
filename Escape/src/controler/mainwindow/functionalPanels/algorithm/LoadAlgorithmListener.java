@@ -19,6 +19,12 @@ public class LoadAlgorithmListener implements ClickAction {
 		/*
 		 * TODO: tutaj dodac algorytm do CheckBoxów
 		 */
+		
+		//jesli sie skompiluje i uda dodac to
+		GUIResources.setSuccesMessage("Algorithm successfully loaded");
+		
+		//else
+		//GUIResources.setErrorMessage("Algorithm compilation failed");
 	}
 
 

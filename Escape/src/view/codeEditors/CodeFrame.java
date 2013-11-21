@@ -1,6 +1,7 @@
 package view.codeEditors;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -25,7 +26,8 @@ public class CodeFrame extends JFrame {
 	public CodeFrame() {
 
 		setLayout(new BorderLayout());
-		setLocation(100, 200);
+		setLocation(50, 50);
+		setPreferredSize(new Dimension(700, 800));
 		JPanel cp = new JPanel(new BorderLayout());
 		textArea = new RSyntaxTextArea(20, 60);
 		RTextScrollPane sp = new RTextScrollPane(textArea);

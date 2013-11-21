@@ -45,6 +45,8 @@ public class MenuButtonListener implements MouseListener {
 		
 		GUIResources.mainFrame.repaint();
 		GUIResources.mainFrame.setVisible(true);
+		
+		GUIResources.setSuccesMessage("");
 	}
 
 	@Override

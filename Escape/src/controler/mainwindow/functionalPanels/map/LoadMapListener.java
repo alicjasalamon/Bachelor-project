@@ -21,6 +21,7 @@ public class LoadMapListener implements ClickAction {
 	
 		if (filename != null) {
 			SimulationResources.building = new BuildingExplorer().parseBuilding("building_schema/" + filename);
+			GUIResources.setSuccesMessage("Map successfully loaded");
 			GUIResources.mapPanel.repaint();
 		}
 

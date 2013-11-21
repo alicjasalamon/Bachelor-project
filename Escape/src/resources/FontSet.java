@@ -10,5 +10,4 @@ public class FontSet {
         public static final Font INFO_FRAME_FONT = new Font("Segoe UI", 0, 14);
         public static final Font INFO_FRAME_BOLD_FONT = new Font("Segoe UI", Font.BOLD, 14);
 
-
 }

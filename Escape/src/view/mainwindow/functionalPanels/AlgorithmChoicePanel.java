@@ -16,6 +16,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import controler.mainwindow.FunctionalButtonListener;
+import controler.mainwindow.functionalPanels.algorithm.ChooseAlgorithmListener;
 
 import resources.ColorSet;
 import resources.FontSet;
@@ -33,7 +34,7 @@ public class AlgorithmChoicePanel extends BasicControl {
 
 	public AlgorithmChoicePanel() {
 		
-		super(null);
+		super(new ChooseAlgorithmListener());
 		
 		buttonGroup = new ButtonGroup();
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -79,6 +80,7 @@ public class AlgorithmChoicePanel extends BasicControl {
 		GUIResources.functionalChooseAlgorithmComponents.addElement(this);
 		GUIResources.functionalChooseAlgorithmComponents.addElement(labelPanel);
 		GUIResources.functionalChooseAlgorithmComponents.addMouseListener(new FunctionalButtonListener(GUIResources.functionalChooseAlgorithmComponents, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
+	
 	}
 
 }

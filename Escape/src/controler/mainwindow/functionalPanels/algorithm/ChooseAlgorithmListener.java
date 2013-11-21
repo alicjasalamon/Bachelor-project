@@ -4,9 +4,13 @@ import controler.mainwindow.functionalPanels.ClickAction;
 
 public class ChooseAlgorithmListener implements ClickAction {
 
+	
+	public ChooseAlgorithmListener() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	public void act() {
-		// TODO Auto-generated method stub
+
 		
 	}
 

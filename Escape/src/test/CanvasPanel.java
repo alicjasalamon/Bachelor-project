@@ -17,6 +17,7 @@ import model.backbone.building.elements.Staircase;
 import model.backbone.building.elements.Wall;
 import model.backbone.building.helpers.Point;
 import resources.ColorSet;
+import resources.GUIResources;
 import resources.SimulationResources;
 
 public class CanvasPanel extends JPanel {
@@ -136,6 +137,8 @@ public class CanvasPanel extends JPanel {
     
     @Override
     protected final void paintComponent(Graphics g) {
+    	
+    	try{
         super.paintComponent(g);
         recomputeTransform();
 
@@ -264,7 +267,12 @@ public class CanvasPanel extends JPanel {
 			}
 		}
     		
+    	}catch(Exception e)
+    	{
+    		GUIResources.setErrorMessage("Map cannot be processed");
     	}
+    }
+    
     }
     
     

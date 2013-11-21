@@ -37,8 +37,9 @@
                 </floor>
         </floors>
 
-        <staircases>
+<!--        <staircases>
                 <staircase x="80" y="80" width="150" height="150" />
-        </staircases> 
+        </staircases> -->
 
 </building>
+lol

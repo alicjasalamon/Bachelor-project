@@ -8,5 +8,8 @@ public class PauseSimulationListener implements ClickAction {
 	@Override
 	public void act() {
 		SimulationResources.simulator.pauseSimulation();
+		
+		
+		
 	}
 }
