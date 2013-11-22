@@ -30,15 +30,53 @@ public class CanvasPanel extends JPanel {
 	private Transform transformTotal;
 	private int floor;
 	private int maxSize = 0;
+
+	//i'm sorry
+	int panelWidth = 993; // = sizeX; //max; //620;//= getWidth();											//a tutaj na max okienko
+    int panelHeight = 670 ;// = sizeX; //max;// 620;//= getHeight();
+    double aspectRatio = (double) panelWidth / panelHeight;
 	
-	int sizeX = 650 , sizeY = 300;
+    
+//	int sizeX = 650 , sizeY = 300;
 	
+	public Transform getPlaneToNorm() {
+		return planeToNorm;
+	}
+
+	public void setPlaneToNorm(Transform planeToNorm) {
+		this.planeToNorm = planeToNorm;
+	}
+
+	public Transform getNormToScreen() {
+		return normToScreen;
+	}
+
+	public void setNormToScreen(Transform normToScreen) {
+		this.normToScreen = normToScreen;
+	}
+
+	public Transform getScreenToNorm() {
+		return screenToNorm;
+	}
+
+	public void setScreenToNorm(Transform screenToNorm) {
+		this.screenToNorm = screenToNorm;
+	}
+
+	public Transform getTransformTotal() {
+		return transformTotal;
+	}
+
+	public void setTransformTotal(Transform transformTotal) {
+		this.transformTotal = transformTotal;
+	}
+
 	/**
      * Creates new canvas panel.
      */
     public CanvasPanel(int floor) {
 		 
-    	setPreferredSize(new Dimension(sizeX, sizeY));
+    //	setPreferredSize(new Dimension(sizeX, sizeY));
         setBackground(ColorSet.WHITE);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -47,28 +85,42 @@ public class CanvasPanel extends JPanel {
         int x, y;
         x = SimulationResources.building.getResolutionX();
    	    y = SimulationResources.building.getResolutionY();
-        
+       
+   	    System.out.println("zium " + x + "zium2 " + y);
         maxSize = ( x > y) ? x : y;
+        double max = Math.max(x / aspectRatio, y);
+        double s = 1.0 / (max / 2);
+        double sx = s/aspectRatio;
+        double sy = s;
         
-        
-        planeToNorm = new Transform.Builder().s(1.0/(maxSize/2)).t(-1.0, -1.0).create();
+        planeToNorm = new Transform.Builder().s(sx, sy).t(-1.0, -1.0).create();
         
         addComponentListener(new ComponentAdapter() {
             
             @Override
             public void componentShown(ComponentEvent e) {
+                
+                System.out.println(getHeight() + getWidth());
                 requestFocusInWindow();
                 recomputeTransform();
             }
             
             @Override
             public void componentResized(ComponentEvent e) {
+//            	panelHeight = getHeight();
+//                panelWidth = getWidth();
+                
+//                System.out.println(getHeight());
+//                System.out.println(getWidth());
                 recomputeTransform();
             }
 
         });
-        recomputeTransform();
-		addMouseListener(new CanvasController(normToScreen, screenToNorm, planeToNorm, transformTotal, floor));
+        CanvasController cc = new CanvasController(this, floor);
+		addMouseListener(cc);
+		addKeyListener(cc);
+		addMouseMotionListener(cc);
+		addMouseWheelListener(cc);
     }
 
 
@@ -84,10 +136,6 @@ public class CanvasPanel extends JPanel {
     }
 
     private void recomputeTransform() {
-        
-    	//int max = (getWidth() > getHeight()) ? getWidth() : getHeight();
-    	int panelWidth = sizeX; //max; //620;//= getWidth();											//a tutaj na max okienko
-        int panelHeight = sizeX; //max;// 620;//= getHeight();
         
         Transform.Builder builder = new Transform.Builder()
                 .flipY()

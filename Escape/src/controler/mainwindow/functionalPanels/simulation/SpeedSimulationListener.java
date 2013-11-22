@@ -4,6 +4,7 @@ import javax.swing.JSlider;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import resources.GUIResources;
 import resources.SimulationResources;
 
 public class SpeedSimulationListener implements ChangeListener{
@@ -14,6 +15,7 @@ public class SpeedSimulationListener implements ChangeListener{
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
 			SimulationResources.simulator.setSimulationSpeed(source.getValue() + 1);
+			GUIResources.setSuccesMessage("Simulation speed successfully changed");
 
 		}
 		

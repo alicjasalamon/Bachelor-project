@@ -88,14 +88,12 @@ public class CollisionChecker {
 	
 	private boolean isPointProjectionOnLine(int x, int y, int x1, int y1, int x2, int y2)
 	{
-		int minx = Math.min(x1, x2);
-		int maxx = Math.max(x1, x2);
-		int miny = Math.min(y1, y2);
-		int maxy = Math.max(y1, y2);
+//		int minx = Math.min(x1, x2);
+//		int maxx = Math.max(x1, x2);
+//		int miny = Math.min(y1, y2);
+//		int maxy = Math.max(y1, y2);
 		
 		//System.out.println((x<maxx) + " " + (x>minx) + " " +  (y<maxy) + " " +  (y>miny));
-		if((x<maxx && x>minx) || (y<maxy && y>miny))
-			return true;
 		return false;
 	
 	}
@@ -103,7 +101,7 @@ public class CollisionChecker {
 	public static void main(String args[])
 	{
 		BuildingExplorer be = new BuildingExplorer();
-		Building building = be.parseBuilding("building_schema\\building1.xml");
+		Building building = be.parseBuilding("building_schema\\building2.xml");
 		
 		CollisionChecker collisionChecker = new CollisionChecker(building, 0);
 		collisionChecker.willAgentCauseCollision(300, 300);

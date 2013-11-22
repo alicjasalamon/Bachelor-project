@@ -1,6 +1,5 @@
 package model.backbone.building.helpers;
 
-import java.io.File;
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -27,7 +26,6 @@ import resources.GUIResources;
 
 public class BuildingExplorer {
 
-	private File fXmlFile;
 	private DocumentBuilderFactory dbFactory;
 	private DocumentBuilder dBuilder;
 	private Document doc;
@@ -45,20 +43,17 @@ public class BuildingExplorer {
 				
 				@Override
 				public void warning(SAXParseException exception) throws SAXException {
-					// TODO Auto-generated method stub
 					GUIResources.setErrorMessage("Error while loading this file");
 				}
 				
 				@Override
 				public void fatalError(SAXParseException exception) throws SAXException {
-					// TODO Auto-generated method stub
 					GUIResources.setErrorMessage("Error while loading this file");
 					
 				}
 				
 				@Override
 				public void error(SAXParseException exception) throws SAXException {
-					// TODO Auto-generated method stub
 					GUIResources.setErrorMessage("Error while loading this file");
 					
 				}
@@ -75,10 +70,7 @@ public class BuildingExplorer {
 		Building building = new Building();
 		
 		try {
-			fXmlFile = new File(fileName);
-			System.out.println("zoim");
 			doc = dBuilder.parse(new InputSource(fileName));
-			System.out.println("ziom2");
 			doc.getDocumentElement().normalize();
 			//////////////////////////////////////////////////////////////////////////////
 			//								FLOORS										//

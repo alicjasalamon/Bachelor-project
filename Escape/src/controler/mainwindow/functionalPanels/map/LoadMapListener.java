@@ -3,10 +3,9 @@ package controler.mainwindow.functionalPanels.map;
 import java.awt.FileDialog;
 
 import model.backbone.building.helpers.BuildingExplorer;
-
 import resources.GUIResources;
 import resources.SimulationResources;
-
+import view.mainwindow.simulationMap.TabbedMapPanel;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class LoadMapListener implements ClickAction {
@@ -21,8 +20,19 @@ public class LoadMapListener implements ClickAction {
 	
 		if (filename != null) {
 			SimulationResources.building = new BuildingExplorer().parseBuilding("building_schema/" + filename);
+	
+			GUIResources.mapPanel.removeAll();
+			
+			TabbedMapPanel newTabbedMapPanel = new TabbedMapPanel();
+			GUIResources.mapPanel = newTabbedMapPanel;
+			GUIResources.mapPanel.add(newTabbedMapPanel);
+			
+			GUIResources.functionalMenuPanel.repaint();
+			GUIResources.mainFrame.repaint();
+			GUIResources.mainFrame.setVisible(true);
+			
 			GUIResources.setSuccesMessage("Map successfully loaded");
-			GUIResources.mapPanel.repaint();
+			GUIResources.mainFrame.repaint();
 		}
 
 	}

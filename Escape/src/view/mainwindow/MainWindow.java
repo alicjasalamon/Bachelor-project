@@ -31,6 +31,7 @@ public class MainWindow extends JFrame{
 		GUIResources.mapPanel = new TabbedMapPanel();
 		GUIResources.messagePanel = new ErrorPanel();
 		
+		
 		JPanel helpPanel = new JPanel();
 		helpPanel.setLayout(new BorderLayout());
 		helpPanel.setPreferredSize(new Dimension(580, 500));
@@ -47,7 +48,6 @@ public class MainWindow extends JFrame{
 		
 		setVisible(true);
 		setExtendedState(JFrame.MAXIMIZED_BOTH);
-		System.out.println(getWidth() + " " + getHeight());
 	}
 
 }

@@ -17,7 +17,7 @@ public class SimulationResources {
 	public static void initialize()
 	{
 		BuildingExplorer be = new BuildingExplorer();
-		building = be.parseBuilding("building_schema/building1.xml");
+		building = be.parseBuilding("building_schema/building2.xml");
 		agentsNames = new ArrayList<String>();
 		agentsNames.add("Pogo people");
 		agentsNames.add("Not so smart");

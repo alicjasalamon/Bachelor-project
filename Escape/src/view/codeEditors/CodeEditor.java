@@ -10,14 +10,24 @@ import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
 
 import resources.GUIResources;
 
+/**
+ * 
+ * @author Alicja Salamon
+ *
+ */
 public class CodeEditor {
 
 	FileDialog fileDialog;
 	CodeFrame codeFrame;
 
-	String language; // jaxa/xml
-	String mode; // load/save
+	String language;
+	String mode;
 
+	/**
+	 * 
+	 * @param language editor language - "Java" or "XML"
+	 * @param mode editor mode - "edit" for editing existing file or "new" for creating new one
+	 */
 	public CodeEditor(String language, String mode) {
 
 		codeFrame = new CodeFrame();
