@@ -2,24 +2,29 @@ package view.mainwindow.statistics;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
+import resources.ColorSet;
+import resources.FontSet;
 
-public class CurrentStepsChart extends JPanel {
+
+public class StepsChart extends JPanel {
 	
 	private static final long serialVersionUID = -6157011253254478227L;
 
-	public CurrentStepsChart() {
+	public StepsChart() {
 	
 		XYSeries series = new XYSeries("XYGraph");
 		series.add(1, 1);
@@ -34,7 +39,7 @@ public class CurrentStepsChart extends JPanel {
 		JFreeChart chart = ChartFactory.createXYLineChart(
 			"Current simulation - steps",
 			"number of steps",
-			"number of people escaped", 
+			"number of Agents escaped", 
 			dataset, 
 			PlotOrientation.VERTICAL, 
 			false, 
@@ -42,18 +47,35 @@ public class CurrentStepsChart extends JPanel {
 			false
 		);
 		
-		setLayout(new java.awt.BorderLayout());
+		applyTheme(chart);
+		ChartPanel CP = new ChartPanel(chart);
+		CP.setPreferredSize(new Dimension(1000, 650));
+		CP.setBackground(ColorSet.WHITE);
+		add(CP,BorderLayout.CENTER);
+		setBackground(ColorSet.WHITE);
 		
-		FontHelper.changeStyleForChart(chart);
-		
+	}
+	
+	void applyTheme(JFreeChart chart)
+	{
+		final StandardChartTheme chartTheme = (StandardChartTheme) org.jfree.chart.StandardChartTheme
+				.createJFreeTheme();
+
+		chartTheme.setExtraLargeFont(FontSet.CHART_BIG_FONT);
+		chartTheme.setLargeFont(FontSet.CHART_BIG_FONT);
+		chartTheme.setRegularFont(FontSet.CHART_FONT);
+		chartTheme.setSmallFont(FontSet.CHART_FONT);
+
+		chartTheme.setAxisLabelPaint(ColorSet.BLACK);
+		chartTheme.setLegendItemPaint(ColorSet.BLACK);
+		chartTheme.setItemLabelPaint(ColorSet.BLACK);
+				
 		XYPlot plot = (XYPlot) chart.getPlot();
 		XYItemRenderer renderer = plot.getRenderer();
 		renderer.setSeriesPaint(0, Color.BLACK);
-		
-		ChartPanel CP = new ChartPanel(chart);
-		
-		add(CP,BorderLayout.CENTER);
-	//	jPanel1.validate();
+
+
+		chartTheme.apply(chart);
 	}
 
 }
