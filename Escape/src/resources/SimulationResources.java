@@ -2,6 +2,7 @@ package resources;
 
 import java.util.ArrayList;
 
+import model.backbone.algorithm.TestAlgorithm;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
 import model.backbone.simulation.Simulator;
@@ -12,7 +13,7 @@ public class SimulationResources {
 	public static Building building;
 	public static ArrayList<String> agentsNames;
 	public static Simulator simulator;
-	public static NodeOfInterestUtils utils = new NodeOfInterestUtils();
+	public static NodeOfInterestUtils utils;
 	
 	public static void initialize()
 	{
@@ -23,10 +24,9 @@ public class SimulationResources {
 		agentsNames.add("Not so smart");
 		agentsNames.add("Super smart");
 		agentsNames.add("Mensa style");
-		
+		utils = new NodeOfInterestUtils();
 		simulator = new Simulator();
-		
-		
+		simulator.setAlgorithm(new TestAlgorithm());
 		
 	}
 
