@@ -18,6 +18,7 @@ public class NodeOfInterestUtils {
 	private Map<Integer, Integer[][]> adjacentSquaresMap = new HashMap<Integer, Integer[][]>();
 	//some of those points, will pass filtering and become NodesOfInterest
 	private Map<Integer, List<Point>> interestingPoints = new HashMap<Integer, List<Point>>(); 
+	
 	public void initialize() {
 		building = SimulationResources.building;
 		List<Floor> floors = building.getFloors();
@@ -135,7 +136,8 @@ public class NodeOfInterestUtils {
 					pointsOfInterest.remove(closestPoint);
 					
 				} else {
-					nodes.add(new NodeOfInterest(p.x+30,p.y,p.x+30,p.y));
+					
+					nodes.add(createNodeFromSinglePoint(p, floorNumber));
 					pointsOfInterest.remove(p);
 				}
 				
@@ -146,5 +148,21 @@ public class NodeOfInterestUtils {
 			
 		}
 		
+	}
+	
+	private NodeOfInterest createNodeFromSinglePoint(Point p, int floorNumber) {
+		
+		if (adjacentSquaresMap.get(floorNumber)[p.x+1][p.y] == -1) {			
+			return new NodeOfInterest(p.x-30,p.y,p.x-30,p.y);
+		}
+		else if (adjacentSquaresMap.get(floorNumber)[p.x-1][p.y] == -1) {			
+			return new NodeOfInterest(p.x+30,p.y,p.x+30,p.y);
+		}
+		else if (adjacentSquaresMap.get(floorNumber)[p.x][p.y+1] == -1) {			
+			return new NodeOfInterest(p.x,p.y-30,p.x,p.y-30);
+		}
+		else {			
+			return new NodeOfInterest(p.x,p.y+30,p.x,p.y+30);
+		}
 	}
 }
