@@ -1,4 +1,4 @@
-package test;
+package controler.mainwindow.map;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -13,23 +13,21 @@ import model.backbone.building.elements.Danger;
 import model.backbone.building.helpers.Point;
 import resources.GUIResources;
 import resources.SimulationResources;
+import view.mainwindow.simulationMap.ScrollableMapPanel;
+import view.mainwindow.simulationMap.utils.Transform;
+import view.mainwindow.simulationMap.utils.Transforms;
+import view.mainwindow.simulationMap.utils.Vec2d;
 
-public class CanvasController implements MouseListener, MouseMotionListener, MouseWheelListener, KeyListener {
+public class ScrollableMapPanelController implements MouseListener, MouseMotionListener, MouseWheelListener, KeyListener {
 
-	//	private Transform normToScreen;
-	//	private Transform screenToNorm;
-	//	private Transform planeToNorm;
-	CanvasPanel canvasPanel;
+	ScrollableMapPanel canvasPanel;
 	int floor;
 	Drag drag = new Drag();
 
 	Vec2d ziom;
 
-	public CanvasController(CanvasPanel cp, int floor) {
+	public ScrollableMapPanelController(ScrollableMapPanel cp, int floor) {
 		super();
-		//		this.normToScreen = normToScreen;
-		//		this.screenToNorm = screenToNorm;
-		//		this.planeToNorm = planeToNorm;
 		canvasPanel = cp;
 		this.floor = floor;
 	}
@@ -41,8 +39,8 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 		double f = e.getPreciseWheelRotation();
 		double scale = Math.pow(0.95, f);
 
-		Vec2d dlaMarcina = new Vec2d(-planePos.x, -planePos.y);
-		Transform scaling = new Transform.Builder().t(dlaMarcina).s(scale).t(planePos).create();
+		Vec2d reverted = new Vec2d(-planePos.x, -planePos.y);
+		Transform scaling = new Transform.Builder().t(reverted).s(scale).t(planePos).create();
 		canvasPanel.setPlaneToNorm(Transforms.compose(scaling, canvasPanel.getPlaneToNorm()));
 		canvasPanel.repaint();
 
@@ -68,8 +66,7 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		// TODO Auto-generated method stub
-		System.out.println("dupa");
+
 		ziom = getPlanePos(e);
 
 	}
@@ -77,7 +74,7 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		CanvasPanel source = (CanvasPanel) e.getSource();
+		ScrollableMapPanel source = (ScrollableMapPanel) e.getSource();
 
 		Vec2d click = new Vec2d(e.getX(), e.getY());
 		click = canvasPanel.getTransformTotal().invert(click);
@@ -118,27 +115,8 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 		drag.end();
-
 	}
 
-	/*
-	 * public void mouseDragged(MouseEvent e) { Point screenPos =
-	 * getScreenPos(e); update(screenPos);
-	 * 
-	 * Transform planeToScreen = view.planeToScreen(); if (drag.hasObject()) {
-	 * drag.update(screenPos, planeToScreen); } else { Point prevPlanePos =
-	 * planeToScreen.invert(prevPos); Point planePos = getPlanePos(e); Point d =
-	 * diff(planePos, prevPlanePos); view.prepend(Transforms.t(d)); } prevPos =
-	 * screenPos; }
-	 * 
-	 * private Point getScreenPos(MouseEvent e) { java.awt.Point p =
-	 * e.getPoint(); return new Point(p.x, p.y); }
-	 * 
-	 * private Point getPlanePos(MouseEvent e) { Point screenPos =
-	 * getScreenPos(e); return view.planeToScreen().invert(screenPos); }
-	 * 
-	 * private void update(Point pos) { properties.put("cursor", pos); }
-	 */
 
 	@Override
 	public void keyTyped(KeyEvent e) {
@@ -149,7 +127,6 @@ public class CanvasController implements MouseListener, MouseMotionListener, Mou
 	@Override
 	public void keyPressed(KeyEvent e) {
 		Vec2d planePos = ziom;
-		System.out.println("dzieje sie lol");
 		double f = e.getKeyCode() == KeyEvent.VK_LEFT ? 1 : -1;
 		double scale = Math.pow(0.95, f);
 

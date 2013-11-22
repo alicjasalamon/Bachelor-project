@@ -1,13 +1,14 @@
-package test;
+package view.mainwindow.simulationMap;
 
 import java.awt.BasicStroke;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
 
 import javax.swing.JPanel;
+
+import controler.mainwindow.map.ScrollableMapPanelController;
 
 import model.backbone.agent.Agent;
 import model.backbone.building.elements.Danger;
@@ -19,8 +20,11 @@ import model.backbone.building.helpers.Point;
 import resources.ColorSet;
 import resources.GUIResources;
 import resources.SimulationResources;
+import view.mainwindow.simulationMap.utils.Transform;
+import view.mainwindow.simulationMap.utils.Transforms;
+import view.mainwindow.simulationMap.utils.Vec2d;
 
-public class CanvasPanel extends JPanel {
+public class ScrollableMapPanel extends JPanel {
 
 	private static final long serialVersionUID = 7376278600133280828L;
 
@@ -29,15 +33,12 @@ public class CanvasPanel extends JPanel {
 	private Transform planeToNorm;
 	private Transform transformTotal;
 	private int floor;
-	private int maxSize = 0;
 
 	//i'm sorry
-	int panelWidth = 993; // = sizeX; //max; //620;//= getWidth();											//a tutaj na max okienko
-    int panelHeight = 670 ;// = sizeX; //max;// 620;//= getHeight();
+	int panelWidth = 993; 
+    int panelHeight = 670 ;
     double aspectRatio = (double) panelWidth / panelHeight;
 	
-    
-//	int sizeX = 650 , sizeY = 300;
 	
 	public Transform getPlaneToNorm() {
 		return planeToNorm;
@@ -74,9 +75,8 @@ public class CanvasPanel extends JPanel {
 	/**
      * Creates new canvas panel.
      */
-    public CanvasPanel(int floor) {
+    public ScrollableMapPanel(int floor) {
 		 
-    //	setPreferredSize(new Dimension(sizeX, sizeY));
         setBackground(ColorSet.WHITE);
         setFocusable(true);
         setFocusTraversalKeysEnabled(false);
@@ -86,8 +86,6 @@ public class CanvasPanel extends JPanel {
         x = SimulationResources.building.getResolutionX();
    	    y = SimulationResources.building.getResolutionY();
        
-   	    System.out.println("zium " + x + "zium2 " + y);
-        maxSize = ( x > y) ? x : y;
         double max = Math.max(x / aspectRatio, y);
         double s = 1.0 / (max / 2);
         double sx = s/aspectRatio;
@@ -107,16 +105,11 @@ public class CanvasPanel extends JPanel {
             
             @Override
             public void componentResized(ComponentEvent e) {
-//            	panelHeight = getHeight();
-//                panelWidth = getWidth();
-                
-//                System.out.println(getHeight());
-//                System.out.println(getWidth());
                 recomputeTransform();
             }
 
         });
-        CanvasController cc = new CanvasController(this, floor);
+        ScrollableMapPanelController cc = new ScrollableMapPanelController(this, floor);
 		addMouseListener(cc);
 		addKeyListener(cc);
 		addMouseMotionListener(cc);
@@ -304,7 +297,6 @@ public class CanvasPanel extends JPanel {
 				Vec2d a1;
 				a1 = transformModelPoint(a.getLocation());
 				Vec2d rd = transformTotal.applyToDirection(new Vec2d(Agent.size, 0));
-//				double rlol = rd.x;
 				
 				g.fillOval(
 						(int)(a1.x - rd.x/2), 
@@ -315,8 +307,7 @@ public class CanvasPanel extends JPanel {
 			}
 		}
     		
-    	}catch(Exception e)
-    	{
+    	}catch(Exception e){
     		GUIResources.setErrorMessage("Map cannot be processed");
     	}
     }

@@ -8,7 +8,6 @@ import javax.swing.JTabbedPane;
 
 import resources.ColorSet;
 import resources.SimulationResources;
-import test.CanvasPanel;
 import view.mainwindow.legend.LegendPanel;
 
 public class TabbedMapPanel extends JPanel {
@@ -20,7 +19,7 @@ public class TabbedMapPanel extends JPanel {
 		jTabbedPane.setFocusable(false);
 
 		for (int i = 0; i < SimulationResources.building.getFloors().size(); i++) {
-			jTabbedPane.add("floor " + (i + 1), new CanvasPanel(i));
+			jTabbedPane.add("floor " + (i + 1), new ScrollableMapPanel(i));
 		}
 
 		//jTabbedPane.setBorder(null);

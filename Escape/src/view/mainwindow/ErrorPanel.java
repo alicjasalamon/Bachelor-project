@@ -20,7 +20,7 @@ public class ErrorPanel extends JPanel{
 	
 	public ErrorPanel()
 	{
-		setBackground(Color.PINK);
+		setBackground(ColorSet.WHITE);
 		setPreferredSize(new Dimension(20, 30));
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		label.setText(message);
