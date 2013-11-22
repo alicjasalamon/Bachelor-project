@@ -186,4 +186,31 @@ public class CollisionUtils {
 		return true;
 	}
 	
+	public static boolean canCreateAgentAtPoint(Point destination, int floor) {
+		ArrayList<Wall> walls = (ArrayList<Wall>) SimulationResources.building.getFloors().get(floor).getWalls();
+		ArrayList<Danger> dangers = (ArrayList<Danger>) SimulationResources.building.getFloors().get(floor).getDangers();
+		ArrayList<Agent> agents = (ArrayList<Agent>) SimulationResources.building.getAgents();
+		
+		for (Wall w : walls) {
+			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), destination) < agentToWallMinimumDistance ) {
+				return false;
+			}
+		}
+		
+		for (Danger d : dangers) {
+			if (MathUtils.getDistanceBetweenTwoPoints(d.getCenter(), destination) < (d.getRadius()+ agentToDangerMinimumDistance)) {
+				return false;
+			}
+		}
+		
+		for (Agent a : agents) {
+			if (a.getFloor() == floor) {
+				if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), destination) < agentToAgentMinimumDistance) {		
+					return false;
+				}	
+			}
+		}
+		return true;
+	}
+	
 }
