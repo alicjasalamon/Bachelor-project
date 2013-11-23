@@ -1,5 +1,6 @@
 package view.mainwindow.simulationMap;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -22,7 +23,6 @@ public class TabbedMapPanel extends JPanel {
 			jTabbedPane.add("floor " + (i + 1), new ScrollableMapPanel(i));
 		}
 
-		//jTabbedPane.setBorder(null);
 		jTabbedPane.setPreferredSize(new Dimension(1000, 700));
 		setBackground(ColorSet.WHITE);
 
@@ -31,5 +31,6 @@ public class TabbedMapPanel extends JPanel {
 
 		add(jTabbedPane);
 		add(new LegendPanel());
+		setBackground(Color.MAGENTA);
 	}
 }

@@ -1,7 +1,6 @@
 package view.mainwindow.statistics;
 
 
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
@@ -16,7 +15,7 @@ public class StatisticsPanel extends JPanel {
 
 	private static final long serialVersionUID = -2686640147259984678L;
 	
-	JPanel createHelpPanel(int maxAgents, int escapedAgent, int time, int steps)
+	private JPanel createHelpPanel(int maxAgents, int escapedAgent, int time, int steps)
 	{
 		JPanel helpPanel = new JPanel();
 		helpPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
