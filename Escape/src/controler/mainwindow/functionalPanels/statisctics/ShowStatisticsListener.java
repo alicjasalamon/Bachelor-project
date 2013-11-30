@@ -1,7 +1,6 @@
 package controler.mainwindow.functionalPanels.statisctics;
 
 import resources.GUIResources;
-import view.mainwindow.statistics.StatisticsPanel;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class ShowStatisticsListener implements ClickAction {
@@ -10,9 +9,13 @@ public class ShowStatisticsListener implements ClickAction {
 	public void act() {
 		// TODO Auto-generated method stub
 		
-		GUIResources.mapPanel.removeAll();
-		GUIResources.mapPanel.add(new StatisticsPanel());
-		
+		GUIResources.mainPanel.removeAll();
+		GUIResources.mainPanel.add(GUIResources.statisticPanel);
+//		
+//		GUIResources.mapPanel.removeAll();
+//		GUIResources.mapPanel.add(new StatisticsPanel());
+////		
+		GUIResources.mainPanel.repaint();
 		GUIResources.functionalMenuPanel.repaint();
 		GUIResources.mainFrame.repaint();
 		GUIResources.mainFrame.setVisible(true);

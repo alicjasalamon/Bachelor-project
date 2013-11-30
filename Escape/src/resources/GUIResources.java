@@ -15,7 +15,9 @@ public class GUIResources {
 	public static JFrame mainFrame;
 	public static JPanel mainMenuPanel;
 	public static JPanel functionalMenuPanel;
+	public static JPanel mainPanel;
 	public static JPanel mapPanel;
+	public static JPanel statisticPanel;
 	public static ErrorPanel messagePanel;
 	
 

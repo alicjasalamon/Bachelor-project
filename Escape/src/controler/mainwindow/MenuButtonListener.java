@@ -31,8 +31,8 @@ public class MenuButtonListener implements MouseListener {
 
 		if(!GUIResources.isMapOnMainPanel) 
 		{
-			GUIResources.mapPanel.removeAll();
-			GUIResources.mapPanel.add(new TabbedMapPanel());
+			GUIResources.mainPanel.removeAll();
+			GUIResources.mainPanel.add(GUIResources.mapPanel);
 			GUIResources.mapPanel.repaint();
 			
 			GUIResources.isMapOnMainPanel = true;
