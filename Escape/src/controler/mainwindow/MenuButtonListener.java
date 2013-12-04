@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import resources.GUIResources;
 import view.mainwindow.ElementColection;
-import view.mainwindow.simulationMap.TabbedMapPanel;
 
 public class MenuButtonListener implements MouseListener {
 

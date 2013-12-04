@@ -78,4 +78,8 @@ public class StepsChart extends JPanel {
 		chartTheme.apply(chart);
 	}
 
+	public void removeData() {
+		series.clear();
+	}
+
 }

@@ -9,14 +9,9 @@ import view.mainwindow.statistics.StatisticsPanel;
 
 public class SimulationTimerTask extends TimerTask {
 
-	private long beginTime;
+
 	private Random random = new Random();
-
-	public SimulationTimerTask(int agentsStart) {
-		beginTime = System.currentTimeMillis();
-
-	}
-
+	
 	@Override
 	public void run() {
 
@@ -26,7 +21,7 @@ public class SimulationTimerTask extends TimerTask {
 	}
 
 	private void refreshStatisticsData() {
-		StatisticsResources.time = (int) (System.currentTimeMillis() - beginTime) / 1000;
+		StatisticsResources.time++;
 		StatisticsResources.agentsCurrent += random.nextInt(3);
 		StatisticsResources.steps++;
 	}
@@ -44,5 +39,4 @@ public class SimulationTimerTask extends TimerTask {
 		statisticsPanel.getStepsChart().addToChart(StatisticsResources.steps, StatisticsResources.agentsCurrent);
 
 	}
-
 }
