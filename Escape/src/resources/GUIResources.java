@@ -82,7 +82,7 @@ public class GUIResources {
 	//							buttons for drawing 	 							//
 	//////////////////////////////////////////////////////////////////////////////////
 	
-	public static boolean drawAgent = true;
+	public static boolean drawAgent = false;
 	public static boolean drawDanger = false;
 	public static Danger lastDanger;
 	

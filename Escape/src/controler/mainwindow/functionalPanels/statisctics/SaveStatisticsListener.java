@@ -3,8 +3,6 @@ package controler.mainwindow.functionalPanels.statisctics;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 import resources.GUIResources;
 import resources.SimulationResources;

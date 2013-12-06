@@ -1,4 +1,4 @@
-package controler.mainwindow.functionalPanels.simuEnvironment;
+package controler.mainwindow.functionalPanels.simulation;
 
 import java.util.Random;
 import java.util.TimerTask;

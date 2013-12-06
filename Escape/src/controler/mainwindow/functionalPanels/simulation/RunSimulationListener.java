@@ -7,7 +7,6 @@ import resources.SimulationResources;
 import resources.SimulationState;
 import resources.StatisticsResources;
 import controler.mainwindow.functionalPanels.ClickAction;
-import controler.mainwindow.functionalPanels.simuEnvironment.SimulationTimerTask;
 
 public class RunSimulationListener implements ClickAction {
 
