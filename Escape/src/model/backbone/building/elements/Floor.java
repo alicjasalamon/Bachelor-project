@@ -10,8 +10,6 @@ public class Floor {
 	private List<Exit> exits = new ArrayList<Exit>();
 	private List<Sign> signs = new ArrayList<Sign>();
 	private List<NodeOfInterest> nodesOfInterest = new ArrayList<NodeOfInterest>();
-//	private int sizeX;
-//	private int sizeY;
 	
 	public void printFloor() {
 		System.out.println("WALLS:");

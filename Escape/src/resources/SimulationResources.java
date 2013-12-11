@@ -10,7 +10,6 @@ import model.backbone.utils.NodeOfInterestUtils;
 
 public class SimulationResources {
 	
-
 	public static SimulationState simulationState;
 	public static Building building;
 	public static ArrayList<String> agentsNames;
@@ -21,7 +20,7 @@ public class SimulationResources {
 	{
 		simulationState = SimulationState.Stopped;
 		BuildingExplorer be = new BuildingExplorer();
-		building = be.parseBuilding("building_schema/building2.xml");
+		building = be.parseBuilding("building_schema/building1.xml");
 		agentsNames = new ArrayList<String>();
 		agentsNames.add("Pogo people");
 		agentsNames.add("Not so smart");

@@ -7,6 +7,7 @@ import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
 import model.backbone.building.elements.NodeOfInterest;
 import model.backbone.building.elements.Sign;
+import model.backbone.building.elements.Staircase;
 import model.backbone.building.elements.Wall;
 import model.backbone.building.helpers.Point;
 import resources.SimulationResources;
@@ -35,6 +36,21 @@ public class AlgorithUtilities {
 		for (Exit e : exits) {			
 			if (canISeeIt(me, e.getBegin()) || canISeeIt(me, e.getEnd())
 					|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(e.getBegin(), e.getEnd()))) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public static boolean canISeeAnyStaircases(Agent me) {
+		
+		ArrayList<Staircase> staircases = (ArrayList<Staircase>) SimulationResources.building.getStairCases();
+
+		for (Staircase s : staircases) {			
+			if (canISeeIt(me, new Point(s.getPoint1().x+s.getLenght()/2,s.getPoint1().y)) || 
+					canISeeIt(me, new Point(s.getPoint1().x-s.getLenght()/2,s.getPoint1().y)) || 
+					canISeeIt(me, new Point(s.getPoint1().x,s.getPoint1().y+s.getHeight()/2)) || 
+					canISeeIt(me, new Point(s.getPoint1().x,s.getPoint1().y-s.getHeight()/2))) {
 				return true;
 			}
 		}
@@ -105,24 +121,28 @@ public class AlgorithUtilities {
 				} 
 			}
 		}
-//		int distanceToEnd, distanceToBegin,distanceToMiddle;
-//		distanceToEnd = MathUtils.getDistanceBetweenTwoPoints(nearestExit.getEnd(), me.getLocation());
-//		distanceToBegin = MathUtils.getDistanceBetweenTwoPoints(nearestExit.getBegin(), me.getLocation());
-//		distanceToMiddle = MathUtils.getDistanceBetweenTwoPoints(MathUtils.getMiddlePointOfTheLine(nearestExit.getBegin(), nearestExit.getEnd()), me.getLocation());
-//		if (distanceToEnd > distanceToBegin ) {
-//			if (distanceToBegin > distanceToMiddle) {
-//				me.setDestination(DestinationType.Exit, MathUtils.getMiddlePointOfTheLine(nearestExit.getBegin(), nearestExit.getEnd()));
-//			} else {
-//				me.setDestination(DestinationType.Exit, nearestExit.getBegin());
-//			}
-//		} else {
-//			if (distanceToEnd > distanceToMiddle) {
-//				me.setDestination(DestinationType.Exit, MathUtils.getMiddlePointOfTheLine(nearestExit.getBegin(), nearestExit.getEnd()));
-//			} else {
-//				me.setDestination(DestinationType.Exit, nearestExit.getEnd());
-//			}
-//		}
 		me.setDestination(DestinationType.Exit, MathUtils.getMiddlePointOfTheLine(nearestExit.getBegin(), nearestExit.getEnd()));
+	}
+	
+	public static void setDestinationToNearestStaircase(Agent me) {
+		ArrayList<Staircase> staircases = (ArrayList<Staircase>) SimulationResources.building.getStairCases();
+
+		
+		Staircase nearestStaircase = null;
+		int staircaseDistance = 0;
+		
+		for (Staircase s : staircases) {				
+			if (canISeeIt(me, new Point(s.getPoint1().x+s.getLenght()/2,s.getPoint1().y)) || 
+					canISeeIt(me, new Point(s.getPoint1().x-s.getLenght()/2,s.getPoint1().y)) || 
+					canISeeIt(me, new Point(s.getPoint1().x,s.getPoint1().y+s.getHeight()/2)) || 
+					canISeeIt(me, new Point(s.getPoint1().x,s.getPoint1().y-s.getHeight()/2))) {
+				if (nearestStaircase == null || staircaseDistance > MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(),me.getLocation())) {
+					nearestStaircase = s;
+					staircaseDistance = MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(),me.getLocation());
+				} 
+			}
+		}
+		me.setDestination(DestinationType.Staircase, nearestStaircase.getPoint1());
 	}
 	
 	public static void setDestinationAccordingToNearestSign(Agent me) {
@@ -140,7 +160,7 @@ public class AlgorithUtilities {
 			}
 		}
 		
-		me.setDestination(DestinationType.Sign, nearestSign.getTarget());
+		me.setDestination(DestinationType.Sign, MathUtils.getMiddlePointOfTheLine(nearestSign.getBegin(), nearestSign.getEnd()));
 	}
 	
 	public static void setDestinationAccordingToNearestNodeOfInterest(Agent me) {
@@ -179,7 +199,10 @@ public class AlgorithUtilities {
 		return exitDistance;
 	}
 	
-	
+	public static void moveToFirstFloor(Agent me) {
+		me.setOnStaircase(true);
+		me.setStaircaseTime((me.getFloor())*250);
+	}
 	
 	
 }

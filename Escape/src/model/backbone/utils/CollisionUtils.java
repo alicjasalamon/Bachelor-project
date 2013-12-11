@@ -10,10 +10,10 @@ import resources.SimulationResources;
 
 public class CollisionUtils {
 	
-	public static final int agentToWallMinimumDistance = 30;
-	public static final int agentToAgentMinimumDistance = 30;
-	public static final int agentToDangerMinimumDistance = 30;
-	public static final int rerouteOffset = 45;
+	public static final int agentToWallMinimumDistance = 25;
+	public static final int agentToAgentMinimumDistance = 25;
+	public static final int agentToDangerMinimumDistance = 25;
+	public static final int rerouteOffset = 50;
 	
 	public static boolean areThereObstaclesInMyPath(Agent me, Point destination) {
 		

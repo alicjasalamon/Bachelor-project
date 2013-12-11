@@ -5,7 +5,10 @@ import java.util.ArrayList;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
+import model.backbone.building.elements.Sign;
+import model.backbone.building.elements.Staircase;
 import model.backbone.building.helpers.Point;
+import model.backbone.utils.AlgorithUtilities;
 import model.backbone.utils.CollisionUtils;
 import model.backbone.utils.MathUtils;
 import resources.SimulationResources;
@@ -89,11 +92,34 @@ public abstract class Algorithm {
 		agent.setLocation(new Point(agent.getLocation().getX() + direction.getX(),
 						agent.getLocation().getY() + direction.getY()));
 		
-		ArrayList<Exit> exits = (ArrayList<Exit>) SimulationResources.building.getFloors().get(agent.getFloor()).getExits();
 		
-		for (Exit e : exits) {			
-			if (MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), agent.getLocation()) < 25) {
-				agent.setEscaped(true);
+		if (agent.getFloor() == 0) {
+			ArrayList<Exit> exits = (ArrayList<Exit>) SimulationResources.building.getFloors().get(agent.getFloor()).getExits();
+			for (Exit e : exits) {			
+				if (MathUtils.getDistanceBetweenPointAndLine(e.getBegin(), e.getEnd(), agent.getLocation()) < 25) {
+					agent.setEscaped(true);
+					return;
+				}
+			}
+		}
+		
+		if (agent.getFloor() != 0 && !agent.isOnStaircase()) {
+			ArrayList<Staircase> staircases = (ArrayList<Staircase>) SimulationResources.building.getStairCases();
+			
+			for (Staircase s : staircases) {			
+				if (MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(), agent.getLocation()) < 10+s.getHeight()/4+s.getLenght()/4) {
+					AlgorithUtilities.moveToFirstFloor(agent);
+				}
+			}
+		}
+		
+		ArrayList<Sign> signs = (ArrayList<Sign>) SimulationResources.building.getFloors().get(agent.getFloor()).getSigns();
+		for (Sign s : signs) {
+			if (MathUtils.getDistanceBetweenTwoPoints(s.getBegin(), agent.getLocation()) < 25
+					|| MathUtils.getDistanceBetweenTwoPoints(s.getEnd(), agent.getLocation()) < 25) {
+				agent.clearDestination();
+				agent.setDestination(DestinationType.Sign, s.getTarget());
+				return;
 			}
 		}
 	}

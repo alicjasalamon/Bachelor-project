@@ -31,6 +31,13 @@ public class TestAlgorithm extends Algorithm {
 			AlgorithUtilities.setDestinationToNearestExit(agent);
 			return;
 		}
+		//Can the agent see a staircase, while not being on the first floor
+		if (agent.getFloor() != 0) {
+			if (AlgorithUtilities.canISeeAnyStaircases(agent)) {
+				AlgorithUtilities.setDestinationToNearestStaircase(agent);
+				return;
+			}
+		}
 		
 		//Can the agent see a helping sign
 		if (agent.getDestinationType() != DestinationType.Sign && AlgorithUtilities.canISeeAnySigns(agent)) {

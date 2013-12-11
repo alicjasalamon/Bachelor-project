@@ -7,14 +7,16 @@ import model.backbone.building.helpers.Point;
 public class Agent {
 
 	//NOI stands for NodeOfInterest
-	public enum DestinationType { Exit, Sign, NOI, None}
+	public enum DestinationType { Exit, Sign, Staircase, NOI, None}
 	private Point currentLocation;
 	private Point lastLocation;
 	private int floor;
 	private boolean isEscaped;
+	private boolean isOnStaircase;
+	private int stepsOnStaircaseLeft;
 	private boolean isDead;
 	private DestinationType destination;
-	private Point DestinationPoint;
+	private Point destinationPoint;
 	private Point direction;
 	//Collision
 	private boolean isAvoidingCollision;
@@ -30,8 +32,9 @@ public class Agent {
 		lastLocation = null;
 		this.floor = floor;
 		destination = DestinationType.None;
-		DestinationPoint = null;
+		destinationPoint = null;
 		isEscaped = false;
+		isOnStaircase = false;
 		isDead = false;
 		setAvoidingCollision(false);
 		setTemporaryDestinationPoints(null);
@@ -85,13 +88,23 @@ public class Agent {
 	}
 	
 	public Point getDestinationPoint() {
-		return this.DestinationPoint;
+		return this.destinationPoint;
 	}
 	
 	public void setDestination(DestinationType dest, Point destPoint) {
 			if (this.destination == DestinationType.Exit) return;
-			this.destination = dest;
-			this.DestinationPoint = destPoint;
+			if (dest == DestinationType.Exit ||  dest == DestinationType.Staircase) {
+				this.destination = dest;
+				this.destinationPoint = destPoint;
+			}
+			if (dest == DestinationType.Sign && (this.destination == DestinationType.NOI || this.destination == DestinationType.None)) {
+				this.destination = dest;
+				this.destinationPoint = destPoint;
+			}
+			if (dest == DestinationType.NOI && this.destination == DestinationType.None) {
+				this.destination = dest;
+				this.destinationPoint = destPoint;
+			}
 	}
 	
 	public boolean isDead() {
@@ -130,9 +143,32 @@ public class Agent {
 		return temporaryDestinationPoints;
 	}
 
-	public void setTemporaryDestinationPoints(
-			ArrayList<Point> temporaryDestinationPoints) {
+	public void setTemporaryDestinationPoints(ArrayList<Point> temporaryDestinationPoints) {
 		this.temporaryDestinationPoints = temporaryDestinationPoints;
 	}
+	
+	public boolean isOnStaircase() {
+		return isOnStaircase;
+	}
 
+	public void setOnStaircase(boolean isOnStaircase) {
+		this.isOnStaircase = isOnStaircase;
+	}
+
+	public void setStaircaseTime(int steps) {
+		this.stepsOnStaircaseLeft = steps;
+	}
+	
+	public void decreaseStaircaseTime() {
+		this.stepsOnStaircaseLeft--;
+		if (stepsOnStaircaseLeft == 0) {
+			isOnStaircase = false;
+			setFloor(0);
+		}
+	}
+	
+	public void clearDestination() {
+		this.destination = DestinationType.None;
+	}
+	
 }

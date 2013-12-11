@@ -15,12 +15,15 @@ import resources.SimulationResources;
 public class NodeOfInterestUtils {
 
 	private Building building;
-	private Map<Integer, Integer[][]> adjacentSquaresMap = new HashMap<Integer, Integer[][]>();
+	private Map<Integer, Integer[][]> adjacentSquaresMap;
 	//some of those points, will pass filtering and become NodesOfInterest
-	private Map<Integer, List<Point>> interestingPoints = new HashMap<Integer, List<Point>>(); 
+	private Map<Integer, List<Point>> interestingPoints;
 	
 	public void initialize() {
 		building = SimulationResources.building;
+		interestingPoints = new HashMap<Integer, List<Point>>();
+		adjacentSquaresMap = new HashMap<Integer, Integer[][]>();
+		
 		List<Floor> floors = building.getFloors();
 		
 		int sizeX = SimulationResources.building.getResolutionX() + 1;

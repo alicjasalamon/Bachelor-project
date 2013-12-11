@@ -109,7 +109,7 @@ public class BuildingExplorer {
 							//////////////////////////////////////////////////////////////////////////////
 							//								SIGNS										//
 							//////////////////////////////////////////////////////////////////////////////
-							if (floorElementNode.getNodeName().equals("signs")) {
+							if (floorElementNode.getNodeName().equals("sign")) {
 
 								NamedNodeMap nodeMap = floorElementNode.getAttributes();
 								Sign sign = new Sign(
