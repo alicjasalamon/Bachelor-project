@@ -107,7 +107,7 @@ public abstract class Algorithm {
 			ArrayList<Staircase> staircases = (ArrayList<Staircase>) SimulationResources.building.getStairCases();
 			
 			for (Staircase s : staircases) {			
-				if (MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(), agent.getLocation()) < 10+s.getHeight()/4+s.getLenght()/4) {
+				if (MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(), agent.getLocation()) < 25+s.getHeight()/4+s.getLenght()/4) {
 					AlgorithUtilities.moveToFirstFloor(agent);
 				}
 			}

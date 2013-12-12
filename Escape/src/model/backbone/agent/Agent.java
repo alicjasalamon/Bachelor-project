@@ -3,6 +3,8 @@ package model.backbone.agent;
 import java.util.ArrayList;
 
 import model.backbone.building.helpers.Point;
+import model.backbone.utils.AlgorithUtilities;
+import model.backbone.utils.CollisionUtils;
 
 public class Agent {
 
@@ -25,7 +27,6 @@ public class Agent {
 	private int myHitPoints = 700;
 	
 	public static int size = 30;
-//	public static double step = 0.005;
 
 	public Agent(Point location, int floor) {
 		currentLocation = location;
@@ -162,8 +163,15 @@ public class Agent {
 	public void decreaseStaircaseTime() {
 		this.stepsOnStaircaseLeft--;
 		if (stepsOnStaircaseLeft == 0) {
-			isOnStaircase = false;
-			setFloor(0);
+			int currentFloor = floor;
+			this.setFloor(0);
+			if (CollisionUtils.canIMoveThere(this, this.currentLocation.x, this.currentLocation.y)) {
+				isOnStaircase = false;				
+			} else {
+				this.setFloor(currentFloor);
+				stepsOnStaircaseLeft+=3;
+			}
+			
 		}
 	}
 	
