@@ -3,7 +3,6 @@ package model.backbone.agent;
 import java.util.ArrayList;
 
 import model.backbone.building.helpers.Point;
-import model.backbone.utils.AlgorithUtilities;
 import model.backbone.utils.CollisionUtils;
 
 public class Agent {

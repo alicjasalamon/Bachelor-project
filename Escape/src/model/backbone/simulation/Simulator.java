@@ -1,7 +1,10 @@
 package model.backbone.simulation;
 
+import java.io.File;
+
 import resources.SimulationResources;
 import model.backbone.algorithm.Algorithm;
+import model.compiler.AlgorithmCompiler;
 
 public class Simulator {
 
@@ -39,5 +42,17 @@ public class Simulator {
 	
 	public Algorithm getAlgorithm() {
 		return algorithm;
+	}
+	
+	public boolean setAlgorithm(File file) {
+		try {
+			Object algorithmInstance = AlgorithmCompiler.getInstanceOfCompiledAlgorithm(file);
+			Algorithm alg = (Algorithm) algorithmInstance;
+			this.setAlgorithm(alg);
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
