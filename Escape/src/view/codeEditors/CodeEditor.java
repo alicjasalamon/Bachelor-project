@@ -153,9 +153,9 @@ public class CodeEditor {
 				}
 			}
 		});
-		codeFrame.setLanguage(SyntaxConstants.SYNTAX_STYLE_XML);
+		codeFrame.setLanguage(SyntaxConstants.SYNTAX_STYLE_JAVA);
 		codeFrame.setTitle("Add new building");
-		codeFrame.setInitText("algorithms\\Example.java");
+		codeFrame.setInitText("algorithms\\ExampleAlgorithm.java");
 		codeFrame.setVisible(true);
 	}
 }

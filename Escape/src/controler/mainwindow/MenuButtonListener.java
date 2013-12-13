@@ -6,9 +6,11 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import resources.GUIResources;
 import view.mainwindow.ElementColection;
+import view.mainwindow.functionalPanels.mainPanels.SetAlgorithmPanel;
 
 public class MenuButtonListener implements MouseListener {
 
@@ -28,26 +30,29 @@ public class MenuButtonListener implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
-		if(!GUIResources.isMapOnMainPanel) 
-		{
+		if (functionalPanel instanceof SetAlgorithmPanel)
+			functionalPanel = new SetAlgorithmPanel();
+
+		if (!GUIResources.isMapOnMainPanel) {
 			GUIResources.mainPanel.removeAll();
 			GUIResources.mainPanel.add(GUIResources.mapPanel);
 			GUIResources.mapPanel.repaint();
-			
+
 			GUIResources.isMapOnMainPanel = true;
 			GUIResources.isStatisticOnMainPanel = false;
-			
+
 		}
 		GUIResources.functionalMenuPanel.removeAll();
 		GUIResources.functionalMenuPanel.add(functionalPanel);
 		GUIResources.functionalMenuPanel.repaint();
-		
+
 		GUIResources.mainFrame.repaint();
 		GUIResources.mainFrame.setVisible(true);
-		
+
 		GUIResources.setSuccesMessage("");
 		GUIResources.drawDanger = false;
 		GUIResources.drawAgent = false;
+
 	}
 
 	@Override

@@ -29,6 +29,13 @@ public class ElementColection {
 			j.addMouseListener(mouseListener);
 		}
 	}
+	
+	public void refresh()
+	{
+		for (JComponent j : menuEditMapComponents) {
+			j.repaint();
+		}
+	}
 
 }
 

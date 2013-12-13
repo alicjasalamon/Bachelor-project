@@ -292,7 +292,7 @@ public class ScrollableMapPanel extends JPanel {
 		g.setColor(ColorSet.LIGHT_PURPLE);
 		for(Agent a : SimulationResources.building.getAgents())
 		{
-			if(a.getFloor()==floor && !a.isEscaped())
+			if(a.getFloor()==floor && !a.isEscaped())// && !a.isOnStaircase())
 			{
 				Vec2d a1;
 				a1 = transformModelPoint(a.getLocation());

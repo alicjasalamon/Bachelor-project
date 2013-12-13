@@ -60,27 +60,35 @@ public class AlgorithmChoicePanel extends BasicControl {
 		labelPanel.add(label);
 		add(labelPanel);
 		
-		for (int i = 0; i < SimulationResources.agentsNames.size(); i++) {
-			JRadioButton j = new JRadioButton(SimulationResources.agentsNames.get(i));
-			agentRadioButtons.add(j);
-			buttonGroup.add(j);
-			j.setFont(FontSet.MENU_FONT);
-			j.setFocusable(false);
-			j.setBackground(ColorSet.LIGHT_GRAY);
-			JPanel p = new JPanel();
-			p.setBackground(ColorSet.LIGHT_GRAY);
-			p.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
-			p.add(j);
-			add(p);
-			GUIResources.functionalChooseAlgorithmComponents.addElement(p);
-			GUIResources.functionalChooseAlgorithmComponents.addElement(j);
-			
+		for (int i = 0; i < SimulationResources.algorithmsNames.size(); i++) {
+			addButton(SimulationResources.algorithmsNames.get(i));
 		}
 		
 		GUIResources.functionalChooseAlgorithmComponents.addElement(this);
 		GUIResources.functionalChooseAlgorithmComponents.addElement(labelPanel);
 		GUIResources.functionalChooseAlgorithmComponents.addMouseListener(new FunctionalButtonListener(GUIResources.functionalChooseAlgorithmComponents, ColorSet.DARK_GRAY, ColorSet.LIGHT_GRAY, clickAction));
 	
+	}
+	
+	public void addButton(String name)
+	{
+		JRadioButton j = new JRadioButton(name);
+		agentRadioButtons.add(j);
+		buttonGroup.add(j);
+		j.setFont(FontSet.MENU_FONT);
+		j.setFocusable(false);
+		j.setBackground(ColorSet.LIGHT_GRAY);
+		JPanel p = new JPanel();
+		p.setBackground(ColorSet.LIGHT_GRAY);
+		p.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
+		p.add(j);
+		add(p);
+//		if(p==null)
+//			System.out.println("pnulll");
+//		if(GUIResources.functionalChooseAlgorithmComponents ==null)
+//			System.out.println("resources null");
+		GUIResources.functionalChooseAlgorithmComponents.addElement(p);
+		GUIResources.functionalChooseAlgorithmComponents.addElement(j);
 	}
 
 }

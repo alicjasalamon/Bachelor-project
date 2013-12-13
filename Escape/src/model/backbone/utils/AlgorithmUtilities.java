@@ -12,7 +12,7 @@ import model.backbone.building.elements.Wall;
 import model.backbone.building.helpers.Point;
 import resources.SimulationResources;
 
-public class AlgorithUtilities {
+public class AlgorithmUtilities {
 
 
 	//Checks whether the target is behind the wall

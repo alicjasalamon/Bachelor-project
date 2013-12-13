@@ -20,7 +20,7 @@ public class CollisionUtils {
 		ArrayList<Danger> dangers = (ArrayList<Danger>) SimulationResources.building.getFloors().get(me.getFloor()).getDangers();	
 		for (Danger d : dangers) {
 			if (MathUtils.getDistanceBetweenPointAndLine(me.getLocation(), destination, d.getCenter()) < agentToDangerMinimumDistance
-					&& AlgorithUtilities.canISeeIt(me, d.getCenter())) {
+					&& AlgorithmUtilities.canISeeIt(me, d.getCenter())) {
 				return true;
 			}
 		}
@@ -65,7 +65,7 @@ public class CollisionUtils {
 		ArrayList<Danger> dangers = (ArrayList<Danger>) SimulationResources.building.getFloors().get(me.getFloor()).getDangers();	
 		for (Danger d : dangers) {
 			if (MathUtils.getDistanceBetweenPointAndLine(me.getLocation(), me.getDestinationPoint(), d.getCenter()) < agentToDangerMinimumDistance
-					&& AlgorithUtilities.canISeeIt(me, d.getCenter()))
+					&& AlgorithmUtilities.canISeeIt(me, d.getCenter()))
 				dangersInPath.add(d);
 		}
 		

@@ -8,7 +8,7 @@ import model.backbone.building.elements.Exit;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Staircase;
 import model.backbone.building.helpers.Point;
-import model.backbone.utils.AlgorithUtilities;
+import model.backbone.utils.AlgorithmUtilities;
 import model.backbone.utils.CollisionUtils;
 import model.backbone.utils.MathUtils;
 import resources.SimulationResources;
@@ -108,7 +108,7 @@ public abstract class Algorithm {
 			
 			for (Staircase s : staircases) {			
 				if (MathUtils.getDistanceBetweenTwoPoints(s.getPoint1(), agent.getLocation()) < 25+s.getHeight()/4+s.getLenght()/4) {
-					AlgorithUtilities.moveToFirstFloor(agent);
+					AlgorithmUtilities.moveToFirstFloor(agent);
 				}
 			}
 		}

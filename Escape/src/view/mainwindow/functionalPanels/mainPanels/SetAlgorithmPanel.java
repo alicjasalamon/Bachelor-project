@@ -16,35 +16,38 @@ public class SetAlgorithmPanel extends FunctionalPanel {
 
 	private static final long serialVersionUID = -8671142849867956288L;
 
-	JPanel choicePanel;
+	AlgorithmChoicePanel choicePanel;
 
 	JPanel loadAlgorithmPanel;
 	JButton loadAlgorithmButton;
-	
+
 	JPanel editAlgorithmPanel;
 	JButton editAlgorithmButton;
-	
+
 	JPanel createAlgorithmPanel;
 	JButton createAlgorithmButton;
 
-	
 	public SetAlgorithmPanel() {
-		
+
 		choicePanel = new AlgorithmChoicePanel();
-		
+
 		loadAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\LoadAlgo.png", "Load algorithm");
 		loadAlgorithmPanel = new FunctionalButtonBackgroundPanel(loadAlgorithmButton, GUIResources.functionalLoadNewAlgorithmComponents, new LoadAlgorithmListener());
-		
+
 		editAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\EditAlgo.png", "Edit algorithm");
 		editAlgorithmPanel = new FunctionalButtonBackgroundPanel(editAlgorithmButton, GUIResources.functionalEditAlgorithmComponents, new EditAlgorithmListener());
-		
+
 		createAlgorithmButton = new FunctionalButton("functionalPanelsIcons\\CreateAlgo.png", "Create algorithm");
 		createAlgorithmPanel = new FunctionalButtonBackgroundPanel(createAlgorithmButton, GUIResources.functionalCreateNewAlgorithmComponents, new CreateNewAlgorithmListener());
-		
+
 		add(choicePanel);
 		add(loadAlgorithmPanel);
 		add(editAlgorithmPanel);
 		add(createAlgorithmPanel);
 	}
-	
+
+	AlgorithmChoicePanel getChoicePanel() {
+		return choicePanel;
+	}
+
 }
