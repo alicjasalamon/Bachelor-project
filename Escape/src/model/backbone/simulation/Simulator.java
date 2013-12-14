@@ -11,7 +11,7 @@ public class Simulator {
 
 
 	private Algorithm algorithm;
-	private int simulationSpeed;
+	private int simulationSpeed = 50;
 	private SimulationThread simulationThread;
 	 
 	public void startSimulation() {
