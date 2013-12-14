@@ -6,7 +6,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.text.html.HTMLDocument.HTMLReader.IsindexAction;
 
 import resources.GUIResources;
 import view.mainwindow.ElementColection;

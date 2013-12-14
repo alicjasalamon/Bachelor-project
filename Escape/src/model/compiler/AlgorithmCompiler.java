@@ -22,6 +22,7 @@ public class AlgorithmCompiler {
 		try {
 	        
 	        String fullName = "model.backbone.algorithm." + javaFile.getName().substring(0, javaFile.getName().length()-5);
+			//String fullName = "algorithms/" + javaFile.getName().substring(0, javaFile.getName().length()-5);
 	        StringBuilder src = new StringBuilder();
 	        
 	        Path path = javaFile.toPath();

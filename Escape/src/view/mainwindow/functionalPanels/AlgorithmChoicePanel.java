@@ -83,10 +83,7 @@ public class AlgorithmChoicePanel extends BasicControl {
 		p.setLayout(new FlowLayout(FlowLayout.LEFT, 50, 0));
 		p.add(j);
 		add(p);
-//		if(p==null)
-//			System.out.println("pnulll");
-//		if(GUIResources.functionalChooseAlgorithmComponents ==null)
-//			System.out.println("resources null");
+		j.addActionListener(new RadioButtonAlgorithmListener());
 		GUIResources.functionalChooseAlgorithmComponents.addElement(p);
 		GUIResources.functionalChooseAlgorithmComponents.addElement(j);
 	}

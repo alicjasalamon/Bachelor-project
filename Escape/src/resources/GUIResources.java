@@ -6,7 +6,6 @@ import javax.swing.JPanel;
 import model.backbone.building.elements.Danger;
 import view.mainwindow.ElementColection;
 import view.mainwindow.ErrorPanel;
-import view.mainwindow.functionalPanels.AlgorithmChoicePanel;
 
 public class GUIResources {
 
