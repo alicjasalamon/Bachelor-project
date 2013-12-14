@@ -2,6 +2,7 @@ package view.mainwindow.statistics;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
+import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -12,6 +13,7 @@ import org.jfree.chart.StandardChartTheme;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.XYItemRenderer;
+import org.jfree.data.xy.XYDataItem;
 import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 
@@ -21,7 +23,7 @@ import resources.FontSet;
 public class StepsChart extends JPanel {
 
 	private static final long serialVersionUID = -6157011253254478227L;
-	
+
 	private XYSeries series;
 
 	public StepsChart() {
@@ -29,7 +31,7 @@ public class StepsChart extends JPanel {
 		series = new XYSeries("XYGraph");
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		dataset.addSeries(series);
-
+		
 		JFreeChart chart = ChartFactory.createXYLineChart("Current simulation - steps", "number of steps", "number of Agents escaped", dataset, PlotOrientation.VERTICAL, false, false, false);
 
 		ChartPanel CP = new ChartPanel(chart);
@@ -42,7 +44,7 @@ public class StepsChart extends JPanel {
 	}
 
 	public void addToChart(int x, int y) {
-		series.add(x,y);
+		series.add(x, y);
 	}
 
 	void applyTheme(JFreeChart chart) {
@@ -67,6 +69,10 @@ public class StepsChart extends JPanel {
 	public void removeData() {
 		series.clear();
 	}
-	
+
+	@SuppressWarnings("unchecked")
+	public List<XYDataItem> getData() {
+		return  (List<XYDataItem>)series.getItems();
+	}
 
 }

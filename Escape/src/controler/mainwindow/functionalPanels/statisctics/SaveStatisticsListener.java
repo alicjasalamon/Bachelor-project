@@ -3,10 +3,13 @@ package controler.mainwindow.functionalPanels.statisctics;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import resources.GUIResources;
 import resources.SimulationResources;
 import resources.SimulationState;
+import resources.StatisticsResources;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class SaveStatisticsListener implements ClickAction {
@@ -15,40 +18,67 @@ public class SaveStatisticsListener implements ClickAction {
 
 	@Override
 	public void act() {
-		
-		
-		if(SimulationResources.simulationState == SimulationState.Stopped)
-		{
+
+		if (SimulationResources.simulationState == SimulationState.Stopped) {
 			//TODO tu nazwa pliku - sklada sie z daty, nazwy algo i nazwy mapy
-			sb = new StringBuilder(); 
-			sb.append("statistics/");
-		//	sb.append(new SimpleDateFormat("yyyy-MM-dd\tHH:mm:ss").format(Calendar.getInstance().getTime()));
-			sb.append("AlgoName");
-			sb.append("MapName");
+			sb = new StringBuilder();
+			sb.append("statistics\\");
+			sb.append(new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss-").format(Calendar.getInstance().getTime()));
+			sb.append(SimulationResources.algorithmName + "-");
+			sb.append(SimulationResources.mapName);
 			sb.append(".txt");
-			
+
 			PrintWriter writer = null;
 			try {
 				writer = new PrintWriter(sb.toString(), "UTF-8");
-				writer.println("The first line");
-				writer.println("The second line");
+
+				writer.println("Date:\t\t\t" + new SimpleDateFormat("yyyy.MM.dd HH:mm:ss").format(Calendar.getInstance().getTime()));
+				writer.println("Map:\t\t\t" + SimulationResources.mapName);
+				writer.println("Algorithm:\t\t" + SimulationResources.algorithmName);
+
+				writer.println("Agents at start:\t" + StatisticsResources.agentsStart);
+				writer.println("Agents escaped:\t\t" + StatisticsResources.agentsEscaped);
+
+				writer.println("Simulation time:\t" + StatisticsResources.time);
+				writer.println("Simulation steps:\t" + StatisticsResources.steps);
+
+				writer.println();
+				writer.println("Details");
+				writer.println();
 				
-				//TODO cos tez bedzie w statystykach, ale co?
+				//agents start positions
 				
+				//simulation 
+				//writer.print(simulation());
+
 				writer.close();
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (UnsupportedEncodingException e) {
 				e.printStackTrace();
 			}
-	
+
 			GUIResources.setSuccesMessage("Statistics saved in file " + sb.toString());
-			//JOptionPane.showMessageDialog(null, "Statistics saved in file /statistics/ziom.txt");
+		}
+
+	}
+	
+	/*private String simulation()
+	{
+		StringBuilder sb = new StringBuilder();
+		sb.append("Simulation:\n");
+		
+		for(XYDataItem xy : ((StatisticsPanel)(GUIResources.statisticPanel)).getStepsChart().getData())
+		{
+			sb.append("(");
+			sb.append(xy.getXValue());
+			sb.append(", ");
+			sb.append(xy.getYValue());
+			sb.append(")\n");
 		}
 		
-		
-		
+		System.out.println(sb.toString());
+		return sb.toString();
 	}
-
-
+*/
 }

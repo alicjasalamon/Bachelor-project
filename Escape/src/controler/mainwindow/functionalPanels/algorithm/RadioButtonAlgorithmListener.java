@@ -17,11 +17,10 @@ public class RadioButtonAlgorithmListener implements ActionListener {
 
 		if (SimulationResources.simulationState == SimulationState.Stopped) {
 
-			JRadioButton source = (JRadioButton) e.getSource();
-			System.out.println(source.getText());
-			//XXX co tu podac?
-			SimulationResources.simulator.setAlgorithm(new File("algorithms\\" + source.getText() + ".java"));
-			GUIResources.setSuccesMessage("Algorithm " + source.getText() + " selected");
+			String algoName = ((JRadioButton) e.getSource()).getText();
+			SimulationResources.simulator.setAlgorithm(new File("algorithms\\" + algoName + ".java"));
+			SimulationResources.algorithmName = algoName;
+			GUIResources.setSuccesMessage("Algorithm " + algoName + " selected");
 		} else {
 			GUIResources.setErrorMessage("You cannot change algorithm while simulation is running");
 		}

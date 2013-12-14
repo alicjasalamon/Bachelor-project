@@ -32,6 +32,7 @@ public class LoadMapListener implements ClickAction {
 				GUIResources.mainFrame.repaint();
 				GUIResources.mapPanel.repaint();
 
+				SimulationResources.mapName = filename.substring(0, filename.lastIndexOf('.'));
 				GUIResources.setSuccesMessage("Map successfully loaded");
 			}
 
