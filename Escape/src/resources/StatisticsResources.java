@@ -8,7 +8,7 @@ import view.mainwindow.statistics.StatisticsPanel;
 public class StatisticsResources {
 	
 	public static int agentsStart;
-	public static int agentsCurrent;
+	public static int agentsEscaped;
 	public static int time;
 	public static int steps;
 	
@@ -18,7 +18,7 @@ public class StatisticsResources {
 	public static void resetStatisticsData()
 	{
 		agentsStart = 0;
-		agentsCurrent = 0;
+		agentsEscaped = 0;
 		time = 0;
 		steps = 0;
 		

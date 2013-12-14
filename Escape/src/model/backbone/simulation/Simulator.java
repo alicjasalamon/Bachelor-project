@@ -3,6 +3,7 @@ package model.backbone.simulation;
 import java.io.File;
 
 import resources.SimulationResources;
+import resources.StatisticsResources;
 import model.backbone.algorithm.Algorithm;
 import model.compiler.AlgorithmCompiler;
 
@@ -16,6 +17,7 @@ public class Simulator {
 	public void startSimulation() {
 		
 		SimulationResources.utils.initialize();	
+		StatisticsResources.agentsStart = SimulationResources.building.getAgents().size();
 		simulationThread = new SimulationThread();
 		simulationThread.start();		
 	}

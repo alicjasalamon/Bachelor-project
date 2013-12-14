@@ -33,10 +33,8 @@ public class AlgorithmCompiler {
 	        }
 	
 	        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
-	        JavaFileManager fileManager = new
-	            ClassFileManager(compiler
-	                .getStandardFileManager(null, null, null));
-	
+			JavaFileManager fileManager = new ClassFileManager(compiler.getStandardFileManager(null, null, null));
+
 	        List<JavaFileObject> jfiles = new ArrayList<JavaFileObject>();
 	        jfiles.add(new CharSequenceJavaFileObject(fullName, src));
 	

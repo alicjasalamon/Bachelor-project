@@ -2,6 +2,8 @@ package model.backbone.agent;
 
 import java.util.ArrayList;
 
+import resources.StatisticsResources;
+
 import model.backbone.building.helpers.Point;
 import model.backbone.utils.CollisionUtils;
 
@@ -69,6 +71,7 @@ public class Agent {
 
 	public void setEscaped(boolean isEscaped) {
 		this.isEscaped = isEscaped;
+		StatisticsResources.agentsEscaped++;
 	}
 
 	public static double getSize() {

@@ -4,6 +4,8 @@ import java.util.Random;
 import java.util.TimerTask;
 
 import resources.GUIResources;
+import resources.SimulationResources;
+import resources.SimulationState;
 import resources.StatisticsResources;
 import view.mainwindow.statistics.StatisticsPanel;
 
@@ -21,22 +23,22 @@ public class SimulationTimerTask extends TimerTask {
 	}
 
 	private void refreshStatisticsData() {
-		StatisticsResources.time++;
-		StatisticsResources.agentsCurrent += random.nextInt(3);
-		StatisticsResources.steps++;
+		if (SimulationResources.simulationState == SimulationState.Running) {
+			StatisticsResources.time++;
+		}
 	}
 
 	private void refreshStatisticsLabels() {
 		
 		StatisticsPanel statisticsPanel = (StatisticsPanel) GUIResources.statisticPanel;
 		
-		statisticsPanel.getAgentLabel().setText("Agents esaped: " + StatisticsResources.agentsCurrent +
+		statisticsPanel.getAgentLabel().setText("Agents esaped: " + StatisticsResources.agentsEscaped +
 				"/" + StatisticsResources.agentsStart);
 		
 		statisticsPanel.getTimeLabel().setText("Time: " + StatisticsResources.time + " s");
 		statisticsPanel.getStepsLabel().setText("Steps: " + StatisticsResources.steps);
 		
-		statisticsPanel.getStepsChart().addToChart(StatisticsResources.steps, StatisticsResources.agentsCurrent);
+		statisticsPanel.getStepsChart().addToChart(StatisticsResources.steps, StatisticsResources.agentsEscaped);
 
 	}
 }
