@@ -17,6 +17,7 @@ import javax.swing.JRadioButton;
 
 import controler.mainwindow.FunctionalButtonListener;
 import controler.mainwindow.functionalPanels.algorithm.ChooseAlgorithmListener;
+import controler.mainwindow.functionalPanels.algorithm.RadioButtonAlgorithmListener;
 
 import resources.ColorSet;
 import resources.FontSet;

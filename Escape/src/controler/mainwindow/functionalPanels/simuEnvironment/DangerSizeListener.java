@@ -7,6 +7,8 @@ import javax.swing.event.ChangeListener;
 import model.backbone.building.elements.Danger;
 
 import resources.GUIResources;
+import resources.SimulationResources;
+import resources.SimulationState;
 
 public class DangerSizeListener implements ChangeListener {
 
@@ -19,22 +21,26 @@ public class DangerSizeListener implements ChangeListener {
 
 	@Override
 	public void stateChanged(ChangeEvent e) {
-		// TODO 
-
-		JSlider source = (JSlider) e.getSource();
-		if (!source.getValueIsAdjusting()) {
-
-			int newValue = (int) (a *  source.getValue() + b);
-			GUIResources.dangerSizeSliderValue = source.getValue();
-			Danger.initialRadius = newValue;
+		
+		if (SimulationResources.simulationState == SimulationState.Stopped) {
 			
-			if(GUIResources.lastDanger!=null) {
-				GUIResources.lastDanger.setRadius( source.getValue());
-				GUIResources.lastDanger.setRadius((int) newValue);	
+			JSlider source = (JSlider) e.getSource();
+			if (!source.getValueIsAdjusting()) {
+
+				int newValue = (int) (a *  source.getValue() + b);
+				GUIResources.dangerSizeSliderValue = source.getValue();
+				Danger.initialRadius = newValue;
+				
+				if(GUIResources.lastDanger!=null) {
+					GUIResources.lastDanger.setRadius( source.getValue());
+					GUIResources.lastDanger.setRadius((int) newValue);	
+				}
+				GUIResources.mapPanel.repaint();
+
 			}
-			GUIResources.mapPanel.repaint();
-
-
+			GUIResources.setSuccesMessage("");
+		} else {
+			GUIResources.setErrorMessage("You cannot change danger size while simulation is running");
 		}
 
 	}

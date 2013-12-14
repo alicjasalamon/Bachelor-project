@@ -27,7 +27,7 @@ public class AgentsSizeListener implements ChangeListener {
 			GUIResources.agentSizeSliderValue = source.getValue();
 			Agent.size = (int) newValue;
 			GUIResources.mapPanel.repaint();
-			System.out.println("zmiana");
+			GUIResources.setSuccesMessage("");
 		}
 
 	}
