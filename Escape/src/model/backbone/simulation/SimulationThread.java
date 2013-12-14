@@ -1,7 +1,5 @@
 package model.backbone.simulation;
 
-import java.lang.reflect.Method;
-
 import model.backbone.agent.Agent;
 import model.backbone.algorithm.Algorithm;
 import resources.GUIResources;
