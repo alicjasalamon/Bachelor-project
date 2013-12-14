@@ -33,6 +33,8 @@ public class AlgorithmCompiler {
 	        }
 	
 	        JavaCompiler compiler = ToolProvider.getSystemJavaCompiler();
+	        if(compiler==null)
+	        	System.out.println("ziomek");
 	        JavaFileManager fileManager = new
 	            ClassFileManager(compiler
 	                .getStandardFileManager(null, null, null));

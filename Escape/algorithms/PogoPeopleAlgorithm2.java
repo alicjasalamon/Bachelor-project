@@ -4,7 +4,7 @@ import java.util.Random;
 
 import model.backbone.agent.Agent;
 
-public class PogoPeopleAlgorithm extends Algorithm {
+public class PogoPeopleAlgorithm2 extends Algorithm {
 
 	Random rand = new Random(System.currentTimeMillis());
 	

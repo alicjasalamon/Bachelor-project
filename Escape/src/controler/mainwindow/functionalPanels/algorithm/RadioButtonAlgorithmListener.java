@@ -19,8 +19,8 @@ public class RadioButtonAlgorithmListener implements ActionListener {
 
 			JRadioButton source = (JRadioButton) e.getSource();
 			System.out.println(source.getText());
-			//XXX co tu podac?
-			SimulationResources.simulator.setAlgorithm(new File("algorithms\\" + source.getText() + ".java"));
+			//SimulationResources.simulator.setAlgorithm(new File("C:\\Users\\Alicja\\Documents\\GitHub\\Bachelor-project\\Escape\\algorithms\\PogoPeopleAlgorithm2.java"));
+			SimulationResources.simulator.setAlgorithm(new File("algorithms\\" + source.getText() + ".java")); 
 			GUIResources.setSuccesMessage("Algorithm " + source.getText() + " selected");
 		} else {
 			GUIResources.setErrorMessage("You cannot change algorithm while simulation is running");
