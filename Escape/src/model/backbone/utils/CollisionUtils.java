@@ -213,4 +213,24 @@ public class CollisionUtils {
 		return true;
 	}
 	
+	public static boolean canCreateDangerAtPoint(Point destination, int floor) {
+		ArrayList<Wall> walls = (ArrayList<Wall>) SimulationResources.building.getFloors().get(floor).getWalls();
+		ArrayList<Agent> agents = (ArrayList<Agent>) SimulationResources.building.getAgents();
+		
+		for (Wall w : walls) {
+			if (MathUtils.getDistanceBetweenPointAndLine(w.getBegin(), w.getEnd(), destination) < 3 ) {
+				return false;
+			}
+		}
+			
+		for (Agent a : agents) {
+			if (a.getFloor() == floor) {
+				if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), destination) < agentToDangerMinimumDistance) {		
+					return false;
+				}	
+			}
+		}
+		return true;
+	}
+	
 }

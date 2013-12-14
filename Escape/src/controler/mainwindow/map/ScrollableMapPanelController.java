@@ -11,8 +11,10 @@ import java.awt.event.MouseWheelListener;
 import model.backbone.agent.Agent;
 import model.backbone.building.elements.Danger;
 import model.backbone.building.helpers.Point;
+import model.backbone.utils.CollisionUtils;
 import resources.GUIResources;
 import resources.SimulationResources;
+import resources.StatisticsResources;
 import view.mainwindow.simulationMap.ScrollableMapPanel;
 import view.mainwindow.simulationMap.utils.Transform;
 import view.mainwindow.simulationMap.utils.Transforms;
@@ -79,16 +81,23 @@ public class ScrollableMapPanelController implements MouseListener, MouseMotionL
 		Vec2d click = new Vec2d(e.getX(), e.getY());
 		click = canvasPanel.getTransformTotal().invert(click);
 		if (GUIResources.drawAgent) {
-
-			SimulationResources.building.getAgents().add(new Agent(new Point((int) click.x, (int) click.y), floor));
+			if (CollisionUtils.canCreateAgentAtPoint(new Point((int)click.x,(int) click.y), floor)) {
+				StatisticsResources.agentsStart++;
+				SimulationResources.building.getAgents().add(new Agent(new Point((int) click.x, (int) click.y), floor));	
+			} else {
+				GUIResources.setErrorMessage("You cannot add agent there!");
+			}
 			GUIResources.mapPanel.repaint();
 		}
 
 		if (GUIResources.drawDanger) {
-			System.out.println(source.getFloor());
-			Danger newDanger = new Danger((new Point((int) (click.x), (int) (click.y))), Danger.initialRadius);
-			GUIResources.lastDanger = newDanger;
-			SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);
+			if (CollisionUtils.canCreateDangerAtPoint(new Point((int) (click.x), (int) (click.y)), floor)) {
+				Danger newDanger = new Danger((new Point((int) (click.x), (int) (click.y))), Danger.initialRadius);
+				GUIResources.lastDanger = newDanger;
+				SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);				
+			} else {
+				GUIResources.setErrorMessage("You cannot add danger there!");
+			}
 			GUIResources.mapPanel.repaint();
 
 		}
