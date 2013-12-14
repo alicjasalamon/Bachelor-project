@@ -1,5 +1,7 @@
 package model.backbone.simulation;
 
+import java.lang.reflect.Method;
+
 import model.backbone.agent.Agent;
 import model.backbone.algorithm.Algorithm;
 import resources.GUIResources;
@@ -11,32 +13,42 @@ public class SimulationThread extends Thread{
 	private Algorithm simulationAlgorithm;
 	
 	public SimulationThread() {
-		this.shouldSimulationRun = true;
-		simulationAlgorithm = SimulationResources.simulator.getAlgorithm();
+		try {
+			this.shouldSimulationRun = true;
+			simulationAlgorithm = SimulationResources.simulator.getAlgorithm();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 	
     public void run() {
     	for (;;) {
-			
-			if (SimulationResources.building.getAgents().size() == 0) {
-				
-				//TODO Tuta
-			}
-			for(Agent a : SimulationResources.building.getAgents())
-			{
-				if (!a.isEscaped()) {
-					simulationAlgorithm.setAgentDestination(a);		
-					simulationAlgorithm.setAgentDirection(a);
-					simulationAlgorithm.moveAgent(a);
-					a.ageHim();
-					GUIResources.mapPanel.repaint();
+    		try {
+    			
+				if (SimulationResources.building.getAgents().size() == 0) {
 					
+					//TODO Tuta
 				}
-			}
-			if (!shouldSimulationRun) return;
-			try {
-				Thread.sleep((100 - SimulationResources.simulator.getSimulationSpeed())*4 + 10);
-			} catch (InterruptedException e) {
+				for(Agent a : SimulationResources.building.getAgents())
+				{
+					if (!a.isEscaped()) {
+						
+						if (a.isOnStaircase()) {
+							a.decreaseStaircaseTime();
+						}
+						simulationAlgorithm.setAgentDestination(a);		
+						simulationAlgorithm.setAgentDirection(a);
+						simulationAlgorithm.moveAgent(a);
+						a.ageHim();
+						GUIResources.mapPanel.repaint();
+						
+					}
+				}
+				if (!shouldSimulationRun) return;
+				
+					Thread.sleep((100 - SimulationResources.simulator.getSimulationSpeed())*4 + 10);
+			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
