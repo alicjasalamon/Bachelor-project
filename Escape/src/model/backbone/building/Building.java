@@ -78,6 +78,13 @@ public class Building {
 	public void setResolutionY(int resolutionY) {
 		this.resolutionY = resolutionY;
 	}
+	
+	public void resetBuilding() {
+		this.agents.clear();
+		for (Floor f : floors) {
+			f.getDangers().clear();
+		}
+	}
 
 	
 }

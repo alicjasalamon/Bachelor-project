@@ -28,6 +28,7 @@ public class Simulator {
 	
 	public void stopSimulation() {
 		this.simulationThread.stopSimulation();
+		SimulationResources.building.resetBuilding();
 	}
 	
 	public void setSimulationSpeed(int speed) {
