@@ -1,6 +1,5 @@
 package controler.mainwindow.functionalPanels.simulation;
 
-import java.util.Random;
 import java.util.TimerTask;
 
 import resources.GUIResources;
@@ -12,8 +11,6 @@ import view.mainwindow.statistics.StatisticsPanel;
 public class SimulationTimerTask extends TimerTask {
 
 
-	private Random random = new Random();
-	
 	@Override
 	public void run() {
 

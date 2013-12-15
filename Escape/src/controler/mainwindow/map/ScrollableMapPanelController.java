@@ -84,6 +84,7 @@ public class ScrollableMapPanelController implements MouseListener, MouseMotionL
 			if (CollisionUtils.canCreateAgentAtPoint(new Point((int)click.x,(int) click.y), floor)) {
 				StatisticsResources.agentsStart++;
 				SimulationResources.building.getAgents().add(new Agent(new Point((int) click.x, (int) click.y), floor));	
+				GUIResources.setSuccesMessage("Agent added at (" + (int) click.x + ", " + (int) click.y + ")");
 			} else {
 				GUIResources.setErrorMessage("You cannot add agent there!");
 			}
@@ -94,7 +95,8 @@ public class ScrollableMapPanelController implements MouseListener, MouseMotionL
 			if (CollisionUtils.canCreateDangerAtPoint(new Point((int) (click.x), (int) (click.y)), floor)) {
 				Danger newDanger = new Danger((new Point((int) (click.x), (int) (click.y))), Danger.initialRadius);
 				GUIResources.lastDanger = newDanger;
-				SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);				
+				SimulationResources.building.getFloors().get(source.getFloor()).addDanger(newDanger);	
+				GUIResources.setSuccesMessage("Danger added at (" + (int) click.x + ", " + (int) click.y + ")");
 			} else {
 				GUIResources.setErrorMessage("You cannot add danger there!");
 			}

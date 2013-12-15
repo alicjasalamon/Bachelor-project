@@ -13,7 +13,7 @@ public class SpeedSimulationListener implements ChangeListener{
 		
 		JSlider source = (JSlider) e.getSource();
 		if (!source.getValueIsAdjusting()) {
-			SimulationResources.simulator.setSimulationSpeed(source.getValue() + 1);
+			SimulationResources.simulator.setSimulationSpeed(source.getValue());
 		}
 	}
 }

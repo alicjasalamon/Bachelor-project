@@ -47,7 +47,8 @@ public class SimulationThread extends Thread{
 				StatisticsResources.steps++;
 				if (!shouldSimulationRun) return;
 				
-					Thread.sleep((100 - SimulationResources.simulator.getSimulationSpeed())*4 + 10);
+				Thread.sleep((100 - SimulationResources.simulator.getSimulationSpeed())+1);
+				
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

@@ -16,6 +16,8 @@ public class SimulationResources {
 	public static ArrayList<String> algorithmsNames;
 	public static Simulator simulator;
 	public static NodeOfInterestUtils utils;
+	public static String algorithmName = "defaultAlgo";
+	public static String mapName ="building1";
 
 	public static void initialize() {
 		simulationState = SimulationState.Stopped;
