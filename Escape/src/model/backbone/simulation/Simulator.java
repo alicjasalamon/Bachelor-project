@@ -2,6 +2,7 @@ package model.backbone.simulation;
 
 import java.io.File;
 
+import resources.GUIResources;
 import resources.SimulationResources;
 import resources.StatisticsResources;
 import model.backbone.algorithm.Algorithm;
@@ -29,6 +30,7 @@ public class Simulator {
 	public void stopSimulation() {
 		this.simulationThread.stopSimulation();
 		SimulationResources.building.resetBuilding();
+		GUIResources.mapPanel.repaint();
 	}
 	
 	public void setSimulationSpeed(int speed) {
