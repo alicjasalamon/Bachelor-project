@@ -27,7 +27,7 @@ public class Simulator {
 	}
 	
 	public void stopSimulation() {
-		//TODO
+		this.simulationThread.stopSimulation();
 	}
 	
 	public void setSimulationSpeed(int speed) {
