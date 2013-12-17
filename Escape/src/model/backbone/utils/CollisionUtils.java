@@ -225,7 +225,7 @@ public class CollisionUtils {
 			
 		for (Agent a : agents) {
 			if (a.getFloor() == floor) {
-				if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), destination) < agentToDangerMinimumDistance) {		
+				if (MathUtils.getDistanceBetweenTwoPoints(a.getLocation(), destination) < Danger.initialRadius) {		
 					return false;
 				}	
 			}

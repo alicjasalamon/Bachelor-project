@@ -4,6 +4,7 @@ import java.util.Random;
 
 import model.backbone.agent.Agent;
 import model.backbone.building.helpers.Point;
+import model.backbone.utils.CollisionUtils;
 
 import resources.GUIResources;
 import resources.SimulationResources;
@@ -41,10 +42,11 @@ public class AddRandomAgentsListener implements ClickAction {
 			y = rand.nextInt(SimulationResources.building.getResolutionY());
 			f = rand.nextInt(SimulationResources.building.getFloors().size());
 			
-			//XXX can agent actually stand here?
-			Agent a = new Agent(new Point(x, y), f);
-			SimulationResources.building.getAgents().add(a);	
-			success = true;
+			if (CollisionUtils.canCreateAgentAtPoint(new Point(x,y), f)) {
+				Agent a = new Agent(new Point(x, y), f);				
+				SimulationResources.building.getAgents().add(a);	
+				success = true;
+			}
 			
 		}
 	}
