@@ -1,4 +1,4 @@
-package controler.mainwindow.functionalPanels.simulation;
+package controler.mainwindow.functionalPanels.statisctics;
 
 import java.util.TimerTask;
 

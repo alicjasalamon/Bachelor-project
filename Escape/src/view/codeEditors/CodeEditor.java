@@ -124,6 +124,7 @@ public class CodeEditor {
 
 			codeFrame.setTitle(fileName);
 			codeFrame.setInitText("algorithms\\" + fileName);
+			codeFrame.setLanguage(SyntaxConstants.SYNTAX_STYLE_JAVA);
 			codeFrame.setActionListener(new ActionListener() {
 
 				@Override

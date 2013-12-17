@@ -47,6 +47,8 @@ public class GUIResources {
 	public static ElementColection functionalAddDangerComponents = new ElementColection();
 	public static ElementColection functionalAddAgentComponents = new ElementColection();
 	public static ElementColection functionalSetAgentSizeComponents = new ElementColection();
+	public static ElementColection functionalAddRandomAgentsComponents = new ElementColection();
+	public static ElementColection functionalSetRandomAgentsCountComponents = new ElementColection();
 	
 	//////////////////////////////////////////////////////////////////////////////////
 	//							set algorithm components 							//
@@ -93,6 +95,7 @@ public class GUIResources {
 	public static int dangerSizeSliderValue = 50;
 	public static int agentSizeSliderValue = 50;
 	public static int agentStepSliderValue = 50;
+	public static int randomAgentsSliderValue = 50;
 	
 	public static void setSuccesMessage(String message)
 	{
