@@ -12,8 +12,10 @@ import view.mainwindow.functionalPanels.FunctionalSlider;
 import view.mainwindow.functionalPanels.FunctionalSliderBackgroundPanel;
 import controler.mainwindow.functionalPanels.simuEnvironment.AddAgentListener;
 import controler.mainwindow.functionalPanels.simuEnvironment.AddDangerListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.AddRandomAgentsListener;
 import controler.mainwindow.functionalPanels.simuEnvironment.AgentsSizeListener;
 import controler.mainwindow.functionalPanels.simuEnvironment.DangerSizeListener;
+import controler.mainwindow.functionalPanels.simuEnvironment.RandomAgentsCounterSliderListener;
 
 public class SetSimuEnvironment extends FunctionalPanel{
 
@@ -30,6 +32,12 @@ public class SetSimuEnvironment extends FunctionalPanel{
 	
 	JPanel dangerSizePanel;
 	JSlider dangerSize;
+	
+	JPanel addRandomAgentsPanel;
+	JButton addRandomAgents;
+	
+	JPanel randomAgentsSliderPanel;
+	JSlider randomAgentsCountSlider;
 	
 	public SetSimuEnvironment()
 	{
@@ -49,10 +57,21 @@ public class SetSimuEnvironment extends FunctionalPanel{
 		agentSize.addChangeListener(new AgentsSizeListener());
 		agentSizePanel = new FunctionalSliderBackgroundPanel(agentSize, "Set agent size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentSizeComponents);
 	
+		
+		addRandomAgents = new FunctionalButton("functionalPanelsIcons\\Dice.png", "Add agents on random positions");
+		addRandomAgentsPanel= new FunctionalButtonBackgroundPanel(addRandomAgents, GUIResources.functionalAddRandomAgentsComponents, new AddRandomAgentsListener());
+		
+		randomAgentsCountSlider = new FunctionalSlider();
+		randomAgentsCountSlider.addChangeListener(new RandomAgentsCounterSliderListener());
+		randomAgentsSliderPanel = new FunctionalSliderBackgroundPanel(randomAgentsCountSlider, "Set agent count", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetRandomAgentsCountComponents);
+	
+		
 		add(addDangerPanel);
 		add(dangerSizePanel);
 		add(addAgentPanel);
 		add(agentSizePanel);
+		add(addRandomAgentsPanel);
+		add(randomAgentsSliderPanel);
 		
 	}
 

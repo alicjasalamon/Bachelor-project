@@ -22,7 +22,7 @@ public class SimulationResources {
 	public static void initialize() {
 		simulationState = SimulationState.Stopped;
 		BuildingExplorer be = new BuildingExplorer();
-		building = be.parseBuilding("building_schema/building1.xml");
+		building = be.parseBuilding("building_schema/building3.xml");
 		algorithmsNames = new ArrayList<String>(findAlgosNames());
 		utils = new NodeOfInterestUtils();
 		simulator = new Simulator();
