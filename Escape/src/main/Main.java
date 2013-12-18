@@ -6,8 +6,8 @@ import javax.swing.UIManager;
 
 import resources.GUIResources;
 import resources.SimulationResources;
-//import test.Example;
 import view.mainwindow.MainWindow;
+//import test.Example;
 
 public class Main {
 
@@ -18,7 +18,7 @@ public class Main {
 			public void run() {
 
 				try {
-
+					
 					SimulationResources.initialize();
 					UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 					GUIResources.mainFrame = new MainWindow();

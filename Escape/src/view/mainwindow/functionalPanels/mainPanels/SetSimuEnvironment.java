@@ -58,12 +58,12 @@ public class SetSimuEnvironment extends FunctionalPanel{
 		agentSizePanel = new FunctionalSliderBackgroundPanel(agentSize, "Set agent size", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetAgentSizeComponents);
 	
 		
-		addRandomAgents = new FunctionalButton("functionalPanelsIcons\\Dice.png", "Add agents on random positions");
+		addRandomAgents = new FunctionalButton("functionalPanelsIcons\\Dice.png", "Add agents at random positions");
 		addRandomAgentsPanel= new FunctionalButtonBackgroundPanel(addRandomAgents, GUIResources.functionalAddRandomAgentsComponents, new AddRandomAgentsListener());
 		
 		randomAgentsCountSlider = new FunctionalSlider();
 		randomAgentsCountSlider.addChangeListener(new RandomAgentsCounterSliderListener());
-		randomAgentsSliderPanel = new FunctionalSliderBackgroundPanel(randomAgentsCountSlider, "Set agent count", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetRandomAgentsCountComponents);
+		randomAgentsSliderPanel = new FunctionalSliderBackgroundPanel(randomAgentsCountSlider, "Set number of agents", "functionalPanelsIcons\\Size.png", GUIResources.functionalSetRandomAgentsCountComponents);
 	
 		
 		add(addDangerPanel);
