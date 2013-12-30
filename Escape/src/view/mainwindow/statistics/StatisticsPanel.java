@@ -2,6 +2,7 @@ package view.mainwindow.statistics;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Toolkit;
 
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
@@ -23,8 +24,14 @@ public class StatisticsPanel extends JPanel {
 		stepsChart = new StepsChart();
 		setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		add(stepsChart);
-		add(createHelpPanel(23, 22, 23235, 3423));
-		setPreferredSize(new Dimension(1020, 710));
+		add(createHelpPanel(0, 0, 0, 0));
+		
+
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) screenSize.getWidth();
+		int height = (int) screenSize.getHeight();
+		
+		setPreferredSize(new Dimension(width - 570, height - 190));
 	}
 
 	public JLabel getAgentLabel() {
@@ -46,7 +53,7 @@ public class StatisticsPanel extends JPanel {
 	private JPanel createHelpPanel(int maxAgents, int escapedAgent, int time, int steps) {
 		JPanel helpPanel = new JPanel();
 		helpPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
-		helpPanel.setPreferredSize(new Dimension(1000, 60));
+	//	helpPanel.setPreferredSize(new Dimension(1000, 60));
 		helpPanel.setBackground(ColorSet.LIGHT_GRAY);
 
 		agentLabel = new JLabel("Agents esaped: " + escapedAgent + "/" + maxAgents);

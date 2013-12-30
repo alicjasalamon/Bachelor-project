@@ -1,7 +1,7 @@
 package view.mainwindow.simulationMap;
 
 import java.awt.Dimension;
-import java.awt.FlowLayout;
+import java.awt.Toolkit;
 
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -21,15 +21,19 @@ public class TabbedMapPanel extends JPanel {
 		for (int i = 0; i < SimulationResources.building.getFloors().size(); i++) {
 			jTabbedPane.add("floor " + (i + 1), new ScrollableMapPanel(i));
 		}
+		
+		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		int width = (int) screenSize.getWidth();
+		int height = (int) screenSize.getHeight();
 
-		jTabbedPane.setPreferredSize(new Dimension(1000, 700));
 		setBackground(ColorSet.WHITE);
-
-		setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-		setPreferredSize(new Dimension(1020, 710));
+		jTabbedPane.setBackground(ColorSet.WHITE);
+		
+		setPreferredSize(new Dimension(width - 570, height - 190));
+		jTabbedPane.setPreferredSize(new Dimension(width - 590, height - 200));
 
 		add(jTabbedPane);
 		add(new LegendPanel());
-		setBackground(ColorSet.WHITE);
+
 	}
 }
