@@ -3,7 +3,7 @@ package resources;
 import java.io.File;
 import java.util.ArrayList;
 
-import model.backbone.algorithm.TestAlgorithm;
+import model.backbone.algorithm.StandardAlgorithm;
 import model.backbone.building.Building;
 import model.backbone.building.helpers.BuildingExplorer;
 import model.backbone.simulation.Simulator;
@@ -26,7 +26,7 @@ public class SimulationResources {
 		algorithmsNames = new ArrayList<String>(findAlgosNames());
 		utils = new NodeOfInterestUtils();
 		simulator = new Simulator();
-		simulator.setAlgorithm(new TestAlgorithm());
+		simulator.setAlgorithm(new StandardAlgorithm());
 
 	}
 

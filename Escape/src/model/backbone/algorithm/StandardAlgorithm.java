@@ -4,7 +4,7 @@ import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.utils.AlgorithmUtilities;
 
-public class TestAlgorithm extends Algorithm {
+public class StandardAlgorithm extends Algorithm {
 
 	@Override
 	public void setAgentDestination(Agent agent) {
