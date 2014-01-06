@@ -26,6 +26,7 @@ public class StandardAlgorithm extends Algorithm {
 
 	public void lookAround(Agent agent) {
 		
+		if (agent.isRerouting()) return;
 		//Can the agent see an exit
 		if (AlgorithmUtilities.canISeeAnyExit(agent)) {
 			AlgorithmUtilities.setDestinationToNearestExit(agent);
@@ -48,7 +49,6 @@ public class StandardAlgorithm extends Algorithm {
 		//Can the agent see a node of interest
 		if (AlgorithmUtilities.canISeeAnyNodesOfInterest(agent)) {
 			AlgorithmUtilities.setDestinationAccordingToNearestNodeOfInterest(agent);
-			return;
 		}
 		
 	}

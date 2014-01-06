@@ -1,9 +1,12 @@
 package model.backbone.agent;
 
 import java.util.ArrayList;
+import java.util.List;
 
+import resources.SimulationResources;
 import resources.StatisticsResources;
 
+import model.backbone.building.elements.Staircase;
 import model.backbone.building.helpers.Point;
 import model.backbone.utils.CollisionUtils;
 
@@ -20,11 +23,13 @@ public class Agent {
 	private boolean isDead;
 	private DestinationType destination;
 	private Point destinationPoint;
+	private Point secondaryDestinationPoint;
+	private DestinationType secondaryDestination;
 	private Point direction;
 	//Collision
 	private boolean isAvoidingCollision;
 	private ArrayList<Point> temporaryDestinationPoints;
-
+	private boolean isRerouting;
 	private int myHitPoints = 700;
 	
 	public static int size = 30;
@@ -38,6 +43,7 @@ public class Agent {
 		isEscaped = false;
 		isOnStaircase = false;
 		isDead = false;
+		isRerouting = false;
 		setAvoidingCollision(false);
 		setTemporaryDestinationPoints(null);
 	}
@@ -95,7 +101,14 @@ public class Agent {
 	}
 	
 	public void setDestination(DestinationType dest, Point destPoint) {
+			
 			if (this.destination == DestinationType.Exit) return;
+			
+//			if (this.destination == DestinationType.NOI && dest != DestinationType.NOI ) {
+//				this.setSecDestination(dest, destPoint);
+//				isRerouting = true;
+//				return;
+//			}
 			if (dest == DestinationType.Exit ||  dest == DestinationType.Staircase) {
 				this.destination = dest;
 				this.destinationPoint = destPoint;
@@ -108,7 +121,32 @@ public class Agent {
 				this.destination = dest;
 				this.destinationPoint = destPoint;
 			}
+			if (dest == DestinationType.None) {
+				this.destination = dest;
+				this.destinationPoint = destPoint;
+			}
 	}
+	
+	public void setSecDestination(DestinationType dest, Point destPoint) {
+		if (this.secondaryDestination == DestinationType.Exit) return;
+		
+		if (dest == DestinationType.Exit ||  dest == DestinationType.Staircase) {
+			this.secondaryDestination = dest;
+			this.secondaryDestinationPoint = destPoint;
+		}
+		if (dest == DestinationType.Sign && (this.secondaryDestination == DestinationType.NOI || this.secondaryDestination == DestinationType.None)) {
+			this.secondaryDestination = dest;
+			this.secondaryDestinationPoint = destPoint;
+		}
+		if (dest == DestinationType.NOI && this.secondaryDestination == DestinationType.None) {
+			this.secondaryDestination = dest;
+			this.secondaryDestinationPoint = destPoint;
+		}
+		if (dest == DestinationType.None) {
+			this.secondaryDestination = dest;
+			this.secondaryDestinationPoint = destPoint;
+		}
+}
 	
 	public boolean isDead() {
 		return isDead;
@@ -167,9 +205,20 @@ public class Agent {
 		if (stepsOnStaircaseLeft == 0) {
 			int currentFloor = floor;
 			this.setFloor(0);
-			if (CollisionUtils.canIMoveThere(this, this.currentLocation.x, this.currentLocation.y)) {
+			List<Staircase> s = SimulationResources.building.getStairCases();
+			if (CollisionUtils.canIMoveThere(this, s.get(0).getPoint1().x+20, s.get(0).getPoint1().y)) {
+				this.setLocation(new Point(s.get(0).getPoint1().x+20, s.get(0).getPoint1().y));
+				isOnStaircase = false;	
+				
+			} else if (CollisionUtils.canIMoveThere(this, s.get(0).getPoint1().x+20, s.get(0).getPoint1().y-20)) {
+				this.setLocation(new Point(s.get(0).getPoint1().x+20, s.get(0).getPoint1().y-20));
+				isOnStaircase = false;			
+				
+			} else if (CollisionUtils.canIMoveThere(this, s.get(0).getPoint1().x+20, s.get(0).getPoint1().y+20)) {
+				this.setLocation(new Point(s.get(0).getPoint1().x+20, s.get(0).getPoint1().y+20));
 				isOnStaircase = false;				
-			} else {
+			}
+			else {
 				this.setFloor(currentFloor);
 				stepsOnStaircaseLeft+=3;
 			}
@@ -181,4 +230,44 @@ public class Agent {
 		this.destination = DestinationType.None;
 	}
 	
+	public void clearSecondaryDestination() {
+		this.destination = DestinationType.None;
+	}
+
+	public Point getSecondaryDestinationPoint() {
+		return secondaryDestinationPoint;
+	}
+
+	public void setSecondaryDestinationPoint(Point secondaryDestinationPoint) {
+		this.secondaryDestinationPoint = secondaryDestinationPoint;
+	}
+	public DestinationType getSecondaryDestination() {
+		return secondaryDestination;
+	}
+
+	public void setSecondaryDestination(DestinationType secondaryDestination) {
+		this.secondaryDestination = secondaryDestination;
+	}
+
+	public void switchToSecondaryDestination() {
+		if (this.secondaryDestinationPoint == null) {
+			System.out.println("dsadasd");
+		}
+		this.destination = this.secondaryDestination;
+		this.destinationPoint = this.secondaryDestinationPoint;
+		this.secondaryDestination = null;
+		this.secondaryDestinationPoint = null;
+		isRerouting = false;
+	}
+	
+	public boolean isRerouting() {
+		return isRerouting;
+	}
+	
+	public void setRerouting(boolean r) {
+		this.isRerouting = r;
+	}
+
+	
+
 }

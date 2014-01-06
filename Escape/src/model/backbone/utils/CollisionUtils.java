@@ -10,10 +10,10 @@ import resources.SimulationResources;
 
 public class CollisionUtils {
 	
-	public static final int agentToWallMinimumDistance = 25;
-	public static final int agentToAgentMinimumDistance = 25;
-	public static final int agentToDangerMinimumDistance = 25;
-	public static final int rerouteOffset = 50;
+	public static final int agentToWallMinimumDistance = 17;
+	public static final int agentToAgentMinimumDistance = 15;
+	public static final int agentToDangerMinimumDistance = 20;
+	public static final int rerouteOffset = 40;
 	
 	public static boolean areThereObstaclesInMyPath(Agent me, Point destination) {
 		
@@ -153,7 +153,7 @@ public class CollisionUtils {
 		//Check if any other agent will block this agent's path
 		for (Agent a : agents) {
 			//check if its not the same agent!
-			if (a.equals(me) || a.isEscaped()) continue;
+			if (a.equals(me) || a.isEscaped() || a.isOnStaircase()) continue;
 			//Are the agents on the same floor
 			if (a.getFloor() == me.getFloor()) {
 					//Is any other agent too close to our destination

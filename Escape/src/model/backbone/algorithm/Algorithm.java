@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
+import model.backbone.building.elements.NodeOfInterest;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Staircase;
 import model.backbone.building.helpers.Point;
@@ -63,10 +64,9 @@ public abstract class Algorithm {
 				(agent.getLocation().getY() > destination.getY()) ? -1 : 1;
 			
 
-		
-			//if (AlgorithUtilities.howFarToClosestExit(agent) < 50) agent.setDirection(new Point(xDest, yDest));
 			if (CollisionUtils.canIMoveThere(agent, xDest, yDest)) {
 				agent.setDirection(new Point(xDest, yDest));
+				return;
 			} 
 			else if (CollisionUtils.canIMoveThere(agent, xDest, 0)) {
 				agent.setDirection(new Point(xDest, 0));
@@ -120,6 +120,12 @@ public abstract class Algorithm {
 				agent.clearDestination();
 				agent.setDestination(DestinationType.Sign, s.getTarget());
 				return;
+			}
+		}
+		
+		if (agent.getDestinationType() == DestinationType.NOI && agent.isRerouting()) {
+			if (MathUtils.getDistanceBetweenTwoPoints(agent.getDestinationPoint(), agent.getLocation()) < 20) {
+				agent.switchToSecondaryDestination();
 			}
 		}
 	}

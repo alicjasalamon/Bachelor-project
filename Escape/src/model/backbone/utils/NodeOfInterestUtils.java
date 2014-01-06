@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import model.backbone.agent.Agent;
 import model.backbone.building.Building;
 import model.backbone.building.elements.Floor;
 import model.backbone.building.elements.NodeOfInterest;
@@ -167,5 +168,33 @@ public class NodeOfInterestUtils {
 		else {			
 			return new NodeOfInterest(p.x,p.y+30,p.x,p.y+30);
 		}
+	}
+	
+	public Point getFartherNoiPoint(NodeOfInterest noi, Agent agent) {
+		
+		Point start = noi.getBegin();
+		Point end = noi.getEnd();
+		Point middle = MathUtils.getMiddlePointOfTheLine(start, end);
+		if (start.x == end.x && start.y == end.y) {
+			return noi.getBegin();
+		}
+		if (adjacentSquaresMap.get(agent.getFloor())[start.x-1][start.y] == -1
+				|| adjacentSquaresMap.get(agent.getFloor())[start.x+1][start.y] == -1) {
+			if (agent.getLocation().y < start.y) {
+				return new Point(middle.x,middle.y+25);
+			} else {
+				return new Point(middle.x,middle.y-25);
+			}
+		}
+		if (adjacentSquaresMap.get(agent.getFloor())[start.x][start.y-1] == -1
+				|| adjacentSquaresMap.get(agent.getFloor())[start.x][start.y+1] == -1) {
+			if (agent.getLocation().x < start.x) {
+				return new Point(middle.x +25,middle.y);
+			} else {
+				return new Point(middle.x -25,middle.y);
+			}
+		}
+		
+		return null;
 	}
 }

@@ -142,7 +142,10 @@ public class AlgorithmUtilities {
 				} 
 			}
 		}
+		
+		
 		me.setDestination(DestinationType.Staircase, nearestStaircase.getPoint1());
+		
 	}
 	
 	public static void setDestinationAccordingToNearestSign(Agent me) {
@@ -159,8 +162,30 @@ public class AlgorithmUtilities {
 				} 
 			}
 		}
+		NodeOfInterest nearestNode = null;
+		if (canISeeAnyNodesOfInterest(me)) {
+			ArrayList<NodeOfInterest> nodes = (ArrayList<NodeOfInterest>) SimulationResources.building.getFloors().get(me.getFloor()).getNodesOfInterest();
+			
+			int nodeDistance = 0;
+			
+			for (NodeOfInterest n : nodes) {			
+				if (canISeeIt(me, n.getBegin()) || canISeeIt(me, n.getEnd())
+						|| canISeeIt(me, MathUtils.getMiddlePointOfTheLine(n.getBegin(), n.getEnd()))) {
+					if (nearestNode == null || nodeDistance > MathUtils.getDistanceBetweenPointAndLine(n.getBegin(), n.getEnd(), me.getLocation())) {
+						nearestNode = n;
+						nodeDistance = MathUtils.getDistanceBetweenPointAndLine(n.getBegin(), n.getEnd(), me.getLocation());
+					} 
+				}
+			}
+		}
 		
-		me.setDestination(DestinationType.Sign, MathUtils.getMiddlePointOfTheLine(nearestSign.getBegin(), nearestSign.getEnd()));
+		if (canISeeIt(me,nearestSign.getTarget())) {
+			me.setDestination(DestinationType.Sign,nearestSign.getTarget());
+		} else {
+			me.setDestination(DestinationType.Sign, MathUtils.getMiddlePointOfTheLine(nearestSign.getBegin(), nearestSign.getEnd()));
+		}
+		rerouteThroughNoiIfPossible(nearestNode, me);
+		
 	}
 	
 	public static void setDestinationAccordingToNearestNodeOfInterest(Agent me) {
@@ -177,8 +202,11 @@ public class AlgorithmUtilities {
 				} 
 			}
 		}
+	
 		
-		me.setDestination(DestinationType.NOI, MathUtils.getMiddlePointOfTheLine(nearestNode.getBegin(), nearestNode.getEnd()));
+		me.setDestination(DestinationType.NOI, SimulationResources.utils.getFartherNoiPoint(nearestNode, me));
+		
+		
 	}
 	
 	public static int howFarToClosestExit(Agent me) {
@@ -204,5 +232,41 @@ public class AlgorithmUtilities {
 		me.setStaircaseTime((me.getFloor())*250);
 	}
 	
+	public static void rerouteThroughNoiIfPossible(NodeOfInterest noi, Agent me) {
+		
+		Point dest = me.getDestinationPoint();
+		Point loc = me.getLocation();
+		
+		//check if noi is helpful
+		if (MathUtils.getDistanceBetweenPointAndLine(noi.getBegin(), noi.getEnd(), dest) >
+				MathUtils.getDistanceBetweenTwoPoints(dest, loc)) {
+			return;
+		}
+		ArrayList<Wall> walls = (ArrayList<Wall>) SimulationResources.building.getFloors().get(me.getFloor()).getWalls();
+		boolean reroute = false;
+		for (Wall w : walls) {			
+			if (MathUtils.doLinesIntersect(new Point(loc.x,dest.y), dest, w.getBegin(), w.getEnd())) {
+				reroute = true;
+			}
+			if (MathUtils.doLinesIntersect(new Point(loc.y,dest.x), dest, w.getBegin(), w.getEnd())) {
+				reroute = true;
+			}
+			if (MathUtils.doLinesIntersect(new Point(loc.x,dest.y), loc, w.getBegin(), w.getEnd())) {
+				reroute = true;
+			}
+			if (MathUtils.doLinesIntersect(new Point(loc.y,dest.x), loc, w.getBegin(), w.getEnd())) {
+				reroute = true;
+			}
+		}
+		
+		if (reroute) {
+			me.setSecondaryDestination(me.getDestinationType());
+			me.setSecondaryDestinationPoint(dest);
+			me.clearDestination();
+			me.setDestination(DestinationType.NOI, SimulationResources.utils.getFartherNoiPoint(noi, me));
+			me.setRerouting(true);
+		}
+		
+	}
 	
 }
