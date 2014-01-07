@@ -5,7 +5,6 @@ import java.util.Random;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.helpers.Point;
-import model.backbone.utils.AlgorithmUtilities;
 import model.backbone.utils.CollisionUtils;
 
 public class PogoPeopleAlgorithm extends Algorithm {

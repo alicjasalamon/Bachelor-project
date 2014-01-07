@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.building.elements.Exit;
-import model.backbone.building.elements.NodeOfInterest;
 import model.backbone.building.elements.Sign;
 import model.backbone.building.elements.Staircase;
 import model.backbone.building.helpers.Point;
