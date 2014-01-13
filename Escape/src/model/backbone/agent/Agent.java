@@ -104,11 +104,6 @@ public class Agent {
 			
 			if (this.destination == DestinationType.Exit) return;
 			
-//			if (this.destination == DestinationType.NOI && dest != DestinationType.NOI ) {
-//				this.setSecDestination(dest, destPoint);
-//				isRerouting = true;
-//				return;
-//			}
 			if (dest == DestinationType.Exit ||  dest == DestinationType.Staircase) {
 				this.destination = dest;
 				this.destinationPoint = destPoint;
@@ -250,9 +245,6 @@ public class Agent {
 	}
 
 	public void switchToSecondaryDestination() {
-		if (this.secondaryDestinationPoint == null) {
-			System.out.println("dsadasd");
-		}
 		this.destination = this.secondaryDestination;
 		this.destinationPoint = this.secondaryDestinationPoint;
 		this.secondaryDestination = null;

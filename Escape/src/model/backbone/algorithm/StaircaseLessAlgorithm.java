@@ -4,7 +4,7 @@ import model.backbone.agent.Agent;
 import model.backbone.agent.Agent.DestinationType;
 import model.backbone.utils.AlgorithmUtilities;
 
-public class StandardAlgorithm extends Algorithm {
+public class StaircaseLessAlgorithm extends Algorithm {
 
 	@Override
 	public void setAgentDestination(Agent agent) {
@@ -14,13 +14,6 @@ public class StandardAlgorithm extends Algorithm {
 		if (AlgorithmUtilities.canISeeAnyExit(agent)) {
 			AlgorithmUtilities.setDestinationToNearestExit(agent);
 			return;
-		}
-		//Can the agent see a staircase, while not being on the first floor
-		if (agent.getFloor() != 0) {
-			if (AlgorithmUtilities.canISeeAnyStaircases(agent)) {
-				AlgorithmUtilities.setDestinationToNearestStaircase(agent);
-				return;
-			}
 		}
 		
 		//Can the agent see a helping sign
@@ -33,8 +26,8 @@ public class StandardAlgorithm extends Algorithm {
 		if (AlgorithmUtilities.canISeeAnyNodesOfInterest(agent)) {
 			AlgorithmUtilities.setDestinationAccordingToNearestNodeOfInterest(agent);
 		}
-			
+		
+		
 	}
-	
-}
 
+}
