@@ -32,7 +32,7 @@ public class Agent {
 	private boolean isRerouting;
 	private int myHitPoints = 700;
 	
-	public static int size = 30;
+	public static int size = 20;
 
 	public Agent(Point location, int floor) {
 		currentLocation = location;

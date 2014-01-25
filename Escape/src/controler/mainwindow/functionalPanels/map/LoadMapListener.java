@@ -9,6 +9,11 @@ import resources.SimulationState;
 import view.mainwindow.simulationMap.TabbedMapPanel;
 import controler.mainwindow.functionalPanels.ClickAction;
 
+/*
+ * tu cos jest nie tak, przy ladowaniu
+ * drugiej mapy sie nie odswieza
+ */
+
 public class LoadMapListener implements ClickAction {
 
 	@Override
@@ -28,9 +33,9 @@ public class LoadMapListener implements ClickAction {
 				TabbedMapPanel newTabbedMapPanel = new TabbedMapPanel();
 				GUIResources.mapPanel.add(newTabbedMapPanel);
 
-				GUIResources.functionalMenuPanel.repaint();
+				//GUIResources.functionalMenuPanel.repaint();
 				GUIResources.mainFrame.repaint();
-				GUIResources.mapPanel.repaint();
+			//	GUIResources.mapPanel.repaint();
 
 				SimulationResources.mapName = filename.substring(0, filename.lastIndexOf('.'));
 				GUIResources.setSuccesMessage("Map successfully loaded");

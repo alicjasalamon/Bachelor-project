@@ -1,5 +1,6 @@
 package view.mainwindow.simulationMap;
 
+import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -15,6 +16,8 @@ public class TabbedMapPanel extends JPanel {
 	private static final long serialVersionUID = 5332304395818978112L;
 
 	public TabbedMapPanel() {
+		
+		setLayout(new BorderLayout());
 		JTabbedPane jTabbedPane = new JTabbedPane();
 		jTabbedPane.setFocusable(false);
 
@@ -29,11 +32,12 @@ public class TabbedMapPanel extends JPanel {
 		setBackground(ColorSet.WHITE);
 		jTabbedPane.setBackground(ColorSet.WHITE);
 		
-		setPreferredSize(new Dimension(width - 570, height - 190));
-		jTabbedPane.setPreferredSize(new Dimension(width - 590, height - 200));
-
-		add(jTabbedPane);
-		add(new LegendPanel());
+		setPreferredSize(new Dimension(width - 580, height - 190));
+		jTabbedPane.setPreferredSize(new Dimension(width - 600, height - 200));
+		
+		add(new LegendPanel(), BorderLayout.SOUTH);
+		add(jTabbedPane, BorderLayout.CENTER);
+		
 
 	}
 }

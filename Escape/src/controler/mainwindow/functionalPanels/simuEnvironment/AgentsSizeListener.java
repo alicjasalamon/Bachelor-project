@@ -13,7 +13,7 @@ public class AgentsSizeListener implements ChangeListener {
 	/*
 	 * Agent size formula: y = ax + b; x is jSlider value
 	 */
-	private static final double a = 0.4;
+	private static final double a = 0.2;
 	private static final double b = 10.0;
 	
 	@Override

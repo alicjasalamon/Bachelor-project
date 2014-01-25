@@ -1,6 +1,5 @@
 package view.mainwindow.legend;
 
-import java.awt.Color;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
@@ -13,7 +12,7 @@ public class LegendPanel extends JPanel{
 	
 	public LegendPanel() {
 		
-		setBackground(Color.BLUE);
+		//setBackground(Color.BLUE);
 
 		setLayout(new FlowLayout(FlowLayout.LEFT));
 		setBackground(ColorSet.WHITE);

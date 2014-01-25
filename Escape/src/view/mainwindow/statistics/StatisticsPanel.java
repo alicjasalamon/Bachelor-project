@@ -51,9 +51,9 @@ public class StatisticsPanel extends JPanel {
 	}
 
 	private JPanel createHelpPanel(int maxAgents, int escapedAgent, int time, int steps) {
+	
 		JPanel helpPanel = new JPanel();
 		helpPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 20));
-	//	helpPanel.setPreferredSize(new Dimension(1000, 60));
 		helpPanel.setBackground(ColorSet.LIGHT_GRAY);
 
 		agentLabel = new JLabel("Agents esaped: " + escapedAgent + "/" + maxAgents);
