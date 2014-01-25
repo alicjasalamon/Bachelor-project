@@ -6,10 +6,13 @@ import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
+import org.jfree.data.xy.XYDataItem;
+
 import resources.GUIResources;
 import resources.SimulationResources;
 import resources.SimulationState;
 import resources.StatisticsResources;
+import view.mainwindow.statistics.StatisticsPanel;
 import controler.mainwindow.functionalPanels.ClickAction;
 
 public class SaveStatisticsListener implements ClickAction {
@@ -42,14 +45,26 @@ public class SaveStatisticsListener implements ClickAction {
 				writer.println("Simulation time:\t" + StatisticsResources.time);
 				writer.println("Simulation steps:\t" + StatisticsResources.steps);
 
-				writer.println();
-				writer.println("Details");
-				writer.println();
-				
 				//agents start positions
-				
+				writer.println();
+				writer.println("Simulation beginning:\n");
+				String[] test = StatisticsResources.agentsAtBeginning.split("\n");
+				for(String s : test)
+				{
+					writer.println(s);
+				}
+				writer.println();
+
 				//simulation 
-				//writer.print(simulation());
+				writer.println();
+				writer.println("Simulation process:\n");
+
+				for (XYDataItem xy : ((StatisticsPanel) (GUIResources.statisticPanel)).getStepsChart().getData()) {
+					writer.print((int) xy.getXValue());
+					writer.print(", ");
+					writer.print((int) xy.getYValue());
+					writer.println();
+				}
 
 				writer.close();
 			} catch (FileNotFoundException e) {
@@ -62,23 +77,21 @@ public class SaveStatisticsListener implements ClickAction {
 		}
 
 	}
-	
-	/*private String simulation()
-	{
-		StringBuilder sb = new StringBuilder();
-		sb.append("Simulation:\n");
-		
-		for(XYDataItem xy : ((StatisticsPanel)(GUIResources.statisticPanel)).getStepsChart().getData())
-		{
-			sb.append("(");
-			sb.append(xy.getXValue());
-			sb.append(", ");
-			sb.append(xy.getYValue());
-			sb.append(")\n");
-		}
-		
-		System.out.println(sb.toString());
-		return sb.toString();
-	}
-*/
+
+//	private String simulation() {
+//		StringBuilder sb = new StringBuilder();
+//		sb.append("Simulation process:\n");
+//
+//		for (XYDataItem xy : ((StatisticsPanel) (GUIResources.statisticPanel)).getStepsChart().getData()) {
+//			sb.append("(");
+//			sb.append(xy.getXValue());
+//			sb.append(", ");
+//			sb.append(xy.getYValue());
+//			sb.append(")\n");
+//		}
+//
+//		System.out.println(sb.toString());
+//		return sb.toString();
+//	}
+
 }

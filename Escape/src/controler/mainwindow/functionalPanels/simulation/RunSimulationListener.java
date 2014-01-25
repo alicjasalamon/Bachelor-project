@@ -22,6 +22,7 @@ public class RunSimulationListener implements ClickAction {
 		if(SimulationResources.simulationState == SimulationState.Paused ||
 				SimulationResources.simulationState == SimulationState.Stopped)
 		{
+			StatisticsResources.saveAgentsPosition();
 			SimulationResources.simulator.startSimulation();
 			runSimulationTimer();
 		
